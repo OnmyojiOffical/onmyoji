@@ -63,12 +63,23 @@ local defaltConfig = {
 if w == 750 and h == 1334 then
 	
 	date = require("iPhone6")
+
 elseif w == 640 and h == 1136 then
+	
 	date = require("iPhone5")
+	
+elseif w == 1125 and h == 2436 then
+	
+	date = require("iPhoneX")
 else
+	
 	dialog(string.format("尺寸为%d&%d的设备暂时不支持",w,h),0)
+	
 	lua_exit()
+
 end
+
+
 
 local function commonCheck()
 	
@@ -233,7 +244,7 @@ function yuhunDriver()
 			mSleep(1000)
 
 		
-		elseif  dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60)  then
+		elseif  dmMatch(date.dm.battleOKDm,60)  or  dmMatch(date.dm.battleOKExpDm,60)  then
 
 			--使用金币buff图案作为结束战斗信号
 	

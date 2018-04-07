@@ -4,8 +4,18 @@
 -- Create By TouchSpriteStudio on 14:23:19   
 -- Copyright © TouchSpriteStudio . All rights reserved.
 local  ui = {}
-local sz = require("sz")
-local cjson = sz.json
+
+local status,sz 
+
+
+
+if getOSVer() == "11.1.1" then
+	
+	status = false
+else
+	
+ status,sz = pcall(require,sz)
+end
 local w,h = getScreenSize();
 local ui_data = {
 	["style"]  = "default",               --  选填，默认样式，控件排列类型
@@ -78,8 +88,19 @@ local ui_data = {
 	},
 
 }
+if status then
+	
+	ui.json = sz.json.encode(ui_data)
+	
+else
+	
+	ui.json = [==[{"cancelname":"取消","config":"onmyoji.dat","height":]==] .. h .. [==[,"pagetype":"multi","btnbkcolor":"255,255,255","titles":"第一页,第二页,第三页","timer":99,"title":"御魂师","width":]==] .. w  .. [==[,"pagenumtype ":"number","bgcolor":"255,255,255","orient":2,"style":"default","okname":"开始","selpage":1,"rettype":"default","pages":[[{"text":"模式","type":"Label","size":20,"color":"0,0,0","align":"center"},{"list":"司机,乘客,单刷","type":"ComboBox","select":"0"},{"text":"悬赏设置","type":"Label","size":20,"color":"0,0,0","align":"center"},{"list":"接高级,都接,不接","type":"ComboBox","select":"0"},{"text":"单刷场次设置","type":"Label","size":20,"color":"0,0,0","align":"center"},{"align":"left","type":"Edit","size":20,"color":"0,0,0","kbtype":"number"}]]}]==]
+
+end
 
 ui.data = ui_data
+
+
 
 UI_CANCEL = 0
 
@@ -94,7 +115,7 @@ MODEL_NORMA_BATTLE = 3
 function ui:showModel()
 	
 	
-	local ret,model,reward,loop = showUI(cjson.encode(self.data))
+	local ret,model,reward,loop = showUI(self.json)
 	
 	if ret == UI_OK then
 	

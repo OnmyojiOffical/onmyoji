@@ -15,6 +15,7 @@ local getColorRGB = getColorRGB
 local date = os.date
 local nLog = nLog
 local onmojiBid =  "com.netease.onmyoji"
+--[[
 local sz = require("sz")
 local wifiaddr = sz.system.localwifiaddr()
 local localIp
@@ -28,6 +29,11 @@ for i,v in ipairs(wifiaddr) do
 	
 	--mSleep(2000)
 end
+]]
+
+local getDeviceName = getDeviceName or function()  return "unknown" end
+
+local localizedName = getDeviceName()
 local runingStatus = 1
 --[[
 
@@ -58,7 +64,7 @@ end
 		void
 
 ]]
-local prefixFormat = "DeviceLog(" .. tostring(localIp) ..   ") [%X] "
+local prefixFormat = "DeviceLog(" .. tostring(localizedName) ..   ") [%X] "
 function formatLog(fmt,...)
 	
 	local logContent 
@@ -95,6 +101,7 @@ end
 
 ]]
 function isColor(x,y,c,s)
+	if not c then error("111",3) end
     local fl,abs = math.floor,math.abs
     s = fl(0xff*(100-s)*0.01)
     local r,g,b = fl(c/0x10000),fl(c%0x10000/0x100),fl(c%0x100)
@@ -227,11 +234,12 @@ function dmMatch(dm,degree)
 	
 	local total = #dm
 	
-	for _,v in ipairs(dm) do
+	for k,v in ipairs(dm) do
 		
 		if debug then
 			formatLog("(%d,%d) color is %#x",v[1],v[2],getColor(v[1], v[2]))
 		end
+	
 		if isColor(v[1],v[2],v[3],v[4] or 85) then
 			
 			matched = matched + 1
