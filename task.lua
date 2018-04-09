@@ -451,10 +451,25 @@ function yuhunPassager()
 			end
 	
 			lastBattleTime = time()
-
+		elseif dmMatch(date.dm.inviteTeamDm,80) then
+			
+			formatLog("加入队伍")
+			
+			mSleep(500)
+			
+			--截图留念，知道该拉黑谁
+			snapshot(time() .. "joinTeam" .. ".png",356, 381, 401, 444)
+			
+			rectClick(date.rect.inviteTeamReciveRect)
+			
+			mSleep(300)
+			
+			lastClickTime = time()
+			
+			
 		elseif dmMatch(date.dm.inviteTeamAutoDm,80) then
 
-			formatLog("auto加入bear的队伍")
+			formatLog("auto加入队伍")
 
 			rectClick(date.rect.inviteTeamAutoReciveRect)
 
