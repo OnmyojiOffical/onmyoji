@@ -71,6 +71,9 @@ elseif w == 640 and h == 1136 then
 elseif w == 1125 and h == 2436 then
 	
 	date = require("iPhoneX")
+elseif w == 1668 and h =  2244 then
+	
+	date = require("iPdPro")
 else
 	
 	dialog(string.format("尺寸为%d&%d的设备暂时不支持",w,h),0)
