@@ -45,7 +45,20 @@ dm.rewardLowLevelDm = {
 	name = "辣鸡悬赏"
 
 }
+dm.inviteTeamDm = {
+	{  181,  387, 0xdf6e5b},
+	{  197,  403, 0xdc715f},
+	{  331,  401, 0x59b564},
+	{  358,  395, 0x5bb766},
+	{  449,  385, 0x634122},
+	{  467,  368, 0x4a2d12},
+	{  447,  415, 0xe5d7c3},
+	{  445,  439, 0xece2d4},
+	{  448,  447, 0xeadfcf},
+	{  447,  349, 0x533418},
 
+	name = "正常加入队伍"
+}
 dm.yuhunBeginDm = {
 	{  484,  182, 0xb05634},
 	{  590,  182, 0x4b4741},
@@ -201,5 +214,7 @@ rect.battleOKRect = {2000,300,2050,700}
 
 rect.autoInviteDefaultActiveRect = {1078, 547, 1110, 575}
 
+rect.inviteTeamReciveRect = {309, 369, 367, 431}
 
+rect.inviteTeamSnapshotRect = { 403, 335, 693, 399}
 return date

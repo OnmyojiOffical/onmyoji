@@ -71,7 +71,7 @@ elseif w == 640 and h == 1136 then
 elseif w == 1125 and h == 2436 then
 	
 	date = require("iPhoneX")
-elseif w == 1668 and h =  2244 then
+elseif w == 1668 and h ==  2244 then
 	
 	date = require("iPdPro")
 else
@@ -461,7 +461,7 @@ function yuhunPassager()
 			mSleep(500)
 			
 			--截图留念，知道该拉黑谁
-			snapshot(time() .. "joinTeam" .. ".png",356, 381, 401, 444)
+			rectSnapShot(time() .. "joinTeam" .. ".png",date.rect.inviteTeamSnapshotRect)
 			
 			rectClick(date.rect.inviteTeamReciveRect)
 			

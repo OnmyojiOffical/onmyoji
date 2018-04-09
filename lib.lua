@@ -202,6 +202,28 @@ function rectClick(rect,t)
 	
 end
 --[[
+
+	区域截图
+	
+	@param
+	
+		name  string型  截图的名字 
+		
+		rect  table型  要点击的矩形 类型为{x1,y1,x2,y2}  指的是左上角为(x1,y1) 右下角为(x2,y2)的矩形区域
+
+
+]]
+function rectSnapShot(name,rect)
+	
+	if rect[1] and  rect[2]  and rect[3] and rect[4] then
+	
+		snapshot(tostring(name), rect[1], rect[2], rect[3],rect[4])
+	else
+		
+		snapshot(tostring(name))
+	end
+end
+--[[
 	
 	点阵匹配识别
 	

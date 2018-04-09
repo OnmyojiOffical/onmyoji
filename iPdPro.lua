@@ -124,7 +124,7 @@ rect.battleOKRect = { 1730, 268, 1898, 1182}
 
 rect.inviteTeamAutoReciveRect = {356, 381, 401, 444}
 
-rect.inviteTeamReciveRect = {}
+rect.inviteTeamReciveRect = {197, 377, 261, 442}
 
 rect.autoInviteCancelRect = {}
 
@@ -140,5 +140,6 @@ rect.autoInviteSendRect = {}
 
 rect.rewardTaskReciveRect = {1340, 815, 1397, 875}
 
+rect.inviteTeamSnapshotRect = { 286, 341, 732, 406}
 
 return date
