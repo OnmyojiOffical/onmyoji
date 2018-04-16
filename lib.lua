@@ -258,9 +258,9 @@ function dmMatch(dm,degree)
 	
 	for k,v in ipairs(dm) do
 		
-		if debug then
-			formatLog("(%d,%d) color is %#x",v[1],v[2],getColor(v[1], v[2]))
-		end
+--		if debug then
+--			formatLog("(%d,%d) color is %#x",v[1],v[2],getColor(v[1], v[2]))
+--		end
 	
 		if isColor(v[1],v[2],v[3],v[4] or 85) then
 			

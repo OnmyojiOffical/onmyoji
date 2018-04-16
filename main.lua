@@ -8,7 +8,7 @@ local ui = require("ui")
 
 local ret = ui:showModel()
 
-debug = false
+debug = true
 
 if ret == UI_CANCEL then
 

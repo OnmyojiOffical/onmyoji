@@ -159,14 +159,17 @@ function normalBattle(loopMax)
 			battleRecord = battleRecord + 1
 
 		elseif  dmMatch(date.dm.battleOKDm,70) or dmMatch(date.dm.battleOKExpDm,70)  then
-
-			while (dmMatch(date.dm.battleOKDm,70)) do
-
+			
+			local begin_time = time()
+			
+			while (dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60))   do
+				--for some special view
+				if time() - begin_time > 5 then break end
+			
 				rectClick(date.rect.battleOKRect,30)
-
+				
 				lastClickTime = time()
-
-				mSleep(200)
+ 
 			end
 
 
@@ -509,3 +512,4 @@ function yuhunPassager()
 	end
 
 end
+

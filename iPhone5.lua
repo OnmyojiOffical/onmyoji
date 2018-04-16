@@ -42,16 +42,16 @@ dmCenter.battleOKDm = {
 }
 --add for some poor  squatters!!!
 dmCenter.battleOKExpDm = {
-	{  139,  580, 0x3181b5},
-	{  139,  583, 0x629eda},
-	{  139,  587, 0x3b6fc4},
-	{  139,  588, 0x7ba2d4},
-	{  151,  587, 0x6c99d4},
-	{  155,  587, 0xfaf179},
-	{  155,  589, 0xf0dc1f},
-	{  155,  590, 0xfbf434},
-	{  155,  593, 0xf7e62c},
+
+	{  141,  579, 0x2f7cb6},
+	{  136,  590, 0x8cb3e2},
+	{  136,  591, 0x8cb3e2},
+	{  141,  591, 0x9ab9e1},
+	{  156,  572, 0xc8e3f3},
+	{  153,  582, 0x6a95cf},
+	{  158,  595, 0xf7e31f},
 	{  155,  595, 0xf7e31f},
+
 
 	name = "经验buff"
 
