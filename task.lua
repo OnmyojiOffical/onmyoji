@@ -512,4 +512,225 @@ function yuhunPassager()
 	end
 
 end
+--探索乘客模式
+--[[
 
+	基本思路是按照头像框的显示级数区域确定两个人是不是在如果不在退出副本
+	
+	
+
+
+]]
+
+local function checkHero(dm,rect,degre)
+	
+	local x,y = dmFind(dm,rect,degre)
+	
+	--formatLog("check hero (%d,%d)",x,y)
+	
+	if x ~=  -1 then
+		
+		
+		
+		return true
+	
+	else	
+	
+		return false
+	end
+	
+end
+
+
+function searchGhostPassager()
+
+	--战斗完成数量
+	local battleRecord = 0
+
+	--上次点击时间
+	local lastClickTime =0
+	
+	local lastBattleTime = time()
+
+	--等待时间
+	local waitTime = 0
+
+	local config = globalConfig or  {heroCheckFirst = true,heroCheckSecond =true,heroCheckThird = true}
+
+
+	while 1 do
+
+
+		commonCheck()
+
+		mSleep(200)
+
+
+		if dmMatch(date.dm.searchGhostInvite25Dm,80) then
+
+			mSleep(100)
+
+			rectClick(date.rect.searchGhostInvite25ReciveRect)
+
+			mSleep(200)
+
+		elseif  dmMatch(date.dm.searchGhostWaitBattleDm,80) then
+
+			waitTime = waitTime + 1
+
+		elseif dmMatch(date.dm.searchGhostBattlePrepareDm,80) then
+
+			toast("准备战斗",1)
+
+			formatLog("准备战斗")
+
+			local  firstNeedChange = false
+
+			local secondNeedChange = false
+
+			local thirdNeedChange = false
+
+			if config.heroCheckFirst then
+
+				firstNeedChange =  checkHero(date.dm.searchGhostBattleHeroBecame20,date.rect.heroCheckFirstRect)
+
+				formatLog("1位需要换狗粮:%s",tostring(firstNeedChange))
+			end
+
+			if config.heroCheckSecond then
+
+				secondNeedChange = checkHero(date.dm.searchGhostBattleHeroBecame20,date.rect.heroCheckSecondRect)
+	
+				formatLog("2位需要换狗粮:%s",tostring(secondNeedChange))
+			end
+
+			if config.heroCheckThird then
+
+				thirdNeedChange = checkHero(date.dm.searchGhostBattleHeroBecame20,date.rect.heroCheckThirdRect)
+
+				formatLog("3位需要换狗粮:%s",tostring(thirdNeedChange))
+			end
+			--更换式神逻辑
+			if firstNeedChange or secondNeedChange or thirdNeedChange then
+
+				formatLog("logic begin")
+
+				rectDoubleClick(date.rect.heroChangeAllRect,50)
+	
+				formatLog("wait all dm:%s",waitDm(date.dm.changeHeroAll,2,99))
+
+				mSleep(1000)
+
+				toast("will click all")
+
+				rectClick(date.rect.heroChangeAllRect,60)
+
+				mSleep(500)
+
+				--waitDm(date.dm.changeHeroNCard,2)
+
+				rectClick(date.rect.heroChangeNRect)
+
+				mSleep(1000)
+
+				slider(date.rect.heroChangeSliderBeginRect,450)
+				
+				mSleep(1000)
+
+				if firstNeedChange then
+
+					rectToRect(date.rect.heroWillChangeForFirstRect, date.rect.heroRectForFirstRect)
+
+					mSleep(500)
+
+				end
+
+				if secondNeedChange then
+
+					rectToRect(date.rect.heroWillChangeForSecondRect,date.rect.heroRectForSecondRect)
+
+					mSleep(500)
+				end
+
+				if thirdNeedChange then
+
+					rectToRect(date.rect.heroWillChangeForThirdRect,date.rect.heroRectForThirdRect)
+
+					mSleep(500)
+				end
+
+
+
+			end
+
+			mSleep(300)
+
+			rectClick(date.rect.prepareBattleRect)
+		
+		
+		elseif  dmMatch(date.dm.battleOKDm,60)  or  dmMatch(date.dm.battleOKExpDm,60)  then
+
+			--使用金币buff图案作为结束战斗信号
+	
+			formatLog("结束战斗")
+
+			--随机一个地方
+			
+			local begin_time = time()
+			
+			while (dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60))   do
+				--for some special view
+				if time() - begin_time > 5 then break end
+			
+				rectClick(date.rect.battleOKRect,30)
+				
+				lastClickTime = time()
+ 
+			end
+			
+			if time() - lastBattleTime > 5 then
+			
+				battleRecord = battleRecord + 1
+			
+				formatLog("第%d场狗粮已完成",battleRecord)
+			end
+	
+			lastBattleTime = time()
+		end
+	
+	
+	
+	end -- end for while
+
+
+end
+
+init(2)
+
+debug = false
+
+--mSleep(1000)
+
+--slider(date.rect.heroChangeSliderBeginRect,450)
+
+--mSleep(1000)
+
+--rectToRect(date.rect.heroWillChangeForFirstRect, date.rect.heroRectForFirstRect)
+
+--mSleep(1000)
+
+--rectToRect(date.rect.heroWillChangeForSecondRect,date.rect.heroRectForSecondRect)
+
+--mSleep(1000)
+
+--rectToRect(date.rect.heroWillChangeForThirdRect,date.rect.heroRectForThirdRect)
+
+--nLog(dmFind(date.dm.searchGhostBattleHeroBecame20,date.rect.heroCheckFirstRect,85))
+
+--nLog(findMultiColorInRegionFuzzy( 0xf09319, "-2|7|0xf2b212,-1|16|0xfce605,5|14|0xeed008,5|10|0xfdca0c,7|7|0xefaf12,8|4|0xe99e15,10|5|0xffb114,11|6|0xeea913,12|9|0xf6bf0e", 90, 264, 202, 373, 419))
+
+--rectDoubleClick(date.rect.heroChangeAllRect,50)
+
+
+
+--searchGhostPassager()

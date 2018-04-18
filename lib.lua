@@ -190,6 +190,15 @@ end
 ]]
 function rectClick(rect,t)
 	
+	if type(rect) ~= "table" then
+		
+	
+		error(string.format("rectClick need rect for #1 but got %s",type(rect)),3)
+	
+	
+	end
+	
+	
 	randomseed(newSeed())
 	
 	local x = random(rect[1],rect[3])
@@ -198,8 +207,26 @@ function rectClick(rect,t)
 	
 	local t = t or 30
 	
-	return click(x,y,y)
+	return click(x,y,t)
 	
+end
+
+function rectDoubleClick(rect,t,delay)
+
+	randomseed(newSeed())
+	
+	local x = random(rect[1],rect[3])
+	
+	local y = random(rect[2],rect[4])
+	
+	local t = t or 30
+	
+	click(x,y,t)
+	
+	mSleep(delay or 30)
+	
+	click(x,y,t)
+
 end
 --[[
 
@@ -251,7 +278,7 @@ function dmMatch(dm,degree)
 	keepScreen(false)
 	getColor(0, 0)
 	keepScreen(true)
-	
+	  
 	local matched = 0
 	
 	local total = #dm
@@ -310,6 +337,9 @@ end
 function dmFind(dm,rect,degree)
 
 	if  type(dm) ~= "table" then
+		
+		error(string.format("dmFind need dm for #1 bug got %s ",type(dm)),2)
+		
 		return -1,-1
 	end
 	
@@ -348,6 +378,8 @@ function dmFind(dm,rect,degree)
 	
 	local x, y = findMultiColorInRegionFuzzy(needPoint[3],mutliStr,degree, rect[1], rect[2], rect[3], rect[4])
 	
+	--formatLog(mutliStr)
+	
 	keepScreen(false)
 	
 	--formatLog("will using command to find dm:%s",format("findColorInRegionFuzzy(%#x,%s,%s,%d,%d,%d,%d)",needPoint[3],mutliStr,degree,rect[1],rect[2],rect[3],rect[4]))
@@ -380,6 +412,9 @@ end
 function waitDm(dm,t,degree)
 	
 	if  type(dm) ~= "table" then
+		
+		error("need  dm",2)
+		
 		return false
 	end
 	
@@ -402,6 +437,117 @@ function waitDm(dm,t,degree)
 	
 		if dmMatch(dm,degree) then return true ,time() - startTIme  end
 	end
+	
+end
+
+--[[
+
+	滑动滑块
+
+
+]]
+
+function slider(rect,lengh)
+	
+	randomseed(newSeed())
+	
+	local x = random(rect[1],rect[3])
+	
+	local y = random(rect[2],rect[4])
+	
+	touchDown(1, x, y)
+	
+	local begin_x = x
+	
+	for i = 1,math.floor(lengh/50) do
+		
+		touchMove(1, begin_x + 50, y)
+		
+		begin_x = begin_x + 50
+		
+		mSleep(30)
+		
+	end
+	
+	touchMove(1,x+lengh, y)
+	
+	touchUp(1, x+lengh, y)
+	
+end
+
+local function moveTo(x1,y1,x2,y2,step)
+	
+	step = step or 30
+	
+	local x_distance = math.abs( x2 - x1 )
+	
+	local y_distance = math.abs(y2 - y1)
+	
+	local begin_y = y1
+	
+	touchDown(1, x1, y1)
+	
+	for i = 1,math.floor(y_distance/step) do
+		
+		if (y1 > y2 ) then
+			
+			begin_y = begin_y - step
+		else
+			begin_y = begin_y + step
+			
+		end
+		
+		touchMove(1, x1, begin_y)
+		
+	end
+	
+	touchMove(1, x1, y2)
+	
+	mSleep(1000)
+	
+	local begin_x = x1
+	
+	for i = 1,math.floor(x_distance/step) do
+		
+		if (x1 > x2) then
+			
+			begin_x = begin_x - step
+		
+		else
+			
+			begin_x = begin_x + step
+		
+		end
+		
+		touchDown(1,begin_x, y2)
+		
+		
+		mSleep(30)
+		
+	end
+	
+	touchMove(1, x2, y2)
+	
+	touchUp(1, x2, y2)
+	
+end
+
+
+function rectToRect(rect1,rect2)
+	
+	randomseed(newSeed())
+	
+	local x1 = random(rect1[1],rect1[3])
+	
+	local y1 = random(rect1[2],rect1[4])
+	
+	local x2 = random(rect2[1],rect2[3])
+	
+	local y2 = random(rect2[2],rect2[4])
+	
+	--formatLog("p1(%d,%d) p2(%d,%d)",x1,y1,x2,y2)
+	
+	moveTo(x1,y1,x2,y2)
 	
 end
 

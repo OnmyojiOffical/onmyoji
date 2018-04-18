@@ -166,6 +166,142 @@ dmCenter.realSnakeHUD = {
 	name = "真蛇提示"
 }
 
+dmCenter.searchGhostInvite25Dm = {
+	--以下是勾叉
+	{   39,  259, 0xdf6e5b},
+	{   45,  263, 0xdc6d5b},
+	{   67,  267, 0x856c57},
+	{  126,  272, 0x2e351f},
+	{  129,  267, 0x4fab59},
+	{  150,  263, 0x62bb6c},
+	{  212,  286, 0xebe0d1},
+	--以下是祭品巫女的字样
+	{  246,  275, 0xa54b41},
+	{  251,  275, 0xa75146},
+	{  256,  275, 0xb2675b},
+	{  262,  275, 0xe6dac8},
+	{  286,  275, 0xa04137},
+	{  306,  275, 0xd4b1a4},
+	{  337,  275, 0x9f3f34},
+	{  367,  281, 0x9c382e},
+	{  487,  206, 0xf4e4c0},
+
+	name = "困难25邀请"
+}
+--头像框应该有两个，并且是深色底
+dmCenter.searchGhostWaitBattleDm = {
+	{   31,  127, 0xa8855d},
+	{   31,  129, 0x593719},
+	{   33,  129, 0x583a1e},
+	{   36,  136, 0x4a311a},
+	{   33,  147, 0x603f20},
+	{   31,  232, 0xb39169},
+	{   33,  232, 0x705132},
+	{   32,  235, 0x5d3d20},
+	{   32,  251, 0x5f3e20},
+	{   33,  253, 0x603f20},
+	
+	name = "队长还在,并且等待战斗"
+}
+
+dmCenter.searchGhostBattlePrepareDm   = {
+	{   49,  700, 0xfae0c4},
+	{   60,  706, 0xfffdf6},
+	{   70,  715, 0xb9b4ac},
+	{   67,  721, 0x3e352d},
+	{  128,  715, 0xfdefd7},
+	{  147,  712, 0xfef5df},
+	{  155,  718, 0xfbdfc5},
+	{  462,  716, 0x423344},
+	{  891,  718, 0x352938},
+	{ 1044,  720, 0x2d202e},
+
+	{  546,  710, 0xeae9e8},
+	{  552,  715, 0xc2c0bd},
+	{  611,  710, 0xaaa6a3},
+	{  754,  715, 0xfbfafa},
+	{  622,  713, 0xd3d1cf},
+	{  640,  713, 0xe6e5e3},
+	{  650,  715, 0xffffff},
+	{  673,  713, 0xfefefe},
+	{  768,  715, 0xfdfdfd},
+
+	name = "准备战斗"
+}
+dmCenter.searchGhostBattleHeroBecame20 = {
+
+	{  302,  243, 0xf09319},
+	{  300,  250, 0xf2b212},
+	{  301,  259, 0xfce605},
+	{  307,  257, 0xeed008},
+	{  307,  253, 0xfdca0c},
+	{  309,  250, 0xefaf12},
+	{  310,  247, 0xe99e15},
+	{  312,  248, 0xffb114},
+	{  313,  249, 0xeea913},
+	{  314,  252, 0xf6bf0e},
+
+	name = "满"
+}
+
+dmCenter.changeHeroAll = {
+
+	{   53,  552, 0x4c3285},
+	{   51,  564, 0x544c45},
+	{   51,  567, 0xfefefe},
+	{   65,  582, 0x3530b7},
+	{   75,  583, 0xf6f6f5},
+	{   85,  577, 0x22180f},
+	{   81,  580, 0xe2e0df},
+	{   64,  583, 0x332ea9},
+	{   83,  584, 0xc4c2bf},
+	{   85,  589, 0x2f3762},
+
+	{  193,  686, 0x842d70},
+	{  193,  688, 0xca1bf4},
+	{  211,  686, 0xbe3ab9},
+	{  224,  686, 0x6e2c56},
+	{  244,  686, 0xc93be5},
+
+	{  967,  717, 0x391c12},
+	{  967,  717, 0x391c12},
+	{  971,  723, 0x391c12},
+	{  998,  727, 0x391c12},
+	{ 1025,  728, 0x391c12},
+	{ 1046,  726, 0x391c12},
+	{ 1050,  718, 0x391c12},
+
+
+	name  = "全部"
+}
+
+dmCenter.changeHeroNCard = {
+	{  129,  344, 0x42301e},
+	{  136,  360, 0x999999},
+	{  143,  351, 0xa9a8ab},
+	{  155,  354, 0x242427},
+	{  167,  349, 0x3e2d1c},
+	{  154,  374, 0x483422},
+	{  165,  362, 0x42311f},
+	{  145,  328, 0x44311f},
+	
+	name = "选择N"
+}
+
+dmCenter.changeHeroHaveBeenN = {
+	{   48,  566, 0x4e3927},
+	{   74,  552, 0x503b28},
+	{   82,  578, 0xbdbbbc},
+	{   65,  572, 0xa9a9ab},
+	{   65,  578, 0x737172},
+	{   69,  595, 0x4a3523},
+	{   67,  588, 0x454043},
+	{  100,  571, 0x42311e},
+	{   71,  551, 0x553f2b},
+	{   68,  551, 0x402f1d},
+	
+	name = "N"
+}
 rectCenter.revokeRealSnakeHUDRect = {14, 250, 60, 288}
 
 rectCenter.battleOKRect =  {1135, 164, 1200, 728}
@@ -187,5 +323,41 @@ rectCenter.beginYuhunBattleRect  = {1012, 608, 1172, 646}
 rectCenter.normalBeginRect = {954, 502, 1027, 534}
 
 rectCenter.over6000DlgRect = { 625, 423, 703, 458 }
+
+--以下是探索功能
+
+rectCenter.searchGhostInvite25ReciveRect = {130, 247, 164, 286}
+
+rectCenter.searchGhostInvite25CancelRect = {26, 248, 73, 287}
+
+rectCenter.searchGhostInvite25TeamLeaderSnapshot = {194, 219, 475, 259}
+
+rectCenter.prepareBattleRect = {1157, 528, 1279, 623}
+
+rectCenter.changeHeroRect = {  562, 528, 663, 593}
+
+rectCenter.heroCheckFirstRect = { 236, 163, 393, 495}
+
+rectCenter.heroCheckSecondRect = { 476, 198, 596, 530}
+
+rectCenter.heroCheckThirdRect = {752, 296, 872, 616}
+
+rectCenter.heroChangeAllRect = { 50, 563, 97, 592}
+
+rectCenter.heroChangeNRect = {131, 324, 175, 379}
+
+rectCenter.heroChangeSliderBeginRect = {192, 711, 210, 733}
+
+rectCenter.heroWillChangeForFirstRect = {198, 557, 254, 665}
+
+rectCenter.heroRectForFirstRect = {1059, 206, 1161, 386}
+
+rectCenter.heroRectForSecondRect = {588, 216, 717, 387}
+
+rectCenter.heroRectForThirdRect = { 160, 211, 229, 394}
+
+rectCenter.heroWillChangeForSecondRect = {302, 581, 350, 676}
+
+rectCenter.heroWillChangeForThirdRect = {440, 572, 491, 669}
 
 return date
