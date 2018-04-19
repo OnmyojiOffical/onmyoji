@@ -444,7 +444,7 @@ end
 
 	滑动滑块
 
-
+	可能会废弃
 ]]
 
 function slider(rect,lengh)
@@ -563,6 +563,99 @@ function toastf(fmt,...)
 	
 	toast(format(fmt,...),3)
 	
+end
+
+debugWindos = {}
+
+local debugWindos = debugWindos
+
+WND_CANDRAG = 1
+
+WND_CANNOT_DARG = 0
+
+local w,h = getScreenSize()
+
+if GLOBAL_INIT_ORIENT == 0 then
+
+	
+	
+else
+	
+	w,h = h,w
+	
+end
+
+SCREEN_RECT = {0,0,w,h}
+
+POS_VIEW = 1
+
+local POS_VIEW = POS_VIEW
+
+function debugWindos:create(rect,canDrag)
+	
+	local wnd_object = {}
+	
+	setmetatable(wnd_object,self)
+	
+	self.__index = self
+	
+	if not rect then rect = SCREEN_RECT end
+	
+	if not canDrag then canDrag = WND_CANDRAG end
+	
+	wnd_object.wid = "WND_ID_" .. tostring(time())
+	
+	fwShowWnd(wnd_object.wid,rect[1],rect[2],rect[3],rect[4],canDrag)
+	
+	formatLog("create windows at {%d,%d,%d,%d} with id %s",rect[1],rect[2],rect[3],rect[4],wnd_object.wid)
+	
+	wnd_object.views = {}
+	
+	wnd_object.isOK = true
+	
+	return wnd_object
+end
+
+function debugWindos:addView(id,view)
+	
+	table.insert(self.views,view)
+	
+end
+
+function debugWindos:showPoint(x,y,color)
+	
+	
+	if self.wid and self.isOK then
+	
+		local viewLen = 20
+	
+		formatLog("a point view")
+		
+		local left = x - viewLen
+		
+		if left < 0 then left = 0 end
+		
+		local top = y - viewLen
+		
+		if top <0 then top = 0 end
+		
+		local right = x + viewLen
+		
+		if right > w then right = w end
+		
+		local bottom = y + viewLen
+		
+		if bottom > h then right = h end
+		
+		local id = "POS_ID_" .. format("(%d,%d)",x,y)
+		
+		self:addView(id,{type = POS_VIEW,pos = {x,y} })
+		
+		fwShowTextView(self.wid,id,"H","center",color or "FF0000","",15,1,left,top,right,bottom,1)
+		
+		formatLog("draw point view in %s {%d,%d,%d,%d}",self.wid,left,top,right,bottom)
+		
+	end
 end
 
 --[[

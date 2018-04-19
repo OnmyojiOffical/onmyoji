@@ -324,9 +324,9 @@ function yuhunDriver()
 				formatLog("60秒没有加入战斗")
 				if time() - lastClickTime > 60 * 10 then
 					
-					lua_exit()
-					
 					lockDevice()
+					
+					lua_exit()
 					
 					while 1 do
 						
@@ -490,9 +490,9 @@ function yuhunPassager()
 				formatLog("60秒没有加入战斗")
 				if time() - lastClickTime > 60 * 10 then
 					
-					lua_exit()
-					
 					lockDevice()
+					
+					lua_exit()
 					
 					while 1 do
 						

@@ -84,6 +84,32 @@ dmCenter.inviteTeamAutoDm = {
 	{  250,  279, 0x5ab665},
 	name = "自动加入队伍"
 }
+dmCenter.inviteTeamDm = {
+	{   42,  255, 0xdf6e5b},
+	{   47,  265, 0xda6e5c},
+	{   54,  274, 0xdf705d},
+	{  134,  268, 0x53b05e},
+	{  148,  269, 0x57b462},
+	{  152,  262, 0x60b96b},
+	{  162,  276, 0x856d57},
+	{  211,  282, 0xe9decd},
+	{  212,  296, 0xebe1d2},
+	{  215,  300, 0xe7dbca},
+	
+	{  215,  256, 0x614021},
+	{  215,  234, 0x5f3d1e},
+	{  304,  276, 0x9c382e},
+	{  304,  291, 0x9c382e},
+	{  304,  289, 0x9c392f},
+	{  304,  283, 0x9c382e},
+	{  308,  282, 0xa95349},
+	{  311,  278, 0xa4493e},
+	{  317,  278, 0xa95449},
+	{  317,  286, 0xa04237},
+
+	name = "加入战斗"
+}
+
 --邀请的弹窗
 dmCenter.autoInviteDlgDm = {
 	{  464,  320, 0xcbb59c},
@@ -190,6 +216,36 @@ dmCenter.searchGhostInvite25Dm = {
 }
 --头像框应该有两个，并且是深色底
 dmCenter.searchGhostWaitBattleDm = {
+	
+	
+	{ 1004,  594, 0xf8f3e0},
+	{ 1012,  593, 0xf8f3df},
+	{ 1048,  593, 0xdfdac8},
+	{ 1037,  593, 0xe7e2d0},
+	{ 1061,  593, 0x0c0a0d},
+	{ 1068,  595, 0xe5e0ce},
+	{ 1076,  596, 0xd2ccbb},
+	{ 1105,  596, 0xd4cebd},
+	{ 1115,  596, 0xe4decc},
+	{ 1125,  608, 0xf8f3e0},
+
+	--寿司
+	{ 1139,  591, 0xef762e},
+	{ 1150,  583, 0xd43d25},
+	{ 1151,  591, 0xff973a},
+	{ 1153,  595, 0xf25829},
+	{ 1155,  604, 0xf5662e},
+	{ 1155,  608, 0xc63120},
+	{ 1146,  602, 0xcb3d22},
+	{ 1168,  596, 0x655e53},
+	{ 1164,  603, 0xe05f2c},
+	{ 1155,  586, 0xe97830},
+	
+	name = "等待界面"
+
+}
+
+dmCenter.searchGhostTeamLeaderDm = {
 	{   31,  127, 0xa8855d},
 	{   31,  129, 0x593719},
 	{   33,  129, 0x583a1e},
@@ -202,6 +258,21 @@ dmCenter.searchGhostWaitBattleDm = {
 	{   33,  253, 0x603f20},
 	
 	name = "队长还在,并且等待战斗"
+}
+
+dmCenter.searchGhostRewardDm = {
+	{  426,  333, 0xa83f1e},
+	{  430,  328, 0xf7ca52},
+	{  430,  339, 0xfff4d4},
+	{  430,  342, 0xfff4d4},
+	{  431,  342, 0xfff4d4},
+	{  419,  347, 0xb4461f},
+	{  419,  350, 0xb0431d},
+	{  416,  351, 0xb2441e},
+	{  417,  352, 0xb54720},
+	{  417,  360, 0xfff4d4},
+	
+	name = "小纸箱"
 }
 
 dmCenter.searchGhostBattlePrepareDm   = {
@@ -323,6 +394,10 @@ rectCenter.beginYuhunBattleRect  = {1012, 608, 1172, 646}
 rectCenter.normalBeginRect = {954, 502, 1027, 534}
 
 rectCenter.over6000DlgRect = { 625, 423, 703, 458 }
+
+rectCenter.inviteTeamReciveRect = {125, 250, 185, 296}
+
+rectCenter.inviteTeamSnapshotRect = {197, 224, 493, 266}
 
 --以下是探索功能
 
