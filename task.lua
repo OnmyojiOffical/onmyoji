@@ -82,6 +82,15 @@ else
 
 end
 
+local function startOnmyoji(run_callback)
+	
+	
+	runApp(onmojiBid)
+	
+	waitDm()
+	
+	
+end
 
 
 local function commonCheck()
@@ -128,6 +137,224 @@ local function commonCheck()
 		
 	end
 	
+end
+
+--[[
+
+	重新打开阴阳师
+	
+	不建议处理每天第一次登陆的推送界面
+	
+	afterRun是在登陆后处理的函数
+
+	
+
+]]
+
+function  runOnmyoji(afterRun)
+
+	local bid = "com.netease.onmyoji"
+
+	--closeApp(bid)
+
+
+	runApp(bid)
+
+	mSleep(3000)
+
+	setDeviceOrient(2)
+
+
+	local begin_time = time()
+	
+	while 1 do
+		
+		if dmMatch(date.dm.beginGameNotifyDm) then
+			
+			
+			rectClick(date.rect.closeNotifyRect)
+			
+		elseif dmMatch(date.dm.enterGameDm) then
+			
+			rectClick(date.rect.enterGameRect)
+			
+		elseif dmMatch(date.dm.buffCenterDm) then
+		
+			break
+		else
+		
+			rectClick(date.rect.enterGameRect)
+		
+		end
+	
+	
+		mSleep(300)
+		
+		if time() - begin_time > 5 * 60 then closeApp(bid) return runOnmyoji(afterRun) end
+		
+	end
+	
+--	waitDmWithCallBack(date.dm.beginGameNotifyDm,60,90,function()  toast("begin game notif",1) rectClick(date.rect.closeNotifyRect)  end)
+
+----	while not  dmMatch(date.dm.beginGameNotifyDm) do
+
+----		toast("loading page",1)
+
+----		rectClick(date.rect.closeNotifyRect)
+
+
+----		mSleep(300)
+
+----	end
+	
+----	rectClick(date.rect.closeNotifyRect)
+
+	
+--	while  not dmMatch(date.dm.buffCenterDm) do
+
+--		rectClick(date.rect.enterGameRect)
+
+--		mSleep(300)
+
+
+--	end
+
+--	toast("Enter Game Success",1)
+
+	waitDmWithCallBack(date.dm.gameInnerNotifyDm,10,90,function (...)  toast("游戏内活动",1) rectClick(date.rect.gameInnerNotifyRect) mSleep(2000) rectClick(date.rect.normalHomeRect) end)
+
+
+	toast("进入游戏成功",1)
+	
+	
+	
+	if afterRun then
+		
+		mSleep(10 * 1000)
+		
+		pcall(afterRun)
+		
+	end
+
+end
+
+TEAM_TYPE_YUHUN = 1
+
+TEAM_TYPE_JUEXING = 2
+
+local hashForTeam = {date.rect.searchToolBarYuhunRect,date.rect.searchToolBarJuexingRect}
+
+local hashForView = {date.dm.yuhunMainViewDm}
+--[[
+
+	重建队伍
+	
+	分为御魂和觉醒 不过应该没人跑去刷觉醒
+
+	应该没有刷魂8的需求。默认魂十咯。
+
+]]
+
+
+function makeTeam(teamType)
+
+	teamType = teamType or TEAM_TYPE_YUHUN
+
+--	local x,y  = dmFind(date.dm.searchEnterDm,date.rect.searchEnterMayhownRect, 85)
+	
+--	local begin_time = time()
+	
+--	while x ~= -1 do
+		
+--		x,y  = dmFind(date.dm.searchEnterDm,date.rect.searchEnterMayhownRect, 85)
+		
+--		mSleep(100)
+		
+--		if time() - begin_time > 5 then break end
+--	end
+	
+	
+--	if x ~= -1 then
+		
+		rectClick(date.rect.searchEnterRect)
+		
+		mSleep(300)
+		
+		waitDmWithCallBack(date.dm.searchToolBarDm,30,90,function()  
+				
+			toast("call back for toolbar appear",1)	
+				
+			mSleep(3000)	
+				
+			rectClick(hashForTeam[teamType])
+				
+			mSleep(300)
+			
+			waitDmWithCallBack(hashForView[teamType],30,90,function()
+					
+					toast("call back for snake view",1)
+					
+					if teamType == TEAM_TYPE_YUHUN then
+					
+						rectClick(date.rect.yuhunSnakeEnterRect)
+						
+						mSleep(1000)
+						
+						rectClick(date.rect.yuhunTeamRect)
+						
+						mSleep(2000)
+						
+						rectClick(date.rect.yuhunMakeTeamRect)
+						
+						mSleep(1000)
+						
+						rectClick(date.rect.yuhunTeamConfigPrivateRect)
+						
+						mSleep(500)
+						
+						rectClick(date.rect.yuhunTeamCreateRect)
+						
+					else
+						
+					end
+				end)
+			
+		end)
+--	else	
+		
+--		toast("not found  search view",1)
+		
+--	end
+
+end
+
+function inviteRecentGuy(...)
+	
+	mSleep(1000)
+	
+	rectClick(date.rect.inviteFirstTeamGuyRect)
+	
+	while dmMatch(date.dm.inviteGuyRefreshViewDm) do
+		
+		mSleep(300)
+		
+	end
+	
+	mSleep(1000)
+	
+	rectClick(date.rect.inviteGuyRecentRect)
+	
+	while dmMatch(date.dm.inviteGuyRefreshViewDm) do
+		
+		mSleep(300)
+		
+	end
+	
+	rectClick(date.rect.firstGuyRect)
+	
+	mSleep(300)
+	
+	rectClick(date.rect.inviteGuySendRect)
 end
 
 function normalBattle(loopMax)
@@ -209,7 +436,7 @@ function yuhunDriver()
 	--上次战斗时间
 	local lastBattleTime = time()
 	
-	
+	local noGuyTime = time()
 	
 
 	while 1 do 
@@ -248,7 +475,7 @@ function yuhunDriver()
 			lastClickTime = time()
 			
 			mSleep(1000)
-
+	
 		
 		elseif  dmMatch(date.dm.battleOKDm,60)  or  dmMatch(date.dm.battleOKExpDm,60)  then
 
@@ -278,8 +505,23 @@ function yuhunDriver()
 			end
 	
 			lastBattleTime = time()
-
-
+			
+			noGuyTime = time()
+		elseif dmMatch(date.dm.yuhunBeginWithOutGuyDm) then
+			
+			formatLog("无队友开始界面")
+			
+			if time() - noGuyTime > 60 then
+				
+				formatLog("60秒无队友")
+			
+				inviteRecentGuy()
+				
+				noGuyTime = time()
+			end
+			
+			mSleep(300)
+		
 		elseif dmMatch(date.dm.yuhunBeginDm) then
 			
 			mSleep(300)
@@ -319,7 +561,7 @@ function yuhunDriver()
 			
 		else
 		
-			if  time() - lastClickTime > 80 then
+			if  time() - lastClickTime > 120 then
 				
 				formatLog("60秒没有加入战斗")
 				if time() - lastClickTime > 60 * 10 then
@@ -335,8 +577,17 @@ function yuhunDriver()
 					end
 					
 				end
-				
+				else
 				local offsetTime = time() - lastClickTime
+				
+				if   (isFrontApp(onmojiBid) ~= runingStatus) then
+							
+							formatLog("阴阳师不在前台运行了")
+							
+							runOnmyoji(makeTeam)
+							
+				end
+				
 				--[[
 				if offsetTime < 60 * 10 then
 					
@@ -485,7 +736,7 @@ function yuhunPassager()
 			
 		else
 		
-			if  time() - lastClickTime > 80 then
+			if  time() - lastClickTime > 120 then
 				
 				formatLog("60秒没有加入战斗")
 				if time() - lastClickTime > 60 * 10 then
@@ -500,6 +751,17 @@ function yuhunPassager()
 						
 					end
 					
+				end
+			else
+				
+				if   (isFrontApp(onmojiBid) ~= runingStatus) then
+							
+					formatLog("阴阳师不在前台运行了")
+							
+					runOnmyoji()
+					
+					lastClickTime = time()
+							
 				end
 				
 				local offsetTime = time() - lastClickTime
@@ -731,6 +993,49 @@ debug = false
 
 --rectDoubleClick(date.rect.heroChangeAllRect,50)
 
+init(2)
 
+
+--runOnmyoji()
+
+--aa()
+ 
+--makeTeam() 
+
+--inviteRecentGuy()
+
+--yuhunDriver()
+
+--runOnmyoji()
+
+--makeTeam()
+
+--local x,y  = dmFind(date.dm.searchEnterDm,date.rect.searchEnterMayhownRect, 85)
+
+--local wnd = debugWindos:create()
+
+
+----x,y = findMultiColorInRegionFuzzy( 0xe1be90, "0|16|0xedd596,1|24|0xf4dfa0,-6|17|0xd5a574,7|37|0x0c080a,18|42|0xdaa584,30|29|0xebcb9e,15|19|0xfef3c8,11|19|0xfdf3bc,3|-6|0xdbaf87", 90, 661, 496, 722, 528)
+
+--x,y = findMultiColorInRegionFuzzy( 0xe1be90, "0|16|0xedd596,1|24|0xf4dfa0,-6|17|0xd5a574,7|37|0x0c080a,18|42|0xdaa584,30|29|0xebcb9e,15|19|0xfef3c8,11|19|0xfdf3bc,3|-6|0xdbaf87", 90, 413, 69, 979, 238)
+
+--if x ~= -1 then
+--	wnd:showPoint(x,y)
+	
+--	formatLog("search enter is (%d,%d)",x,y)
+	
+--	click(x,y)
+	
+--else
+--	toast("not found",1)
+--end
+
+--mSleep(3000)
+
+--runOnmyoji()
+
+--waitDmWithCallBack(date.dm.beginGameNotifyDm,60,90,function (...)
+--		toast("1111111111111",1)
+--	end)
 
 --searchGhostPassager()

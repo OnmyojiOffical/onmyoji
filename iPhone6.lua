@@ -192,6 +192,61 @@ dmCenter.realSnakeHUD = {
 	name = "真蛇提示"
 }
 
+dmCenter.beginGameNotifyDm = {
+	{  573,   66, 0xf1e2bf},
+	{  585,   83, 0xe3c285},
+	{  633,   86, 0xdfbb7b},
+	{  649,   79, 0xe8cc95},
+	{  652,   84, 0xe2c081},
+	{  674,   81, 0xe6c78d},
+	{  686,  100, 0x77532f},
+	{ 1024,  142, 0xd3ccc4},
+	{  133,  403, 0xcec4bc},
+	{  126,  255, 0xcec3bb},
+	
+	name = "游戏公告"
+}
+
+dmCenter.enterGameDm = {
+	{  558,  174, 0x3d7d77},
+	{  550,  290, 0x346c8e},
+	{  561,  301, 0x346c8e},
+	{  577,  223, 0x377384},
+	{  567,  174, 0x3d7d77},
+	{  632,  268, 0xb3c6c3},
+	{  627,  216, 0x211e17},
+	{  779,  258, 0xc9aece},
+	{  764,  345, 0xe7f4fc},
+	{  778,  368, 0x407c9b},
+	
+	name ="进入游戏"
+}
+
+dmCenter.gameInnerNotifyDm = {
+	{ 1173,   74, 0xe5809e},
+	{ 1173,   82, 0xdf879a},
+	{ 1177,  100, 0xd47f95},
+	{ 1191,   83, 0xe8d4cf},
+	{ 1194,   63, 0xd0829e},
+	{ 1183,   73, 0xe8cfcc},
+	{ 1188,   89, 0xe8d4cf},
+
+	name = "游戏内公告"
+}
+dmCenter.buffCenterDm = {
+	{  449,   27, 0xface77},
+	{  442,   40, 0xfbcb78},
+	{  440,   58, 0xfac072},
+	{  448,   55, 0xfcd583},
+	{  449,   48, 0xfcd583},
+	{  463,   46, 0x796745},
+	{  474,   30, 0xfffacf},
+	{  475,   61, 0xf8ad69},
+	{  474,   73, 0xe9845b},
+
+	name = "加成按钮"
+}
+
 dmCenter.searchGhostInvite25Dm = {
 	--以下是勾叉
 	{   39,  259, 0xdf6e5b},
@@ -373,6 +428,8 @@ dmCenter.changeHeroHaveBeenN = {
 	
 	name = "N"
 }
+
+
 rectCenter.revokeRealSnakeHUDRect = {14, 250, 60, 288}
 
 rectCenter.battleOKRect =  {1135, 164, 1200, 728}
@@ -398,6 +455,18 @@ rectCenter.over6000DlgRect = { 625, 423, 703, 458 }
 rectCenter.inviteTeamReciveRect = {125, 250, 185, 296}
 
 rectCenter.inviteTeamSnapshotRect = {197, 224, 493, 266}
+
+
+--以下是重新组队
+
+rectCenter.closeNotifyRect = {1173, 64, 1200, 96}
+
+rectCenter.enterGameRect = {539, 593, 734, 636}
+
+
+rectCenter.gameInnerNotifyRect = {1181, 66, 1198, 99}
+
+rectCenter.normalHomeRect = {1152, 271, 1259, 489}
 
 --以下是探索功能
 

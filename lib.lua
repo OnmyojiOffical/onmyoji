@@ -439,7 +439,26 @@ function waitDm(dm,t,degree)
 	end
 	
 end
+--[[
 
+	有回调的等待
+
+]]
+
+function waitDmWithCallBack(dm,t,degree,callback)
+
+
+	local ststus = waitDm(dm,dgree,t)
+		
+	if ststus then
+		
+		if callback then
+			
+			pcall(callback)
+
+		end
+	end
+end
 --[[
 
 	滑动滑块
