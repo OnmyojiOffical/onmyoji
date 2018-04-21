@@ -428,6 +428,117 @@ dmCenter.changeHeroHaveBeenN = {
 	
 	name = "N"
 }
+dmCenter.yuhunBeginWithOutGuyDm = {
+	{  911,  608, 0xb1a8a0},
+	{  919,  618, 0xfb9035},
+	{  932,  629, 0xf45d26},
+	{  913,  632, 0x0c0d0a},
+	{  930,  630, 0xf75f26},
+	{  932,  635, 0xa54a24},
+	{  932,  633, 0xe56625},
+	{  913,  613, 0xd96a2f},
+	{  924,  609, 0x947467},
+	{  926,  626, 0xfe8433},
+	
+	
+	{ 1021,  615, 0xb0a9a1},
+	{ 1037,  605, 0xb0a9a1},
+	{ 1065,  605, 0xb0a9a1},
+	{ 1102,  604, 0xb0a9a1},
+	{ 1143,  604, 0xb0a9a1},
+	{ 1150,  633, 0xb0a9a1},
+	{ 1119,  642, 0xb0a9a1},
+	{ 1087,  642, 0xb0a9a1},
+	{ 1050,  641, 0xb0a9a1},
+	{ 1010,  638, 0xb0a9a1},
+	
+	
+	{  166,  618, 0xdf6851},
+	{  173,  608, 0xdf6851},
+	{  205,  604, 0xdf6851},
+	{  253,  602, 0xdf6851},
+	{  300,  601, 0xdf6951},
+	{  314,  624, 0xdf6851},
+	{  814,  113, 0xcebeaa},
+	{ 1084,  133, 0xcbbaa5},
+	{ 1062,  136, 0xc99e78},
+	{ 1073,  121, 0xe1bf97},
+
+	name = "无队友御魂开始界面"
+	
+}
+
+dmCenter.searchEnterDm = {
+	{  687,  147, 0xefc995},
+	{  688,  164, 0xf2d39c},
+	{  707,  138, 0xf8da9e},
+	{  705,  135, 0x120b0b},
+	{  710,  170, 0xffffb3},
+	{  698,  188, 0xfbbf7e},
+	{  709,  190, 0xffc691},
+	{  700,  204, 0xd0a98f},
+	{  708,  217, 0x604027},
+	{  707,  222, 0x55402f},
+	
+	name = "探索"
+}
+
+
+dmCenter.inviteGuyRefreshViewDm = {
+	{  647,  386, 0x51483e},
+	{  644,  364, 0x544b3f},
+	{  665,  373, 0xffffff},
+	{  666,  381, 0xffffff},
+	{  686,  368, 0x51483e},
+	{  690,  379, 0x51483e},
+	{  681,  363, 0x51483e},
+	{  648,  358, 0x554c40},
+	
+	name = "御魂转菊花"
+}
+
+
+dmCenter.yuhunMainViewDm = {
+	{  238,  323, 0x677969},
+	{  314,  265, 0xe6cdcf},
+	{  563,  373, 0x585b4f},
+	{  410,  416, 0x85708a},
+	{  364,  416, 0x49455a},
+	{  475,  481, 0x7b7384},
+	{  389,  480, 0x35313c},
+	{  384,  469, 0x4f4857},
+	{  582,  461, 0x625b4e},
+	{  585,  428, 0x615d50},
+	
+		name = "御魂界面"
+}
+
+
+dmCenter.searchToolBarDm = {
+	{   85,  688, 0x551850},
+	{   91,  700, 0x540f10},
+	{  108,  691, 0xe1d3a9},
+	{  229,  676, 0xae851a},
+	{  204,  694, 0xb58d1c},
+	{  215,  701, 0xb1982e},
+	{  337,  693, 0x922525},
+	{  350,  705, 0x6d1511},
+	{  349,  713, 0x937863},
+	{  348,  723, 0xe1dcca},
+	
+	{  217,  660, 0x90711b},
+	{  318,  668, 0xa05e17},
+	{  419,  704, 0xceb48d},
+	{  416,  698, 0x8f8fa9},
+	{  458,  699, 0xa2212f},
+	{  209,  706, 0x20181c},
+	{  190,  718, 0x1f1613},
+	{  115,  711, 0xe1d3aa},
+	{   84,  701, 0x551e66},
+	{   95,  695, 0x5b1731},
+
+	name = "探索界面工具栏"
+}
 
 
 rectCenter.revokeRealSnakeHUDRect = {14, 250, 60, 288}
@@ -503,5 +614,41 @@ rectCenter.heroRectForThirdRect = { 160, 211, 229, 394}
 rectCenter.heroWillChangeForSecondRect = {302, 581, 350, 676}
 
 rectCenter.heroWillChangeForThirdRect = {440, 572, 491, 669}
+
+
+rectCenter.searchToolBarJuexingRect = {75, 668, 129, 713 }
+
+rectCenter.searchToolBarYuhunRect = {183, 664, 238, 708}
+
+rectCenter.searchToolBarYulingRect = {417, 670, 451, 721}
+
+rectCenter.searchToolBarHomeBrokenRect = {296, 666, 352, 717}
+
+rectCenter.searchEnterRect = {688, 128, 724, 206}
+
+rectCenter.searchEnterMayhownRect = {309, 1, 1188, 256}
+
+rectCenter.firstGuyRect = {395, 213, 630, 265}
+
+rectCenter.inviteGuyRecentRect = {510, 112, 581, 151}
+
+rectCenter.inviteGuySendRect = {755, 577, 861, 612}
+
+rectCenter.inviteFirstTeamGuyRect = {689, 450, 802, 544}
+
+
+
+rectCenter.yuhunMakeTeamRect = {1023, 631, 1164, 673}
+
+rectCenter.yuhunTeamCreateRect = {873, 593, 966, 632}
+
+rectCenter.yuhunTeamRect = {632, 502, 715, 533}
+
+rectCenter.yuhunTeamConfigPrivateRect = {789, 531, 807, 547}
+
+rectCenter.yuhunSnakeEnterRect = { 311, 246, 564, 443}
+
+
+
 
 return date

@@ -336,7 +336,7 @@ function inviteRecentGuy(...)
 	
 	while dmMatch(date.dm.inviteGuyRefreshViewDm) do
 		
-		mSleep(300)
+		mSleep(500)
 		
 	end
 	
@@ -346,9 +346,11 @@ function inviteRecentGuy(...)
 	
 	while dmMatch(date.dm.inviteGuyRefreshViewDm) do
 		
-		mSleep(300)
+		mSleep(500)
 		
 	end
+	
+	mSleep(500)
 	
 	rectClick(date.rect.firstGuyRect)
 	
@@ -1039,3 +1041,17 @@ init(2)
 --	end)
 
 --searchGhostPassager()
+
+
+
+--closeApp(onmojiBid)
+
+--mSleep(2000)
+
+--runOnmyoji(makeTeam)
+
+
+
+--mSleep(3000)
+
+--inviteRecentGuy()

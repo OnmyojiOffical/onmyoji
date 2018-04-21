@@ -363,6 +363,8 @@ rectCenter.inviteFirstTeamGuyRect = {593, 388, 679, 475}
 
 rectCenter.inviteGuyRecentRect = {430, 97, 493, 131}
 
+--邀请第一个人
+
 rectCenter.firstGuyRect = { 338, 177, 540, 227}
 
 rectCenter.inviteGuySendRect = { 661, 496, 722, 528}
