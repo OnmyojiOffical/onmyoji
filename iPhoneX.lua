@@ -200,7 +200,7 @@ rect.over6000DlgRect = { 1147, 633, 1284, 689}
 
 rect.rewardTaskReciveRect = {1540,650,1560,670}
 
-rect.inviteTeamAutoReciveRect = {1618, 742, 1798, 813}
+rect.inviteTeamAutoReciveRect = {463, 372, 516, 423}
 
 rect.beginYuhunBattleRect = {1749, 912, 1952, 962}
 

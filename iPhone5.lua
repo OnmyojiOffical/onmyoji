@@ -310,6 +310,34 @@ dmCenter.inviteGuyRefreshViewDm = {
 	name = "刷新转菊花"
 }
 
+dmCenter.inviteTeamDm = {
+	{   22,  225, 0x81664e},
+	{   39,  222, 0xde705d},
+	{   39,  228, 0xd86856},
+	{   38,  248, 0x846a53},
+	{   43,  235, 0xdf6e5b},
+	{   63,  226, 0x846c56},
+	{   36,  207, 0x846a54},
+	{  116,  226, 0x58b563},
+	{  124,  228, 0x59b363},
+	{  130,  222, 0x61ba6b},
+	
+	
+	{  188,  234, 0xe2d3be},
+	{  186,  220, 0x573718},
+	{  178,  242, 0xe9ddcd},
+	{  186,  235, 0xe6d9c6},
+	{  186,  218, 0x51351b},
+	{  185,  201, 0x55381c},
+	{  176,  231, 0xe6d8c5},
+	{  184,  231, 0xe3d4bf},
+	{  190,  242, 0xece2d4},
+	{  222,  241, 0xb97468},
+
+
+	name = "御魂组队邀请"
+}
+
 rectCenter.battleOKRect = {980, 269, 1058, 553}
 
 rectCenter.rewardTaskReciveRect  = {742, 357, 775, 387}
@@ -371,4 +399,8 @@ rectCenter.inviteGuySendRect = { 661, 496, 722, 528}
 
 rectCenter.searchEnterRect = {585, 108, 618, 178}
 
+
+rectCenter.inviteTeamReciveRect = {105, 207, 145, 247}
+
+rectCenter.inviteTeamSnapshotRect = {161, 193, 377, 229}
 return date

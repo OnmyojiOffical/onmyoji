@@ -1056,7 +1056,9 @@ init(2)
 --runOnmyoji(makeTeam)
 
 
+--makeTeam()
 
+--inviteRecentGuy()
 --mSleep(3000)
 
 --inviteRecentGuy()
