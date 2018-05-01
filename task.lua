@@ -235,7 +235,7 @@ function  runOnmyoji(afterRun)
 	
 	if afterRun then
 		
-		mSleep(10 * 1000)
+		mSleep(5 * 1000)
 		
 		pcall(afterRun)
 		
@@ -283,7 +283,7 @@ function makeTeam(teamType)
 		
 		rectClick(date.rect.searchEnterRect)
 		
-		mSleep(300)
+		mSleep(2000)
 		
 		waitDmWithCallBack(date.dm.searchToolBarDm,30,90,function()  
 				
