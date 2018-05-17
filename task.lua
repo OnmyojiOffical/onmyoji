@@ -14,7 +14,7 @@ local getColor = getColor
 local getColorRGB = getColorRGB
 local date = os.date
 local nLog = nLog
-local onmojiBid =  "com.netease.onmyoji"
+local onmyojiBid =  "com.netease.onmyoji"
 local runingStatus = 1
 require("lib")
 
@@ -87,18 +87,11 @@ else
 
 end
 
-local function startOnmyoji(run_callback)
-	
-	
-	runApp(onmojiBid)
-	
-	waitDm()
-	
-	
-end
+local dm = date.dm
 
+local rect = date.rect
 
-local function commonCheck()
+local function commonCheck(callback)
 	
 	local config = globalConfig or  defaltConfig
 	
@@ -140,6 +133,60 @@ local function commonCheck()
 			
 			mSleep(100)
 		
+	elseif dmMatch(date.dm.tryConnectDm,70) then
+	
+	
+		local begin_time = time()
+	
+		while (true) do
+	
+			if dmMatch(date.dm.tryConnectDm,70) then
+				
+				if time() - begin_time() > 60 * 3 then
+					
+					formatLog("持续丢失网络连接")
+					
+					closeApp(onmyojiBid)
+					
+					mSleep(2000)
+					
+					return runOnmyoji(callback)
+				end
+				
+				
+			elseif dmMatch(date.dm.lostConnetDm,70) then
+				
+				
+					formatLog("已经丢失网络连接")
+				
+				
+					closeApp(onmyojiBid)
+					
+					mSleep(2000)
+					
+					runOnmyoji(callback)
+				
+				break
+			
+			else 
+			
+				mSleep(1000)
+				
+				if not (dmMatch(date.dm.tryConnectDm) or dmMatch(date.lostConnetDm)) then
+					
+					
+					formatLog("恢复正常了")
+					--恢复正常了
+					
+					break
+					
+				end
+			
+			end
+	
+		end
+	
+	
 	end
 	
 end
@@ -199,32 +246,6 @@ function  runOnmyoji(afterRun)
 		
 	end
 	
---	waitDmWithCallBack(date.dm.beginGameNotifyDm,60,90,function()  toast("begin game notif",1) rectClick(date.rect.closeNotifyRect)  end)
-
-----	while not  dmMatch(date.dm.beginGameNotifyDm) do
-
-----		toast("loading page",1)
-
-----		rectClick(date.rect.closeNotifyRect)
-
-
-----		mSleep(300)
-
-----	end
-	
-----	rectClick(date.rect.closeNotifyRect)
-
-	
---	while  not dmMatch(date.dm.buffCenterDm) do
-
---		rectClick(date.rect.enterGameRect)
-
---		mSleep(300)
-
-
---	end
-
---	toast("Enter Game Success",1)
 
 	waitDmWithCallBack(date.dm.gameInnerNotifyDm,10,90,function (...)  toast("游戏内活动",1) rectClick(date.rect.gameInnerNotifyRect) mSleep(2000) rectClick(date.rect.normalHomeRect) end)
 
@@ -359,7 +380,7 @@ function inviteRecentGuy(...)
 	
 	rectClick(date.rect.firstGuyRect)
 	
-	mSleep(300)
+	mSleep(1000)
 	
 	rectClick(date.rect.inviteGuySendRect)
 end
@@ -432,6 +453,7 @@ end
 
 function yuhunDriver()
 	
+	
 
 	
 	--总共战斗场次
@@ -459,7 +481,7 @@ function yuhunDriver()
 
 		randomseed(time())
 		
-		commonCheck()
+		commonCheck(makeTeam)
 		
 		if dmMatch(date.dm.autoInviteDlgDm)  then
 			
@@ -587,7 +609,7 @@ function yuhunDriver()
 				else
 				local offsetTime = time() - lastClickTime
 				
-				if   (isFrontApp(onmojiBid) ~= runingStatus) then
+				if   (isFrontApp(onmyojiBid) ~= runingStatus) then
 							
 							formatLog("阴阳师不在前台运行了")
 							
@@ -704,6 +726,8 @@ function yuhunPassager()
 				rectClick(date.rect.battleOKRect,30)
 				
 				lastClickTime = time()
+				
+				mSleep(300)
  
 			end
 			
@@ -729,7 +753,15 @@ function yuhunPassager()
 			mSleep(300)
 			
 			lastClickTime = time()
+		elseif dmMatch(date.dm.inviteTeamAutoDmNew,70) then
 			
+			formatLog("超鬼王时集结")
+			
+			mSleep(500)
+			
+			rectClick(date.rect.inviteTeamReciveRectNew)
+			
+			mSleep(300)
 			
 		elseif dmMatch(date.dm.inviteTeamAutoDm,80) then
 
@@ -740,7 +772,17 @@ function yuhunPassager()
 			mSleep(500)
 			
 			lastClickTime = time()
+		
+	elseif dmMatch(date.dm.inviteTeamAutoDmNew,80) then
+		
+			formatLog("超鬼王出现时auto加入队伍")
+
+			rectClick(date.rect.inviteTeamAutoReciveRectNew)
+
+			mSleep(500)
 			
+			lastClickTime = time()
+		
 		else
 		
 			if  time() - lastClickTime > 120 then
@@ -761,7 +803,7 @@ function yuhunPassager()
 				end
 			else
 				
-				if   (isFrontApp(onmojiBid) ~= runingStatus) then
+				if   (isFrontApp(onmyojiBid) ~= runingStatus) then
 							
 					formatLog("阴阳师不在前台运行了")
 							
@@ -973,6 +1015,213 @@ function searchGhostPassager()
 
 
 end
+
+
+
+--[[
+
+	userUtils Model
+	
+	
+	fakeGps available user goto LBS ghost 
+
+
+]]
+
+local locations = {
+	
+	{ name = "北京" ,39.26,115.25,41.03,117.30 },
+	
+	{ name = "上海" ,30.40,120,51,31.53,122.12},
+	
+	{ name = "深圳" ,22.32,113.46,22.52,114.37}
+	
+}
+
+local currentLBSGhost = {
+	
+	name = "COMICUP",
+	
+	dateBegin = {month = 5,day = 19},
+	
+	dateEnd = {month = 5,day = 20 },
+	
+	perDayTime = {10,18},
+	
+	location = {121.304772,31.197171}
+	
+}
+
+function godWalkToLBS()
+	
+	
+	--local t = os.date("*t")
+	
+	local seed = os.time() % math.random(100) + string.byte(getDeviceID(),1,10)
+	
+	math.randomseed(seed)
+	
+	local offset = math.random(10,80)
+	
+	local location = currentLBSGhost.location
+	
+	local gps_x = location[1] + offset/1000000
+	
+	local gps_y = location[2] + offset/1000000
+	
+	toast(format("当前LBS:%s\n时间:%d月%d号-%d月%d号 每天:(%d-%d)\n这次前往坐标:(%f N,%f E)",
+			
+			currentLBSGhost.name,
+			
+			currentLBSGhost.dateBegin.month,
+			
+			currentLBSGhost.dateBegin.day,
+			
+			currentLBSGhost.dateEnd.month,
+			
+			currentLBSGhost.dateEnd.day,
+			
+			currentLBSGhost.perDayTime[1],
+			
+			currentLBSGhost.perDayTime[2],
+			
+			gps_x,
+			
+			gps_y),3)
+
+	fakeGPS(gps_x,gps_y)	
+	
+end
+
+function godWalkToSuperCity()
+	
+	
+	local cityIndex = random(1,#locations)
+	
+	local city = locations[cityIndex]
+	
+	local offset = math.random(10,80)
+	
+	local latitude = random(city[1],city[3]) + offset/1000000
+	
+	local longitude = random(city[2],city[4]) + offset/1000000
+	
+	toastf("Go to %s ,Current gps is (%f N,%f E)",city.name or "未知城市",latitude,longitude)
+	
+	fakeGPS(longitude,latitude)
+	
+	
+	
+end
+
+
+function godWalk()
+
+
+	local ret = dialogRet("去哪里呢?","哪也不去", "当前漫展地点", "任意大城市",0)
+
+	if ret == 0 then return end
+	
+	if ret == 1 then godWalkToLBS() end
+	
+	if ret == 2 then godWalkToSuperCity() end
+	
+
+end
+
+--[[
+
+	抽取厕纸
+
+
+]]
+
+
+
+function  drawBrokenCard(num)
+	
+	num = num or 0
+	
+	if num == 0 then num = 9999 end
+	
+	local currentDrawn = 0
+	
+	
+	
+	while 1 do
+		
+		commonCheck()
+		
+		if dmMatch(dm.goDrawnDm) then
+	
+			rectClick(rect.goDrawnRect)
+			
+			mSleep(1000)
+	
+		elseif dmMatch(dm.brokenCardOneDm) then
+			
+			rectClick(rect.brokenCardOneRect)
+	
+			mSleep(300)
+			
+			currentDrawn = currentDrawn + 1
+			
+		elseif dmMatch(dm.brokenCardTwoDm) then
+			
+			rectClick(rect.brokenCardTwoRect)
+			
+			mSleep(300)
+			
+			currentDrawn = currentDrawn + 1
+			
+		elseif dmMatch(dm.brokenCardThreeDm) then
+			
+			rectClick(rect.brokenCardThreeRect)
+			
+			mSleep(300)
+			
+			currentDrawn = currentDrawn + 1
+			
+		elseif dmMatch(dm.brokenCardFourDm) then
+			
+			rectClick(rect.brokenCardFourRect)
+			
+			mSleep(300)
+			
+			currentDrawn = currentDrawn + 1
+			
+			
+		elseif dmMatch(dm.brokenCardFiveDm) then
+			
+			rectClick(rect.brokenCardFiveRect)
+			
+			mSleep(300)
+			
+			currentDrawn = currentDrawn + 1
+			
+		
+		elseif dmMatch(dm.continueDrawDm) and (currentDrawn < num) then
+		
+			rectClick(rect.continueDrawRect)
+			
+			mSleep(1000)
+		
+		
+		elseif dmMatch(dm.cancelDrawDm) and ((currentDrawn > num)  or  (not dmMatch(dm.continueDrawDm)))  then
+		
+
+			rectClick(rect.cancelDrawRect)
+
+			mSleep(500)
+
+		end
+		
+	
+		
+	end
+	
+end
+
 
 init(2)
 

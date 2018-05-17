@@ -10,3 +10,7 @@ main.lua
 task.lua
 ui.lua
 iPad2.lua
+toolbar.lua
+userUtils.lua
+FileLog.lua
+iPhone6P.lua

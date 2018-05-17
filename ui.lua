@@ -5,17 +5,8 @@
 -- Copyright © TouchSpriteStudio . All rights reserved.
 local  ui = {}
 
-local status,sz 
+local sz = require("sz")
 
-
-
-if getOSVer() == "11.1.1" then
-	
-	status = false
-else
-	
- status,sz = pcall(require,sz)
-end
 local w,h = getScreenSize();
 local ui_data = {
 	["style"]  = "default",               --  选填，默认样式，控件排列类型
@@ -52,7 +43,7 @@ local ui_data = {
 			},
 			{
 				["type"] = "ComboBox",                                                                      
-				["list"] = "司机,乘客,单刷",
+				["list"] = "司机,乘客,单刷,小工具",
 				["select"] = "0",                                    
 			},
 			{
@@ -88,15 +79,10 @@ local ui_data = {
 	},
 
 }
-if status then
-	
-	ui.json = sz.json.encode(ui_data)
-	
-else
-	
-	ui.json = [==[{"cancelname":"取消","config":"onmyoji.dat","height":]==] .. h .. [==[,"pagetype":"multi","btnbkcolor":"255,255,255","titles":"第一页,第二页,第三页","timer":99,"title":"御魂师","width":]==] .. w  .. [==[,"pagenumtype ":"number","bgcolor":"255,255,255","orient":2,"style":"default","okname":"开始","selpage":1,"rettype":"default","pages":[[{"text":"模式","type":"Label","size":20,"color":"0,0,0","align":"center"},{"list":"司机,乘客,单刷","type":"ComboBox","select":"0"},{"text":"悬赏设置","type":"Label","size":20,"color":"0,0,0","align":"center"},{"list":"接高级,都接,不接","type":"ComboBox","select":"0"},{"text":"单刷场次设置","type":"Label","size":20,"color":"0,0,0","align":"center"},{"align":"left","type":"Edit","size":20,"color":"0,0,0","kbtype":"number"}]]}]==]
 
-end
+	
+ui.json = sz.json.encode(ui_data)
+
 
 ui.data = ui_data
 
@@ -111,6 +97,8 @@ MODEL_DRIVER = 1
 MODEL_PASSAGER = 2
 
 MODEL_NORMA_BATTLE = 3
+
+MODEL_TOOLS = 4
 
 function ui:showModel()
 	

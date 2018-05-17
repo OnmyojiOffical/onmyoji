@@ -46,6 +46,13 @@ local function main()
 	elseif model == MODEL_NORMA_BATTLE then
 		
 		return normalBattle(config.loopTime)
+	
+    elseif model == MODEL_TOOLS then
+	
+		require("userUtils")
+	
+		return showToolsBar()
+	
 	else
 		
 		return dialogf("未知的运行模式:%s",model)
