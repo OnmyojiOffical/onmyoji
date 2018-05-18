@@ -466,7 +466,7 @@ dmCenter.lostConnetDm = {
 	{  624,  338, 0x9b402e},
 	{  620,  380, 0x973c2e},
 
-	
+	name = "丢失网络连接"
 }
 
 

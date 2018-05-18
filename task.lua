@@ -80,7 +80,11 @@ elseif w == 1536 and h == 2048 then
 	
 	date = require("iPad2")
 	
-else	
+elseif  w == 1242 and h ==    2208	 then
+	
+	date = require("iPhone6P")
+
+else
 	dialog(string.format("尺寸为%d&%d的设备暂时不支持",w,h),0)
 	
 	lua_exit()
@@ -1050,6 +1054,20 @@ local currentLBSGhost = {
 	
 	location = {121.304772,31.197171}
 	
+}
+
+local currentLBSGhost = {
+	
+	name = "COMICUP",
+	
+	dateBegin = {month = 5,day = 18},
+	
+	dateEnd = {month = 5,day = 18 },
+	
+	perDayTime = {10,18},
+	
+	
+	location = {113.329404,23.129916}
 }
 
 function godWalkToLBS()
