@@ -573,4 +573,160 @@ dm.rewardLowLevelDm = {
 	name = "辣鸡悬赏"
 } 
 
+--厕纸召唤
+
+rect.goDrawnRect = { 374, 1323, 456, 1430} 
+
+rect.brokenCardOneRect = { 450, 729, 527, 882} 
+
+rect.brokenCardTwoRect = {712, 715, 810, 906} 
+
+rect.brokenCardThreeRect = { 986, 734, 1072, 904} 
+
+rect.brokenCardFourRect = { 1255, 728, 1354, 903} 
+
+rect.brokenCardFiveRect = { 1523, 716, 1625, 916} 
+
+rect.continueDrawRect = { 1138, 1394, 1351, 1444} 
+
+rect.cancelDrawRect = {723, 1400, 906, 1447} 
+
+dm.continueDrawDm = {
+
+	{ 1112, 1391, 0xdf9953},
+	{ 1110, 1459, 0x973c2e},
+	{ 1216, 1435, 0xf3b25e},
+	{ 1289, 1428, 0xf3b25e},
+	{ 1289, 1428, 0xf3b25e},
+	{ 1187, 1333, 0x2d241c},
+	{ 1361, 1435, 0xf3b25e},
+	{ 1365, 1435, 0xf3b25e},
+	{ 1364, 1458, 0x973c2d},
+	{ 1362, 1381, 0x973b2d},
+
+ 	name = "再次召唤"
+
+} 
+
+dm.brokenCardFiveDm = {
+	
+	{ 1514,  722, 0xdbdddc},
+	{ 1571,  699, 0xffffff},
+	{ 1608,  712, 0xd9dbd9},
+	{ 1551,  820, 0xe7e8e8},
+	{ 1543,  857, 0xe5e6e5},
+	{ 1597,  941, 0xabacab},
+	{ 1613,  875, 0xb9bbba},
+	{ 1518,  913, 0xacaead},
+	{ 1525,  816, 0xd3d5d4},
+	{ 1590,  790, 0xf1f1f1},
+
+ 	name = "第五张厕纸"
+
+} 
+
+dm.brokenCardFourDm = {
+
+	{ 1266,  719, 0xd9dcda},
+	{ 1291,  711, 0xdcdedd},
+	{ 1306,  699, 0xffffff},
+	{ 1356,  771, 0xfcfcfc},
+	{ 1234,  844, 0xcecfce},
+	{ 1261,  914, 0xaaacab},
+	{ 1347,  909, 0xacaead},
+	{ 1329,  811, 0xfdfdfd},
+	{ 1296,  866, 0xbdbfbe},
+	{ 1267,  779, 0xd8dad9},
+
+ 	name = "第四张厕纸"
+
+} 
+
+dm.goDrawnDm = {
+
+	{  423, 1400, 0x448b8c},
+	{  447, 1382, 0xbfbeb7},
+	{  437, 1404, 0x53b3b5},
+	{  428, 1382, 0x377576},
+	{  437, 1404, 0x53b3b5},
+	{  436, 1404, 0x51abad},
+	{  443, 1325, 0xa4a5a5},
+	{  436, 1400, 0x6b9b97},
+	{  436, 1401, 0x419092},
+	{  436, 1401, 0x419092},
+	
+	name = "普通召唤"
+
+} 
+
+dm.cancelDrawDm = {
+
+	{  726, 1420, 0xf3b25e},
+	{  841, 1433, 0xeeaf5c},
+	{  841, 1433, 0xeeaf5c},
+	{  781, 1437, 0x55442e},
+	{  828, 1432, 0x322c23},
+	{  761, 1420, 0xf3b25e},
+	{  828, 1432, 0x322c23},
+	{  719, 1432, 0xf3b25e},
+	{  828, 1432, 0x322c23},
+	{  909, 1426, 0xf3b25e},
+
+ 	name = "确定"
+
+} 
+
+dm.brokenCardThreeDm = {
+
+	{  987,  724, 0xd7d9d7},
+	{ 1063,  892, 0xb2b3b2},
+	{ 1070,  904, 0xa7a9a8},
+	{ 1101,  933, 0x989a99},
+	{ 1105,  935, 0xa5a7a6},
+	{ 1082,  833, 0xcdcfce},
+	{ 1083,  818, 0xd3d5d4},
+	{ 1035,  826, 0xf7f7f7},
+	{ 1009,  901, 0xabacab},
+	{ 1009,  911, 0xabacab},
+
+ 	name = "第三张厕纸"
+
+} 
+
+dm.brokenCardTwoDm = {
+
+	{  719,  729, 0xdadcda},
+	{  751,  797, 0xfdfdfd},
+	{  753,  761, 0xd7d9d8},
+	{  773,  848, 0xc8c9c8},
+	{  803,  868, 0xc0c2c1},
+	{  788,  885, 0xadafae},
+	{  757,  899, 0xa1a3a2},
+	{  753,  895, 0xa0a2a1},
+	{  763,  897, 0xa0a1a0},
+	{  754,  906, 0x979997},
+
+ 	name = "第二张厕纸"
+
+} 
+
+dm.brokenCardOneDm = {
+	
+	{  432,  724, 0xdddfde},
+	{  503,  717, 0xdbdddb},
+	{  504,  760, 0xd5d7d5},
+	{  455,  814, 0xd7d9d8},
+	{  466,  892, 0xaeafae},
+	{  526,  898, 0xaeafaf},
+	{  529,  838, 0xcecfce},
+	{  478,  821, 0xf9f9f9},
+	{  450,  835, 0xcfd1d0},
+	{  510,  785, 0xd7d9d7},
+
+ 	name = "第一张厕纸"
+
+} 
+
+
+
 return data

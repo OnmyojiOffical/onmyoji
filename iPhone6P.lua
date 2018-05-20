@@ -17,13 +17,13 @@ rect.yuhunTeamCreateRect = {1450, 989, 1593, 104}
 
 rect.yuhunTeamRect = {1057, 828, 1193, 884} 
 
-rect.firstGuyRect = {} 
+rect.firstGuyRect = {688, 360, 1041, 433} 
 
-rect.inviteGuySendRect = {} 
+rect.inviteGuySendRect = {1278, 965, 1402, 1019} 
 
-rect.inviteFirstTeamGuyRect = {}
+rect.inviteFirstTeamGuyRect = { 1200, 794, 1266, 869}
 
-rect.inviteGuyRecentRect = {} 
+rect.inviteGuyRecentRect = {846, 195, 967, 254} 
 
 rect.yuhunMakeTeamRect = {1687, 1046, 1926, 1111} 
 
@@ -387,19 +387,151 @@ dm.yuhunMainViewDm = {
 	
 	name = "御魂界面"} 
 
-dm.gameInnerNotifyDm = { name = "游戏内活动界面"} 
+dm.gameInnerNotifyDm = {
+	
+	{  933,   85, 0xc2861a},
+	{  954,   89, 0xb2831a},
+	{ 1048,   88, 0xf9e8b7},
+	{ 1061,  119, 0xe7cf96},
+	{ 1080,  131, 0xc8a56e},
+	{ 1949,  132, 0xdf7d92},
+	{ 1982,  107, 0xd485a0},
+	{ 1978,  129, 0xe9c1c6},
+	{ 1993,  145, 0xe07d89},
+	{ 1990,  144, 0xde9698},
+ name = "游戏内活动界面"} 
 
 dm.over6000Dlg = { name = "超过6000提示"} 
 
-dm.yuhunBeginWithOutGuyDm = { name = "无队友魂十开始界面"} 
+dm.yuhunBeginWithOutGuyDm = { 
+	
+	
+	
+	{  275, 1031, 0xdf6851},
+	{  296, 1001, 0xdf6851},
+	{  349, 1002, 0xdf6851},
+	{  405, 1000, 0xdf6851},
+	{  471,  997, 0xdf6851},
+	{  506, 1032, 0xdf6851},
+	{  520, 1064, 0xdf6851},
+	{  475, 1066, 0xdf6851},
+	{  392, 1062, 0xdf6851},
+	{  323, 1065, 0xdf6851},
 
-dm.rewardLowLevelDm = { name = "低级悬赏封印"} 
+	{ 1662,  994, 0x665d5b},
+	{ 1675, 1042, 0xb0a9a1},
+	{ 1703, 1015, 0xb0a9a1},
+	{ 1755, 1007, 0xb0a9a1},
+	{ 1852, 1000, 0xb0a9a1},
+	{ 1902, 1001, 0xb0a9a1},
+	{ 1941,  998, 0x685e5d},
+	{ 1936, 1081, 0x736a66},
+	{ 1678, 1079, 0x665d5c},
 
-dm.tryConnectDm = { name = "正在连接"} 
+	
+	
+	
+	name = "无队友魂十开始界面"} 
+
+dm.rewardLowLevelDm = {
+	
+	
+	{  982,  801, 0x404454},
+	{  981,  824, 0x424468},
+	{  979,  842, 0x434385},
+	{  979,  855, 0x40435b},
+	{ 1069,  828, 0x474281},
+	{ 1017,  890, 0x1e1f22},
+	{ 1035,  893, 0x1f1e25},
+	{  975,  794, 0x3c3e47},
+
+	
+	name = "低级悬赏封印"
+	
+} 
+
+
+dm.finishBattleWhenOutlineDm = {
+	
+
+	
+	{  789,  504, 0x423c35},
+	{  794,  503, 0x272420},
+	{  798,  501, 0x322e29},
+	{  804,  501, 0x292622},
+	{  810,  501, 0x2a2722},
+	{  817,  501, 0x716658},
+	{  794,  507, 0x312d28},
+	{  791,  514, 0x35302a},
+	{  784,  521, 0x292622},
+	{  778,  524, 0x433d35},
+
+	
+	name = "离线期间战斗已结束"
+	
+}
+
+dm.tryConnectDm = {
+	
+	
+	{  887,  587, 0xf0d3ee},
+	{  895,  606, 0xaa852b},
+	{  908,  623, 0xf18cc3},
+	{  952,  654, 0x644b02},
+	{  947,  644, 0x6e5410},
+	{  955,  620, 0xf1d2ee},
+	{  989,  628, 0xa3839a},
+	{  990,  660, 0xecbdde},
+	{  949,  664, 0xeeb9db},
+	{ 1347,  602, 0xa69687},
+
+	
+	
+	name = "正在连接"
+} 
 
 dm.searchToolBarDm = { name = "探索界面工具栏"} 
 
-dm.lostConnetDm = { name = "丢失网络连接"} 
+dm.lostConnetDm = {
+	
+	
+	{  769,  547, 0x5c5348},
+	{ 1005,  736, 0x973c2e},
+	{ 1203,  731, 0xf5b45f},
+	{ 1209,  649, 0xd48130},
+	{  769,  547, 0x5c5348},
+	{  777,  546, 0x4d463d},
+	{  782,  546, 0x3c3630},
+	{  772,  548, 0x413b34},
+	{  784,  550, 0x2f2b26},
+	{  783,  554, 0x534b41},
+
+	
+	
+	name = "丢失网络连接"
+	
+} 
 
 
-dm.inviteGuyRefreshViewDm = { name = "刷新转菊花"} 
+dm.inviteGuyRefreshViewDm = { 
+	
+	
+	{ 1099,  622, 0xffffff},
+	{ 1095,  632, 0xfffff3},
+	{ 1109,  638, 0xffeead},
+	{ 1110,  626, 0xffffff},
+	{ 1118,  613, 0xffffdb},
+	{ 1130,  597, 0x51483e},
+	{ 1132,  632, 0x51493e},
+	{ 1095,  650, 0x615643},
+	{ 1070,  595, 0x594f41},
+	{ 1114,  572, 0xd7cab0},
+
+	
+	
+	name = "刷新转菊花"
+	
+} 
+
+
+return date

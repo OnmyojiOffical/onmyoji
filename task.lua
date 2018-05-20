@@ -146,7 +146,7 @@ local function commonCheck(callback)
 	
 			if dmMatch(date.dm.tryConnectDm,70) then
 				
-				if time() - begin_time() > 60 * 3 then
+				if time() - begin_time > 60 * 3 then
 					
 					formatLog("持续丢失网络连接")
 					
@@ -1056,19 +1056,6 @@ local currentLBSGhost = {
 	
 }
 
-local currentLBSGhost = {
-	
-	name = "COMICUP",
-	
-	dateBegin = {month = 5,day = 18},
-	
-	dateEnd = {month = 5,day = 18 },
-	
-	perDayTime = {10,18},
-	
-	
-	location = {113.329404,23.129916}
-}
 
 function godWalkToLBS()
 	
@@ -1164,7 +1151,9 @@ function  drawBrokenCard(num)
 	
 	local currentDrawn = 0
 	
+	local lastGoDrawnTime = time()
 	
+	local mayNoCard = 0
 	
 	while 1 do
 		
@@ -1172,6 +1161,26 @@ function  drawBrokenCard(num)
 		
 		if dmMatch(dm.goDrawnDm) then
 	
+	
+			if ( time() - lastGoDrawnTime < 2 )then
+					
+				mayNoCard = mayNoCard + 1
+				
+			else
+				
+				lastGoDrawnTime = time()
+				
+				mayNoCard = 0
+				
+			end
+	
+			if mayNoCard > 10 then 
+				
+				toast("可能无卡可抽了",1)
+				
+				return
+			end
+			
 			rectClick(rect.goDrawnRect)
 			
 			mSleep(1000)
