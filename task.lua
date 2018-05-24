@@ -172,6 +172,19 @@ local function commonCheck(callback)
 				
 				break
 			
+			elseif dmMatch(date.dm.finishBattleWhenOutlineDm) then
+			
+			
+				formatLog("离线期间战斗已结束")
+				
+					closeApp(onmyojiBid)
+					
+					mSleep(2000)
+					
+					runOnmyoji(callback)
+				
+			
+			
 			else 
 			
 				mSleep(1000)
@@ -208,6 +221,9 @@ end
 ]]
 
 function  runOnmyoji(afterRun)
+
+
+	formatLog("打开阴阳师")
 
 	local bid = "com.netease.onmyoji"
 
@@ -288,6 +304,9 @@ local hashForView = {date.dm.yuhunMainViewDm}
 
 function makeTeam(teamType)
 
+
+	formatLog("创建队伍:%s",teamType == TEAM_TYPE_YUHUN and "御魂" or "觉醒")
+
 	teamType = teamType or TEAM_TYPE_YUHUN
 
 --	local x,y  = dmFind(date.dm.searchEnterDm,date.rect.searchEnterMayhownRect, 85)
@@ -312,7 +331,7 @@ function makeTeam(teamType)
 		
 		waitDmWithCallBack(date.dm.searchToolBarDm,30,90,function()  
 				
-			toast("call back for toolbar appear",1)	
+			formatLog("探索工具栏出现")	
 				
 			mSleep(3000)	
 				
@@ -360,6 +379,9 @@ end
 
 function inviteRecentGuy(...)
 	
+	
+	formatLog("邀请最近队友")
+	
 	mSleep(1000)
 	
 	rectClick(date.rect.inviteFirstTeamGuyRect)
@@ -397,7 +419,13 @@ function normalBattle(loopMax)
 
 	while 1 do 
 
-		if battleRecord > loopMax then  lockDevice()	lua_exit() end
+		if battleRecord > loopMax then 
+			
+			lockDevice()	
+			
+			lua_exit()
+			
+		end
 
 		randomseed(time())
 
@@ -411,7 +439,7 @@ function normalBattle(loopMax)
 
 			mSleep(500)
 
-			formatLog("will begin a battle")
+			formatLog("即将开始战斗")
 
 			lastClickTime = time()
 
@@ -438,7 +466,7 @@ function normalBattle(loopMax)
 
 				formatLog("5分钟未能结束战斗")
 
-				snapshot(tostring(time()) .. ".png")
+				snapshot("error_unknown_view:" .. tostring(time()) .. ".png")
 
 				lockDevice()
 
@@ -520,7 +548,7 @@ function yuhunDriver()
 			
 			local begin_time = time()
 			
-			while (dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60))   do
+			while ((dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60)) )  and (not dmMatch(date.dm.over6000Dlg)) do
 				--for some special view
 				if time() - begin_time > 5 then break end
 			
@@ -540,6 +568,7 @@ function yuhunDriver()
 			lastBattleTime = time()
 			
 			noGuyTime = time()
+			
 		elseif dmMatch(date.dm.yuhunBeginWithOutGuyDm) then
 			
 			formatLog("无队友开始界面")
@@ -597,7 +626,14 @@ function yuhunDriver()
 			if  time() - lastClickTime > 120 then
 				
 				formatLog("60秒没有加入战斗")
+				
 				if time() - lastClickTime > 60 * 10 then
+					
+					
+					formatLog("10分钟没有任何行为,结束脚本")
+					
+					snapshot("error_unknow_view_" .. tostring(os.time()) .. ".png" )
+					
 					
 					lockDevice()
 					
@@ -724,14 +760,15 @@ function yuhunPassager()
 	
 			formatLog("结束战斗")
 
-			--随机一个地方
-			while (dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60)) do
+			local begin_time = time()
+			
+			while ((dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60)) )  and (not dmMatch(date.dm.over6000Dlg)) do
+				--for some special view
+				if time() - begin_time > 5 then break end
 			
 				rectClick(date.rect.battleOKRect,30)
 				
 				lastClickTime = time()
-				
-				mSleep(300)
  
 			end
 			
@@ -792,9 +829,13 @@ function yuhunPassager()
 			if  time() - lastClickTime > 120 then
 				
 				formatLog("60秒没有加入战斗")
+				
 				if time() - lastClickTime > 60 * 10 then
 					
+					snapshot("error_unknow_view_" .. tostring(os.time()) .. ".png" )
+					
 					lockDevice()
+					
 					
 					lua_exit()
 					
@@ -1248,93 +1289,3 @@ function  drawBrokenCard(num)
 	end
 	
 end
-
-
-init(2)
-
-debug = false
-
---mSleep(1000)
-
---slider(date.rect.heroChangeSliderBeginRect,450)
-
---mSleep(1000)
-
---rectToRect(date.rect.heroWillChangeForFirstRect, date.rect.heroRectForFirstRect)
-
---mSleep(1000)
-
---rectToRect(date.rect.heroWillChangeForSecondRect,date.rect.heroRectForSecondRect)
-
---mSleep(1000)
-
---rectToRect(date.rect.heroWillChangeForThirdRect,date.rect.heroRectForThirdRect)
-
---nLog(dmFind(date.dm.searchGhostBattleHeroBecame20,date.rect.heroCheckFirstRect,85))
-
---nLog(findMultiColorInRegionFuzzy( 0xf09319, "-2|7|0xf2b212,-1|16|0xfce605,5|14|0xeed008,5|10|0xfdca0c,7|7|0xefaf12,8|4|0xe99e15,10|5|0xffb114,11|6|0xeea913,12|9|0xf6bf0e", 90, 264, 202, 373, 419))
-
---rectDoubleClick(date.rect.heroChangeAllRect,50)
-
-init(2)
-
-
---runOnmyoji()
-
---aa()
- 
---makeTeam() 
-
---inviteRecentGuy()
-
---yuhunDriver()
-
---runOnmyoji()
-
---makeTeam()
-
---local x,y  = dmFind(date.dm.searchEnterDm,date.rect.searchEnterMayhownRect, 85)
-
---local wnd = debugWindos:create()
-
-
-----x,y = findMultiColorInRegionFuzzy( 0xe1be90, "0|16|0xedd596,1|24|0xf4dfa0,-6|17|0xd5a574,7|37|0x0c080a,18|42|0xdaa584,30|29|0xebcb9e,15|19|0xfef3c8,11|19|0xfdf3bc,3|-6|0xdbaf87", 90, 661, 496, 722, 528)
-
---x,y = findMultiColorInRegionFuzzy( 0xe1be90, "0|16|0xedd596,1|24|0xf4dfa0,-6|17|0xd5a574,7|37|0x0c080a,18|42|0xdaa584,30|29|0xebcb9e,15|19|0xfef3c8,11|19|0xfdf3bc,3|-6|0xdbaf87", 90, 413, 69, 979, 238)
-
---if x ~= -1 then
---	wnd:showPoint(x,y)
-	
---	formatLog("search enter is (%d,%d)",x,y)
-	
---	click(x,y)
-	
---else
---	toast("not found",1)
---end
-
---mSleep(3000)
-
---runOnmyoji()
-
---waitDmWithCallBack(date.dm.beginGameNotifyDm,60,90,function (...)
---		toast("1111111111111",1)
---	end)
-
---searchGhostPassager()
-
- 
-
---closeApp(onmojiBid)
-
---mSleep(2000)
-
---runOnmyoji(makeTeam)
-
-
---makeTeam()
-
---inviteRecentGuy()
---mSleep(3000)
-
---inviteRecentGuy()

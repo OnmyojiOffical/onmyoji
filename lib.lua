@@ -6,6 +6,7 @@
 local string = require("string")
 local math = require("math")
 local os = require("os")
+local fileLog = require("FileLog")
 local format = string.format
 local randomseed = math.randomseed
 local random = math.random
@@ -15,6 +16,9 @@ local getColorRGB = getColorRGB
 local date = os.date
 local nLog = nLog
 local onmojiBid =  "com.netease.onmyoji"
+local logFilePath = userPath() .. "/log/onmyoji.log"
+local logServer = fileLog:logWithPath(logFilePath,true)
+
 --[[
 local sz = require("sz")
 local wifiaddr = sz.system.localwifiaddr()
@@ -65,7 +69,7 @@ end
 
 ]]
 local prefixFormat = "DeviceLog(" .. tostring(localizedName) ..   ") [%X] "
-function formatLog(fmt,...)
+function ideFormatLog(fmt,...)
 	
 	local logContent 
 	
@@ -80,8 +84,22 @@ function formatLog(fmt,...)
 	
 end
 
+function fileFormatLog(fmt,...)
 
+	logServer:logf(fmt,...)
 
+end
+
+if globalConfig and globalConfig.enableLogServer then
+	
+	formatLog = fileFormatLog
+	
+else
+	
+	formatLog = ideFormatLog
+	
+end
+	
 --[[
 
 
@@ -306,12 +324,12 @@ function dmMatch(dm,degree)
 	
 	
 	if result > degree  then 
-		if debug then
+		if debug and  seeAllLog  then
 			formatLog("%s view match success",dm.name or "unknown")
 		end
 		return true
 	else
-		if debug then
+		if debug and seeAllLog  then
 			formatLog("%s view match failed",dm.name or "unknown")
 		end
 		return false

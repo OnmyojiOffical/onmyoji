@@ -72,7 +72,13 @@ local ui_data = {
 				["color"] = "0,0,0",
 				["kbtype"] = "number",
 			},
-
+			{
+				
+				["type"] = "RadioGroup",
+				["list"] = "开启日志,关闭日志",
+				["select"] = "0",
+				
+			}
 
 		}
 			
@@ -103,7 +109,7 @@ MODEL_TOOLS = 4
 function ui:showModel()
 	
 	
-	local ret,model,reward,loop = showUI(self.json)
+	local ret,model,reward,loop,logstatus = showUI(self.json)
 	
 	if ret == UI_OK then
 	
@@ -114,6 +120,8 @@ function ui:showModel()
 		globalConfig.rewardRecive = tonumber(reward) + 1
 	
 		globalConfig.loopTime = tonumber(loop) or 9999
+		
+		globalConfig.enableLogServer = tonumber(logstatus) == 0 and true or false
 
 	end
 	return ret

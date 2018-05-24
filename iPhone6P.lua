@@ -64,17 +64,17 @@ rect.normalBeginRect = {1578, 828, 1712, 891}
 
 rect.searchEnterRect = {1133, 200, 1213, 343} 
 
-rect.over6000DlgRect = {} 
+rect.over6000DlgRect = {1037, 700, 1185, 757} 
 
 rect.gameInnerNotifyRect = {1948, 102, 2011, 168} 
 
-rect.searchToolBarJuexingRect = {} 
+rect.searchToolBarJuexingRect = {123, 1103, 203, 1184} 
 
-rect.searchToolBarYuhunRect = {} 
+rect.searchToolBarYuhunRect = {310, 1106, 395, 1191} 
 
-rect.searchToolBarHomeBrokenRect = {} 
+rect.searchToolBarHomeBrokenRect = { 515, 1128, 577, 1201} 
 
-rect.searchToolBarYulingRect = {} 
+rect.searchToolBarYulingRect = { 680, 1108, 764, 1193} 
 
 dm.inviteTeamDm = { 
 	
@@ -401,7 +401,32 @@ dm.gameInnerNotifyDm = {
 	{ 1990,  144, 0xde9698},
  name = "游戏内活动界面"} 
 
-dm.over6000Dlg = { name = "超过6000提示"} 
+dm.over6000Dlg = { 
+	
+	{ 1038,  714, 0xf3b25e},
+	{ 1081,  738, 0xbe8d4e},
+	{ 1167,  734, 0xf3b25e},
+	{ 1187,  704, 0xf3b25e},
+	{ 1081,  688, 0xf4b45f},
+	{  785,  474, 0x2e2a26},
+	{  792,  461, 0x63594d},
+	{  788,  472, 0x433d36},
+	{  781,  475, 0x938371},
+	{  786,  471, 0x413b33},
+	{  997,  684, 0xaf562e},
+	{ 1000,  766, 0x973c2e},
+	{ 1198,  768, 0x9c4130},
+	{ 1202,  688, 0x92352b},
+	{ 1038,  720, 0xf3b25e},
+	{ 1076,  718, 0xcb9652},
+	{ 1121,  718, 0xf3b25e},
+	{ 1132,  720, 0xf3b25e},
+	{ 1072,  736, 0x5d4a30},
+	{ 1064,  736, 0x393125},
+
+	
+	
+	name = "超过6000提示"} 
 
 dm.yuhunBeginWithOutGuyDm = { 
 	
@@ -490,7 +515,33 @@ dm.tryConnectDm = {
 	name = "正在连接"
 } 
 
-dm.searchToolBarDm = { name = "探索界面工具栏"} 
+dm.searchToolBarDm = {
+	
+	
+	{  148, 1136, 0x723017},
+	{  138, 1168, 0x521b57},
+	{  142, 1108, 0x491350},
+	{  222, 1166, 0x986021},
+	{  200, 1172, 0xa16b2c},
+	{  341, 1122, 0xc59b1f},
+	{  326, 1142, 0x361a1a},
+	{  356, 1120, 0xf8e382},
+	{  363, 1158, 0x67531e},
+	{  313, 1174, 0x3e4348},
+
+	
+	{  501, 1114, 0xdacaba},
+	{  541, 1138, 0x702820},
+	{  544, 1161, 0x907962},
+	{  556, 1118, 0xc8bca8},
+	{  692, 1146, 0xa9a3f7},
+	{  722, 1152, 0x2a113b},
+	{  764, 1124, 0xb87431},
+	{  736, 1177, 0x96202c},
+	{  700, 1160, 0x545086},
+
+	
+	name = "探索界面工具栏"} 
 
 dm.lostConnetDm = {
 	

@@ -49,9 +49,15 @@ end
 
 function fileLog:logf(fmt,...)
 	
-	local content = format(fmt,...)
+	local logContent
 	
-	self:writeLog(content)
+	if  select("#",...) == 0 then
+		logContent = fmt
+	else
+		logContent	= format(fmt,...)
+	end
+	
+	self:writeLog(logContent)
 
 end
 

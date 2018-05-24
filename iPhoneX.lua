@@ -454,4 +454,208 @@ rect.cancelDrawRect = { 927, 987, 1096, 1032}
 
 rect.continueDrawRect = {1336, 987, 1537, 1030}
 
+
+--司机组队部分按钮位置
+rect.yuhunTeamCreateRect = {1530, 898, 1656, 947} 
+
+rect.yuhunTeamRect = {1167, 750, 1305, 806} 
+
+rect.yuhunMakeTeamRect = {1759, 952, 1960, 1001} 
+
+rect.yuhunSnakeEnterRect = {660, 379, 1027, 816} 
+
+rect.yuhunTeamConfigPrivateRect = {1397, 792, 1423, 822} 
+
+rect.inviteGuyRecentRect = {997, 185, 1086, 228} 
+
+rect.inviteGuySendRect = { 1357, 872, 1507, 920} 
+
+rect.firstGuyRect = { 902, 317, 1179, 404} 
+
+rect.searchEnterRect = { 1253, 195, 1305, 301} 
+
+rect.inviteFirstTeamGuyRect = {1304, 724, 1366, 774} 
+
+rect.searchToolBarYulingRect = { 620, 965, 693, 1052} 
+
+rect.searchToolBarHomeBrokenRect = {470, 961, 528, 1048} 
+
+rect.searchToolBarYuhunRect = {276, 961, 358, 1032} 
+
+rect.searchEnterMayhownRect = { 902, 56, 1741, 491} 
+
+rect.searchToolBarJuexingRect = {118, 960, 196, 1056} 
+
+dm.inviteGuyRefreshViewDm = {
+
+	{ 1184,  533, 0xfffff4},
+	{ 1179,  540, 0xfffeec},
+	{ 1174,  554, 0xefe8d6},
+	{ 1220,  563, 0xffffff},
+	{ 1206,  563, 0xfffffb},
+	{ 1201,  563, 0xc3ad6e},
+	{ 1221,  569, 0xffffff},
+	{ 1228,  575, 0xffffff},
+	{ 1232,  562, 0xffffff},
+	{ 1227,  551, 0xffffff},
+
+
+ 
+ name = "刷新转菊花"
+
+} 
+
+dm.searchToolBarDm = {
+
+ 	
+	{  133,  975, 0x89368b},
+	{  118, 1000, 0x5c2262},
+	{  167, 1032, 0xddcfa7},
+	{  161,  986, 0x792808},
+	{  151,  969, 0xb15aad},
+	{  319,  981, 0xfbea8f},
+	{  306, 1009, 0x846a33},
+	{  290, 1022, 0xad2020},
+	{  350, 1025, 0x8e1b1b},
+	{  328,  988, 0xc8a11f},
+
+	{  470,  977, 0x9a5917},
+	{  473, 1004, 0xad6e1f},
+	{  496,  981, 0x861413},
+	{  477, 1030, 0xd0c4b3},
+	{  604, 1012, 0x55366b},
+	{  660,  992, 0xc0baac},
+	{  657,  978, 0xba4f5d},
+	{  678, 1022, 0x7c545a},
+
+	
+	
+	name = "探索界面工具栏"
+
+} 
+
+dm.lostConnetDm = {
+	
+	
+	{ 1128,  591, 0x963a2e},
+	{  917,  495, 0x766a5c},
+	{ 1129,  598, 0x9e4431},
+	{ 1134,  590, 0xaa502f},
+	{ 1140,  591, 0x963a2e},
+	{  913,  495, 0x837566},
+	{  913,  495, 0x837566},
+	{  924,  494, 0x38332d},
+	{  926,  495, 0x322e29},
+	{  928,  499, 0x2e2a25},
+
+	
+
+ 	name = "丢失网络连接"
+
+} 
+
+
+
+dm.yuhunBeginWithOutGuyDm = {
+
+
+	{  478,  921, 0xdf6851},
+	{  461,  912, 0xdf6851},
+	{  456,  905, 0xea7154},
+	{  663,  908, 0xdf6851},
+	{  690,  903, 0xcf604c},
+	{  698,  939, 0xdf6851},
+	{  579,  953, 0xdf6851},
+	{  528,  953, 0xdf6851},
+	{ 1719,  903, 0x675d5c},
+	{ 1727,  974, 0x6b6160},
+	{ 1722,  975, 0x685e5d},
+	{ 1894,  955, 0xb0a9a1},
+	{ 1943,  965, 0xb0a9a1},
+	{ 1975,  968, 0x675d5c},
+	{ 1971,  914, 0xaca59d},
+	{ 1971,  901, 0x645b5a},
+	{ 1858,  925, 0x3e3b36},
+	{ 1817,  928, 0xb0a9a1},
+
+ 	name = "无队友魂十开始界面"
+
+} 
+
+dm.yuhunMainViewDm = {
+
+
+	{  661,  483, 0x6b6f5e},
+	{  702,  668, 0x8d705c},
+	{  846,  628, 0x95819a},
+	{  866,  598, 0xc9a1b3},
+	{  866,  574, 0x7c8397},
+	{  866,  574, 0x7c8397},
+	{  866,  573, 0x9e9da3},
+	{  866,  573, 0x9e9da3},
+	{  866,  570, 0xcca9c2},
+	{  866,  570, 0xcca9c2},
+
+
+
+ 	name = "御魂界面"
+
+} 
+
+dm.tryConnectDm = {
+
+	
+	{ 1028,  542, 0xf8e096},
+	{ 1031,  547, 0xdbba47},
+	{ 1071,  567, 0xedc6e4},
+	{ 1053,  578, 0xeed3ed},
+	{ 1043,  571, 0xf1b2dc},
+	{ 1122,  580, 0xf2bddf},
+	{ 1094,  602, 0xe4a3ca},
+	{ 1069,  584, 0xe0b262},
+	{ 1050,  570, 0xf2c2e2},
+	{ 1041,  567, 0xf19bcf},
+
+	
+	
+
+ 	name = "正在连接"
+
+} 
+
+dm.finishBattleWhenOutlineDm = {
+	{ 1124,  623, 0x983d2e},
+	{ 1123,  629, 0x953a2e},
+	{ 1137,  620, 0x95392e},
+	{ 1128,  620, 0x95392e},
+	{  934,  453, 0xcbb59c},
+	{  941,  453, 0x3e3831},
+	{  950,  454, 0x3b352f},
+	{  952,  454, 0x3e3831},
+	{  954,  454, 0x413b34},
+	{  955,  453, 0x2d2925},
+	
+	name = "离线期间战斗已结束"
+
+}
+
+
+dm.searchEnterDm = {
+
+
+
+	{ 1255,  238, 0xfff2aa},
+	{ 1255,  279, 0xf9cc9f},
+	{ 1303,  218, 0xf1ce96},
+	{ 1267,  203, 0x0f0a09},
+	{ 1265,  243, 0xffffc4},
+	{ 1304,  251, 0xf5d39d},
+	{ 1280,  300, 0xe3c1a5},
+	{ 1261,  288, 0xe8b189},
+
+
+ 	name = "探索"
+
+} 
+
 return date

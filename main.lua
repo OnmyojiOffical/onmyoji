@@ -4,11 +4,14 @@
 -- Create By TouchSpriteStudio on 15:19:38   
 -- Copyright © TouchSpriteStudio . All rights reserved.
 
+debug = true
+
+init(2)
+
 local ui = require("ui")
 
 local ret = ui:showModel()
 
-debug = true
  
 if ret == UI_CANCEL then
 
@@ -25,11 +28,33 @@ end
 
 require("task")
 
+local modelDescription = {
+	
+	"司机",
+	
+	"乘客",
+	
+	"单刷",
+	
+	"小工具"
+	
+}
+
+local function argDump()
+	
+	local config = globalConfig
+	
+	return string.format("模式:%s",modelDescription[config.model or 1] or "未知运行模式")
+	
+	
+end
+
+
 local function main()
 	
-	--formatLog(os.date("main start at time:[%X]",time()))
+	formatLog(os.date("服务启动于:[%X]",os.time()))
 	
-	init(2)
+	formatLog(argDump())
 	
 	local config  =  globalConfig 
 	
