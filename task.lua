@@ -377,6 +377,13 @@ function makeTeam(teamType)
 
 end
 
+--[[
+
+	找到并邀请上次的队友
+
+
+]]
+
 function inviteRecentGuy(...)
 	
 	
@@ -411,6 +418,147 @@ function inviteRecentGuy(...)
 	rectClick(date.rect.inviteGuySendRect)
 end
 
+
+--[[
+
+
+	--单人御魂功能
+	
+	--为某个憨憨添加的功能.并不建议使用
+
+
+
+]]
+
+function goYuhunView()
+	
+	rectClick(date.rect.searchEnterRect)
+		
+		mSleep(2000)
+		
+		waitDmWithCallBack(date.dm.searchToolBarDm,30,90,function()  
+				
+			formatLog("探索工具栏出现")	
+				
+			mSleep(3000)	
+				
+			rectClick(hashForTeam[teamType])
+				
+			mSleep(300)
+			
+			waitDmWithCallBack(hashForView[TEAM_TYPE_YUHUN],30,90,function()
+					
+					toast("御魂主界面出现",1)
+					
+					rectClick(date.rect.yuhunSnakeEnterRect)
+						
+					mSleep(1000)
+
+				end)
+			
+		end)
+	
+end
+
+
+function singleYuhunBattle(loopMax)
+
+	local battleRecord = 0
+
+	local lastClickTime = time()
+
+	while 1  do
+
+		if battleRecord > loopMax then 
+
+
+			formatLog("已经完成了:%s场，任务结束")
+
+			lockDevice()	
+
+			lua_exit()
+
+		end
+
+		randomseed(time())
+
+		commonCheck()
+
+		if dmMatch(date.dm.normalBegin,70) then
+
+			mSleep(500)
+
+			rectClick(date.rect.normalBeginRect,30)
+
+			mSleep(500)
+
+			formatLog("即将开始战斗")
+
+			lastClickTime = time()
+
+			battleRecord = battleRecord + 1
+
+		elseif  dmMatch(date.dm.battleOKDm,70) or dmMatch(date.dm.battleOKExpDm,70)  then
+
+			local begin_time = time()
+
+			while (dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60)) and not dmMatch(date.dm.over6000Dlg)  do
+				--for some special view
+
+				formatLog("战斗结束")
+
+				if time() - begin_time > 5 then break end
+
+				rectClick(date.rect.battleOKRect,30)
+
+				lastClickTime = time()
+
+			end
+
+
+		else
+			if  time() - lastClickTime > 120 then
+
+				formatLog("60秒没有匹配到任何视图")
+
+				if time() - lastClickTime > 60 * 10 then
+
+
+					formatLog("10分钟没有任何行为,结束脚本")
+
+					snapshot("error_unknow_view_" .. tostring(os.time()) .. ".png" )
+
+
+					lockDevice()
+
+					lua_exit()
+
+					while 1 do
+
+						mSleep(9)
+
+					end
+
+				end
+			else
+				local offsetTime = time() - lastClickTime
+
+				if   (isFrontApp(onmyojiBid) ~= runingStatus) then
+
+					formatLog("阴阳师不在前台运行了")
+					
+					runOnmyoji(goYuhunView)
+
+				end
+
+			end
+
+		end
+
+	end
+end
+
+
 function normalBattle(loopMax)
 
 	local battleRecord = 0
@@ -420,6 +568,9 @@ function normalBattle(loopMax)
 	while 1 do 
 
 		if battleRecord > loopMax then 
+			
+			
+			formatLog("已经完成了:%s场，任务结束")
 			
 			lockDevice()	
 			
@@ -451,6 +602,9 @@ function normalBattle(loopMax)
 			
 			while (dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60))   do
 				--for some special view
+				
+				formatLog("战斗结束")
+				
 				if time() - begin_time > 5 then break end
 			
 				rectClick(date.rect.battleOKRect,30)
@@ -484,225 +638,149 @@ function normalBattle(loopMax)
 end
 
 function yuhunDriver()
-	
-	
 
-	
+
+
+
 	--总共战斗场次
 	local totalBattle = 0
-	
+
 	--上次点击时间
 	local lastClickTime = time()
-	
+
 	--上次战斗时间
 	local lastBattleTime = time()
-	
+
 	local noGuyTime = time()
-	
+
 
 	while 1 do 
-		
+
 --		local t = os.date("*t",time())
-		
+
 --		if t.hour > 6 then
-			
+
 --			lockDevice()
-			
+
 --			lua_exit()
 --		end
 
 		randomseed(time())
-		
+
 		commonCheck(makeTeam)
-		
+
 		if dmMatch(date.dm.autoInviteDlgDm)  then
-			
+
 			mSleep(200)
-			
+
 			if not dmMatch(date.dm.autoInviteDefaultDm,70) then
-				
+
 				rectClick(date.rect.autoInviteDefaultActiveRect)
-				
+
 				lastClickTime = time()
-				
+
 				formatLog("勾玉默认邀请队友")
-				
+
 				mSleep(500)
-				
+
 			end
-			
+
 			rectClick(date.rect.autoInviteSendRect)
-			
+
 			lastClickTime = time()
-			
+
 			mSleep(1000)
-	
-		
+
+
 		elseif  dmMatch(date.dm.battleOKDm,60)  or  dmMatch(date.dm.battleOKExpDm,60)  then
 
 			--使用金币buff图案作为结束战斗信号
-	
+
 			formatLog("结束战斗")
 
 			--随机一个地方
-			
+
 			local begin_time = time()
-			
+
 			while ((dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60)) )  and (not dmMatch(date.dm.over6000Dlg)) do
 				--for some special view
 				if time() - begin_time > 5 then break end
-			
+
 				rectClick(date.rect.battleOKRect,30)
-				
+
 				lastClickTime = time()
- 
+
 			end
-			
+
 			if time() - lastBattleTime > 10 then
-			
+
 				totalBattle = totalBattle + 1
-			
+
 				formatLog("第%d场魂十已完成",totalBattle)
 			end
-	
+
 			lastBattleTime = time()
-			
+
 			noGuyTime = time()
-			
+
 		elseif dmMatch(date.dm.yuhunBeginWithOutGuyDm) then
-			
+
 			formatLog("无队友开始界面")
-			
+
 			if time() - noGuyTime > 60 then
-				
+
 				formatLog("60秒无队友")
-			
+
 				inviteRecentGuy()
-				
+
 				noGuyTime = time()
 			end
-			
+
 			mSleep(300)
-		
+
 		elseif dmMatch(date.dm.yuhunBeginDm) then
-			
+
 			mSleep(300)
-			
+
 			rectClick(date.rect.beginYuhunBattleRect)
-			
+
 			mSleep(500)
---		elseif	dmMatch(inviteTeam,70) and dmFind(bearInvite,inviteRect,70) ~= -1 then
-			
---			mSleep(1000)
-
---			formatLog("加入bear的队伍")
-
---			randomClick(332,405)
-
---			lastClickTime = time()
-
---	    elseif dmMatch(prepareBattle,70) then
-		
---			formatLog("准备战斗")
-
---			local clickX = random(2056,2221)
-
---			local clickY = random(804,947)
-
---			randomClick(clickX,clickY)
-
-
---			lastClickTime = time()
---		elseif dmMatch(revokeRealSnaake,70) then
-			
---			formatLog("废物真蛇提示")
-			
---			randomClick(168,403)
-			
---			lastClickTime = time()
-			
 		else
-		
+
 			if  time() - lastClickTime > 120 then
-				
+
 				formatLog("60秒没有加入战斗")
-				
+
 				if time() - lastClickTime > 60 * 10 then
-					
-					
+
+
 					formatLog("10分钟没有任何行为,结束脚本")
-					
+
 					snapshot("error_unknow_view_" .. tostring(os.time()) .. ".png" )
-					
-					
+
+
 					lockDevice()
-					
+
 					lua_exit()
-					
+
 					while 1 do
-						
+
 						mSleep(9)
-						
+
 					end
-					
+
 				end
-				else
+			else
 				local offsetTime = time() - lastClickTime
-				
+
 				if   (isFrontApp(onmyojiBid) ~= runingStatus) then
-							
-							formatLog("阴阳师不在前台运行了")
-							
-							runOnmyoji(makeTeam)
-							
+
+					formatLog("阴阳师不在前台运行了")
+
+					runOnmyoji(makeTeam)
+
 				end
-				
-				--[[
-				if offsetTime < 60 * 10 then
-					
-					formatLog("等待组队邀请")
-					
-					local startTime = time()
 
-					while time() - startTime  < 5 do
-
-						if   (isFrontApp(onmojiBid) ~= runingStatus) then
-							
-							formatLog("阴阳师不在前台运行了")
-							
-							runOnmoji()
-							
-						end
-
-						if dmMatch(inviteTeamAuto,70) then
-
-							formatLog("auto加入bear的队伍")
-
-							randomClick(498,423)
-
-							lastClickTime = time()
-
-						elseif	dmMatch(inviteTeam,70) and dmFind(bearInvite,inviteRect,70) ~= -1 then
-
-							formatLog("加入bear的队伍")
-
-							randomClick(332,405)
-
-							lastClickTime = time()
-
-						end
-					end	
-				elseif offsetTime > 60 * 10 then
-				
-					snapshot("get_color_error_" .. tostring(os.time()) .. ".png" )
-				
-					formatLog("似乎取色异常了")
-					
-					lockDevice()
- 
-					lua_exit()
-				end
-			]]
 			end
 		end
 

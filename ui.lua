@@ -43,7 +43,7 @@ local ui_data = {
 			},
 			{
 				["type"] = "ComboBox",                                                                      
-				["list"] = "司机,乘客,单刷,小工具",
+				["list"] = "司机,乘客,单刷(非魂十),单刷魂是,小工具",
 				["select"] = "0",                                    
 			},
 			{
@@ -104,7 +104,9 @@ MODEL_PASSAGER = 2
 
 MODEL_NORMA_BATTLE = 3
 
-MODEL_TOOLS = 4
+MODEL_SINGLE_YUHUN = 4
+
+MODEL_TOOLS = 5
 
 function ui:showModel()
 	

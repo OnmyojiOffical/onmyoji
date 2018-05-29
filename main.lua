@@ -72,7 +72,12 @@ local function main()
 		
 		return normalBattle(config.loopTime)
 	
-    elseif model == MODEL_TOOLS then
+	elseif model == MODEL_SINGLE_YUHUN then
+	
+	
+		return singleYuhunBattle(config.loopTime)
+	
+	elseif model == MODEL_TOOLS then
 	
 		require("userUtils")
 	
