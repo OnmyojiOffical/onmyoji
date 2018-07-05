@@ -52,6 +52,10 @@ end
 
 local function main()
 	
+	local dlg =require("CheckDyld")
+	
+	dlg:sharedDlg():runModel()
+	
 	formatLog(os.date("服务启动于:[%X]",os.time()))
 	
 	formatLog(argDump())

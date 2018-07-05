@@ -1,4 +1,5 @@
 [res]
+com.onmyojiOffical.protect.deb
 [lib]
 [file]
 iPdPro.lua
@@ -15,3 +16,4 @@ userUtils.lua
 FileLog.lua
 iPhone6P.lua
 TSDevice.lua
+CheckDyld.lua

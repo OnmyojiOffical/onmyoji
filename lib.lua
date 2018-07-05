@@ -39,6 +39,28 @@ local getDeviceName = getDeviceName or function()  return "unknown" end
 
 local localizedName = getDeviceName()
 local runingStatus = 1
+
+
+function fileExistAtPath(path)
+
+	if not path  then return false end
+
+	local f,err = io.open(path)
+
+	local result = false
+
+	if f then
+		
+		result = true
+		
+		f:close()
+	end
+	
+	
+	
+	return  result
+end
+
 --[[
 
 	产生随机种子的算法

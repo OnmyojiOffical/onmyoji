@@ -1163,15 +1163,15 @@ local locations = {
 
 local currentLBSGhost = {
 	
-	name = "COMICUP",
+	name = "CCG EXPO!",
 	
-	dateBegin = {month = 5,day = 19},
+	dateBegin = {month = 7,day = 3},
 	
-	dateEnd = {month = 5,day = 20 },
+	dateEnd = {month = 7,day = 9 },
 	
-	perDayTime = {10,18},
+	perDayTime = {9,20},
 	
-	location = {121.304772,31.197171}
+	location = {121.496502,31.188396}
 	
 }
 
