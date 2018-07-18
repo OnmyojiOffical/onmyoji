@@ -120,7 +120,7 @@ function OFDlg:runModel(...)
 	
 	if self:checkLib() then
 		
-		dialog("已经安装了防越狱检测插件", 5)
+		toast("已经安装了防越狱检测插件", 5)
 	
 	else
 	

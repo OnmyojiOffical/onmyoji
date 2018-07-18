@@ -8,29 +8,28 @@ local  ui = {}
 local sz = require("sz")
 
 local w,h = getScreenSize();
+
 local ui_data = {
-	["style"]  = "default",               --  选填，默认样式，控件排列类型
-	["rettype"] = "default",                
-	--  选填，旧版，shoui返回值格式
+	["style"]  = "default",             
+	["rettype"] = "table",                
 	["width"] = h,            
-	--  选填，安卓默认全屏,iOS默认，showui宽度
-	["height"] = w,                --  选填，安卓默认全屏，iOS 默认，shoWUI 高度
-	["config"] = "onmyoji.dat",  --  选填，无，配置文件保存文件
-	["timer"] = 99,                    --  选填，无，自动执行倒计时
-	["orient"] = 2,                    --  选填，竖屏，显示方向(仅支持 iOS)
+	["height"] = w,             
+	["config"] = "onmyoji.dat", 
+	["timer"] = 99,           
+	["orient"] = 2,               
 	["pagetype"]= "multi",                    
-	--  选填，单页，单页/多页 (多页显示时必填,否则无法正确显示 showUI)
-	["title"] = "御魂师",--  选填，脚本配置，showUI 标题
+	["title"] = "御魂师",
 	["titles"] = "第一页,第二页,第三页", 
-	--  选填，无，多页howui标题(尽在多页下有效)
-	["cancelname"] = "取消",        --  选填，取消，左下角按钮名称
-	["okname"] = "开始",            --  选填，确认，右下角按钮名称
-	["selpage"] = 1,              --  选填，无，多页模式下指定默认停留的页面
+	["cancelname"] = "取消",      
+	["okname"] = "开始",          
+	["selpage"] = 1,             
 	["btnbkcolor"] = "255,255,255",            
-	["bgcolor"] = "255,255,255",  --  选填，255,255,255，界面背景色(仅支持 iOS)
-	["pagenumtype "] = "number",  --  选填，无，分页指示样式    
+	["bgcolor"] = "255,255,255", 
+	["pagenumtype "] = "number",
 	pages   = {
-			
+
+
+		--第一页
 		{
 
 
@@ -38,50 +37,117 @@ local ui_data = {
 				["type"] = "Label",
 				["text"] = "模式",
 				["size"] = 20,
-				["align"] = "center",
+				["width"] = 100,
+				["nowrap"] = 1,
+				["align"] = "left",
 				["color"] = "0,0,0",
 			},
 			{
 				["type"] = "ComboBox",                                                                      
-				["list"] = "司机,乘客,单刷(非魂十),单刷魂是,小工具",
-				["select"] = "0",                                    
+				["list"] = "司机,乘客,单刷(非魂十),单刷魂十,小工具",
+				["width"] = 300,
+				["select"] = "0",
+				["id"] = "model"
 			},
+
 			{
 				["type"] = "Label",
-				["text"] = "悬赏设置",
+				["text"] = "单刷场次",
 				["size"] = 20,
-				["align"] = "center",
-				["color"] = "0,0,0",
-			},
-			{
-				["type"] = "ComboBox",                                                                      
-				["list"] = "接高级,都接,不接",
-				["select"] = "0",                                    
-			},
-			{
-				["type"] = "Label",
-				["text"] = "单刷场次设置",
-				["size"] = 20,
-				["align"] = "center",
+				["width"] = 200,
+				["nowrap"] = 1,
+				["align"] = "left",
 				["color"] = "0,0,0",
 			},
 			{
 				["type"] = "Edit",
 				["size"] = 20,
 				["align"] = "left",
+				["width"] = 300,
 				["color"] = "0,0,0",
 				["kbtype"] = "number",
+				["id"] = "loop"
+			},
+						{
+				["type"] = "Label",
+				["text"] = "更多设置向右滑动-_-!",
+				["size"] = 20,
+				["align"] = "left",
+				["color"] = "0,0,0",
+			},
+
+		},
+		--第二页
+		{
+
+
+			{
+				["type"] = "Label",
+				["text"] = "悬赏设置",
+				["size"] = 20,
+				["width"] = 200,
+				["align"] = "left",
+				["color"] = "0,0,0",
+				["nowrap"] = 1,
 			},
 			{
-				
-				["type"] = "RadioGroup",
-				["list"] = "开启日志,关闭日志",
-				["select"] = "0",
-				
-			}
+				["type"] = "ComboBox",                                                                      
+				["list"] = "接高级,都接,不接",
+				["width"] = 400,
+				["id"] = "reward",
+				["select"] = "0",                                    
+			},
+			{
+				["type"] = "Label",
+				["text"] = "日志设置",
+				["size"] = 20,
+				["align"] = "left",
+				["color"] = "0,0,0",
+				["nowrap"] = 1,
+				["width"] = 200,
+			},
+			{
 
+				["type"] = "RadioGroup",
+				["list"] = "每次新建日志,每次继续写入,开发调试日志",
+				["id"] = "log",
+				["select"] = "0",
+
+			},
+			{
+				["type"] = "Label",
+				["text"] = "定时设置",
+				["size"] = 20,
+				["align"] = "left",
+				["width"] = 200,
+				["color"] = "0,0,0",
+				["nowrap"] = 1,
+			},
+			{
+
+				["type"] = "ComboBox",
+				["list"] = "开启定时,不开启定时",
+				["id"] = "timerEnable",
+				["width"] = 300,
+				["select"] = "1",
+				["nowrap"] = 1,
+
+			},
+
+			{
+				["type"] = "Edit",
+				["size"] = 20,
+				["align"] = "left",
+				["color"] = "0,0,0",
+				["kbtype"] = "number",
+				["text"] = "10",
+				["prompt"] = "运行时长(分钟)",
+				["width"] = h-100-300 - 200,
+				["id"] = "timer"
+			},
+		
 		}
-			
+
 	},
 
 }
@@ -108,22 +174,86 @@ MODEL_SINGLE_YUHUN = 4
 
 MODEL_TOOLS = 5
 
+LOG_NEW = 1
+
+LOG_APPENDING = 2
+
+LOG_DISABLE = 3
+
+
+local function parserTimer(timeStr)
+	
+	if globalConfig.enableTimer == false then return 0 end
+	
+	local timer = tonumber(timeStr)
+	
+	if not timer  then
+		
+		dialog("定时设置时间错误")
+		
+		lua_exit()
+		
+	end
+	
+	timer = timer * 60
+	
+	return timer
+	
+	
+end
+
+local function serialize(obj)
+    local lua = ""
+    local t = type(obj)
+    if t == "number" then
+        lua = lua .. obj
+    elseif t == "boolean" then
+        lua = lua .. tostring(obj)
+    elseif t == "string" then
+        lua = lua .. string.format("%q", obj)
+    elseif t == "table" then
+        lua = lua .. "{\n"
+    for k, v in pairs(obj) do
+        lua = lua .. "[" .. serialize(k) .. "]=" .. serialize(v) .. ",\n"
+    end
+    local metatable = getmetatable(obj)
+        if metatable ~= nil and type(metatable.__index) == "table" then
+        for k, v in pairs(metatable.__index) do
+            lua = lua .. "[" .. serialize(k) .. "]=" .. serialize(v) .. ",\n"
+        end
+    end
+        lua = lua .. "}"
+    elseif t == "nil" then
+        return nil
+    else
+        error("can not serialize a " .. t .. " type.")
+    end
+    return lua
+end
+
 function ui:showModel()
 	
 	
-	local ret,model,reward,loop,logstatus = showUI(self.json)
+	local ret,argv = showUI(self.json)
 	
 	if ret == UI_OK then
 	
 		globalConfig = {}
 	
-		globalConfig.model = tonumber(model) + 1
+		globalConfig.model = tonumber(argv.model) + 1
 	
-		globalConfig.rewardRecive = tonumber(reward) + 1
+		globalConfig.rewardRecive = tonumber(argv.reward) + 1
 	
-		globalConfig.loopTime = tonumber(loop) or 9999
+		globalConfig.loopTime = tonumber(argv.loop) or 9999
 		
-		globalConfig.enableLogServer = tonumber(logstatus) == 0 and true or false
+		globalConfig.LogServer = tonumber(argv.log) + 1
+		
+		globalConfig.enableTimer = (tonumber(argv.timerEnable) == 0) and true or false
+		
+		globalConfig.timer = parserTimer(argv.timer)
+
+
+		nLog("globalConfig:" .. serialize(globalConfig))
 
 	end
 	return ret

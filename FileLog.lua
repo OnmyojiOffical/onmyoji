@@ -23,14 +23,18 @@ function fileLog:logWithPath(path,isAppending)
 	
 	if isAppending then 
 		
-		mode = "ab+"
+		nLog("appending")
+		
+		mode = "a+"
 		
 	else
 		
-		mode = "wb+"
+		nLog("overwrite")
+		
+		mode = "w+"
 	end
 	
-	local f,err = io.open(path,"w")
+	local f,err = io.open(path,mode)
 	
 	if not f then
 		

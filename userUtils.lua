@@ -43,8 +43,11 @@ end
 
 local function handleEasyUpLevel()
 	
+	local num = tonumber(dialogInput("升级多少","", "Go")) or 0
 	
-	toast("暂未支持")
+	if (num <=0) then toast("升级式神为敏感操作,必须精确张数",1)  return end
+	
+	return upLevelCard(num)
 	
 end
 
@@ -54,7 +57,7 @@ mytoolbar:connect(godWalkID,godWalk,true)
 
 mytoolbar:connect(drawBrokenCardID,handleDrawBrokenCard,true)
 
-mytoolbar:connect(easyUpLevelID,handleDrawBrokenCard,true)
+mytoolbar:connect(easyUpLevelID,handleEasyUpLevel,true)
 
 function showToolsBar()
 

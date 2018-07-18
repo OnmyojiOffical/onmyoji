@@ -583,6 +583,35 @@ dm.inviteGuyRefreshViewDm = {
 	name = "刷新转菊花"
 	
 } 
+--[[
 
+	升级狗粮
+
+]]
+
+
+rect.continueButtonRect = {} 
+
+rect.skillUpRect = {} 
+
+rect.confirmButtonRect = {} 
+
+dm.continueButtonDm = {
+
+ 	name = "继续升星"
+
+} 
+
+dm.skillUpDm = {
+
+ 	name = "技能升级"
+
+} 
+
+dm.confirmButtonDm = {
+
+ 	name = "确认按钮"
+
+} 
 
 return date

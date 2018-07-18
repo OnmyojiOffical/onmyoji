@@ -46,6 +46,14 @@ local rewardReciveNo = 3
 
 local loopTime = 999999
 
+
+local constManager = {}
+
+
+constManager.serverStartTime = time()
+
+--local deviceInfo = require("TSDevice")
+
 local defaltConfig = {
 	
 	--
@@ -95,9 +103,37 @@ local dm = date.dm
 
 local rect = date.rect
 
+local nullEvent = 0
+
+local rewardTaskEvent = 1
+
+local over6000DlgEvent = 2
+
+local lostNetworkEvent = 3
+
+
 local function commonCheck(callback)
 	
 	local config = globalConfig or  defaltConfig
+	
+	if config.enableTimer then
+		
+		
+		if time() - constManager.serverStartTime > config.timer then
+			
+			
+			formatLog("因为定时原因结束脚本")
+			
+			lockDevice()
+			
+			lua_exit()
+			
+			
+		end
+		
+		
+	end
+	
 	
 	if  dmMatch(date.dm.rewardTaskDm,70) then
 			
@@ -127,6 +163,9 @@ local function commonCheck(callback)
 					mSleep(100)
 
 				end
+			
+				return rewardTaskEvent
+			
 			end
 
 	elseif  dmMatch(date.dm.over6000Dlg,70) then
@@ -136,6 +175,8 @@ local function commonCheck(callback)
 			rectClick(date.rect.over6000DlgRect,30)
 			
 			mSleep(100)
+			
+			return over6000DlgEvent
 		
 	elseif dmMatch(date.dm.tryConnectDm,70) then
 	
@@ -195,7 +236,9 @@ local function commonCheck(callback)
 					formatLog("恢复正常了")
 					--恢复正常了
 					
-					break
+					return lostNetworkEvent
+					
+					
 					
 				end
 			
@@ -203,6 +246,9 @@ local function commonCheck(callback)
 	
 		end
 	
+	else
+	
+		return nullEvent
 	
 	end
 	
@@ -655,6 +701,10 @@ function yuhunDriver()
 
 
 	while 1 do 
+		
+		
+
+		
 
 --		local t = os.date("*t",time())
 
@@ -805,7 +855,7 @@ function yuhunPassager()
 	--上次战斗时间
 	local lastBattleTime = time()
 	
-	
+	local isPad =  (2 == getDeviceType())
 	
 
 	while 1 do 
@@ -821,8 +871,44 @@ function yuhunPassager()
 
 		randomseed(time())
 		
-		commonCheck()
 		
+		--mofidy for ipad over6000Dlg
+		
+		local event =  commonCheck()
+
+		if isPad then
+
+			--提前处理结束事件,continue掉循环
+
+			if event == over6000DlgEvent then
+
+				--使用金币buff图案作为结束战斗信号
+
+				formatLog("结束战斗")
+
+				local begin_time = time()
+
+				while ((dmMatch(date.dm.battleOKDm,60) or  dmMatch(date.dm.battleOKExpDm,60)) )  and (not dmMatch(date.dm.over6000Dlg)) do
+					--for some special view
+					if time() - begin_time > 5 then break end
+
+					rectClick(date.rect.battleOKRect,30)
+
+					lastClickTime = time()
+
+				end
+
+				if time() - lastBattleTime > 10 then
+
+					totalBattle = totalBattle + 1
+
+					formatLog("第%d场魂十已完成",totalBattle)
+				end
+
+				lastBattleTime = time()
+
+			end
+		end
 
 		if dmMatch(date.dm.realSnakeHUD,70) then
 			
@@ -834,6 +920,16 @@ function yuhunPassager()
 			
 		elseif  dmMatch(date.dm.battleOKDm,60)  or dmMatch(date.dm.battleOKExpDm,60) then
 
+			if isPad then
+				
+				
+				
+				local event = commonCheck()
+				
+				formatLog("iPad调用了通用检测")
+				
+				
+			end
 			--使用金币buff图案作为结束战斗信号
 	
 			formatLog("结束战斗")
@@ -1163,15 +1259,15 @@ local locations = {
 
 local currentLBSGhost = {
 	
-	name = "萤火虫",
+	name = "BML&BW",
 	
-	dateBegin = {month = 7,day = 14},
+	dateBegin = {month = 7,day = 20},
 	
-	dateEnd = {month = 7,day = 17}, 
+	dateEnd = {month = 7,day = 22}, 
 	
-	perDayTime = {9,20},
+	perDayTime = {9,23},
 	
-	location = {113.372203,23.103197}
+	location = {121.496502,31.188396}
 	
 }
 
@@ -1365,5 +1461,83 @@ function  drawBrokenCard(num)
 	
 		
 	end
+	
+end
+
+--[[
+
+	升级狗粮
+
+
+]]
+
+
+
+function upLevelCard(count)
+	
+	count = count or 50
+	
+	
+	confirm_send = false
+	
+	while 1 do
+	
+	if count == 0 then
+		
+		toast("完成",1)
+		
+		vibrator()
+		
+		return 
+		
+	end
+	
+	if dmMatch(date.dm.continueButtonDm) then
+		
+		if confirm_send then
+			
+			count = count - 1 
+			
+			confirm_send = false
+			
+		end
+		
+		formatLog("继续")
+		
+		mSleep(500)
+		
+		rectClick(date.rect.continueButtonRect)
+		
+	elseif dmMatch(date.dm.confirmButtonDm) then
+		
+		confirm_send = true
+		
+		formatLog("确认")
+		
+		mSleep(500)
+		
+		
+		rectClick(date.rect.confirmButtonRect)
+	
+		
+		mSleep(500)
+	
+	elseif dmMatch(skillUpDm) then
+	
+		formatLog("技能提升")
+	
+		mSleep(500)
+	
+		rectClick(date.rect.skillUpRect)
+	
+	
+	end
+	
+	mSleep(300)
+	
+	
+end
+	
+	
 	
 end

@@ -17,7 +17,7 @@ local date = os.date
 local nLog = nLog
 local onmojiBid =  "com.netease.onmyoji"
 local logFilePath = userPath() .. "/log/onmyoji.log"
-local logServer = fileLog:logWithPath(logFilePath,true)
+local logServer 
 
 --[[
 local sz = require("sz")
@@ -112,9 +112,28 @@ function fileFormatLog(fmt,...)
 
 end
 
-if globalConfig and globalConfig.enableLogServer then
+
+if globalConfig  then
 	
-	formatLog = fileFormatLog
+	if globalConfig.LogServer == LOG_NEW then
+	
+		logServer =  fileLog:logWithPath(logFilePath,false)
+		
+		formatLog = fileFormatLog
+	
+	elseif globalConfig.LogServer == LOG_APPENDING then
+	
+	
+		logServer = fileLog:logWithPath(logFilePath,true)
+		
+		formatLog = fileFormatLog
+	
+	else
+		
+		formatLog = ideFormatLog
+	
+	end
+	
 	
 else
 	

@@ -99,9 +99,6 @@
 ]]
 
 
-
-local ts = require("ts")
-
 local device = {}
 
 local enumIndex = 0
@@ -261,6 +258,25 @@ local iPadProPlus = iPadProPlus
 local iPhoneSimulator = iPhoneSimulator
 
 local unknown = unknown
+
+local function getDevieMachine()
+	
+	local model = ""
+	
+	local fd = io.popen("uname -m","r")
+	
+	if fd then
+	
+		model = string.gsub(fd:read("*a"),"\n","")
+	
+		nLog("uname -m :" .. tostring(model))
+	
+		fd:close()
+	
+	end
+
+	return model
+end
 
 
 local modelTypeMap = {
@@ -482,11 +498,16 @@ function device:procudtString()
 end
 
 
+
+
+
 function device:refreshData()
 	
 	local instance = self
 	
-	instance.model = ts.system.devicetype()
+	
+	
+	instance.model = getDevieMachine()
 		
 		instance.type = modelTypeMap[instance.model] or unknown
 		
@@ -559,6 +580,14 @@ function device:infoString()
 	
 	
 end
+
+device.version = 1.0
+
+device.auth = "Half"
+
+
+
+--dialog(device:currentDevice():infoString())
 
 return device
 
