@@ -71,8 +71,21 @@ end
 ]]
 local  function  newSeed()
 	
-	--暂时只用时间作为依据
-	return time()
+	local devID = getDeviceID()
+	
+	local devSeed = 0
+	
+	for index,char in utf8.codes(devID) do
+		
+		if index % 2 == 0 then
+		
+			devSeed = devSeed + char * index
+		
+		end
+		
+	end
+	
+	return time() +  devSeed
 	
 end
 
@@ -344,9 +357,9 @@ function dmMatch(dm,degree)
 	
 	for k,v in ipairs(dm) do
 		
---		if debug then
---			formatLog("(%d,%d) color is %#x",v[1],v[2],getColor(v[1], v[2]))
---		end
+		--if debug then
+		--	formatLog("(%d,%d) color is %#x",v[1],v[2],getColor(v[1], v[2]))
+		--end
 	
 		if isColor(v[1],v[2],v[3],v[4] or 85) then
 			
@@ -358,7 +371,7 @@ function dmMatch(dm,degree)
 	
 	local result = (( matched / total ) * 100)
 	
-	--nLog(string.format("total:%s,match:%s,result:%s",total,matched,result))
+	
 	
 	keepScreen(false)
 	
@@ -366,15 +379,32 @@ function dmMatch(dm,degree)
 	
 	if result > degree  then 
 		if debug and  seeAllLog  then
-			formatLog("%s view match success",dm.name or "unknown")
+			
+			formatLog("%s view match success,result:%s",dm.name or "unknown",result)
 		end
 		return true
 	else
 		if debug and seeAllLog  then
-			formatLog("%s view match failed",dm.name or "unknown")
+			formatLog("%s view match failed,result:%s",dm.name or "unknown",result)
 		end
 		return false
 	end
+end
+
+function dmDynamicMatch(relativrDm,basePoint,degree)
+
+	local temp = deepCopy(relativrDm)
+	
+	for i,v in ipairs(temp) do
+	
+		v[1] = v[1] + basePoint.x
+	
+		v[2] = v[2] + basePoint.y
+	
+	end
+
+	return dmMatch(temp,degree)
+
 end
 --[[
 
@@ -504,6 +534,25 @@ end
 
 ]]
 
+
+function deepCopy(object)    
+	local lookup_table = {}
+	local function _copy(object)
+		if type(object) ~= "table" then
+			return object
+		elseif lookup_table[object] then
+			return lookup_table[object]
+		end  -- if        
+		local new_table = {}
+		lookup_table[object] = new_table
+		for index, value in pairs(object) do
+			new_table[_copy(index)] = _copy(value)
+		end  -- for        
+		return setmetatable(new_table, getmetatable(object))    
+	end  -- function _copy    
+	return _copy(object)
+
+end
 function waitDmWithCallBack(dm,t,degree,callback)
 
 

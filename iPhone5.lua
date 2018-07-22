@@ -543,4 +543,319 @@ dm.confirmButtonDm = {
  	name = "确认按钮"
 
 } 
+
+
+--结界突破
+
+date.const = {}
+
+date.point = {}
+
+local const = date.const
+
+local point = date.point
+
+const.homeBreakOutCardOffsetX = 305
+
+const.homeBreakOutCardOffsetY = 120
+
+const.modelOffsetX = 35
+
+point.modelBasePoint = {x =  107, y = 82, color = 0x837e77}
+
+point.homeBreakOutViewBasePoint = { x = 116 ,y =  82 ,color =  0x0  }
+
+
+
+rect.exitBattleConfirmRect = { 626, 360, 690, 392} 
+
+rect.exitBattleButtonRect = { 22, 21, 44, 37} 
+
+rect.refreshHomeBreakOutViewButtonConfirmButtonRect = { 632, 369, 728, 396} 
+
+rect.baseChallengeButtonRect = { 189, 206 ,251 ,233}
+
+rect.baseZoomRect = { 218, 20 ,281 ,50} 
+
+rect.refreshHomeBreakOutViewButtonRect = {894, 466, 967, 495} 
+
+rect.receiveHomeBreakOutNormalReward = { 809, 533, 881, 566} 
+
+
+dm.homeBreakOutViewStatusFailedDm = {
+
+
+{ 269 ,19 ,0xd9b964 },
+{ 272 ,18 ,0xa38856 },
+{ 283 ,6 ,0xa93636 },
+{ 286 ,6 ,0xac3636 },
+{ 291 ,12 ,0xb33b3b },
+{ 286 ,19 ,0x2a0804 },
+{ 287 ,14 ,0xb13737 },
+{ 292 ,25 ,0x310905 },
+{ 290 ,18 ,0x571d1b },
+
+
+
+ 	name = "突破挑战失败基础点阵"
+
+} 
+
+dm.finishBattleWhenOutlineDm = {
+
+ 	name = "离线期间战斗已结束"
+
+} 
+
+dm.homeBreakOutViewStatusViewNormalDm = {
+	
+	
+	{ 263 ,13 ,0xcebdaa },
+{ 256 ,20 ,0xd1c2b0 },
+{ 271 ,20 ,0xcfc0ad },
+{ 276 ,18 ,0xcdbca8 },
+{ 270 ,32 ,0xd3c5b3 },
+{ 258 ,33 ,0xd5c8b7 },
+{ 253 ,33 ,0xd5c8b7 },
+{ 259 ,33 ,0xd5c8b7 },
+
+
+ 	name = "突破未挑战基础点阵"
+
+} 
+
+
+
+dm.exitBattleDlgDm = {
+	
+	
+	{  518,  373, 0xdf6851},
+	{  591,  312, 0xcbb59c},
+	{  667,  347, 0x5e5448},
+	{  638,  364, 0xf3b25e},
+	{  698,  365, 0xf3b25e},
+	{  438,  363, 0xdf6851},
+	{  440,  357, 0xdf6851},
+
+
+ 	name = "退出战斗弹窗"
+
+} 
+
+dm.homeBreakOutViewLightDm = {
+	
+	
+	{  834,  552, 0xd6c9b9},
+	{  850,  533, 0xd6c9b9},
+	{  856,  542, 0xd6c9b9},
+	{  811,  575, 0xd6c9b9},
+	{  846,  547, 0xd6c9b9},
+	{  876,  526, 0xd6c9b9},
+	{  829,  524, 0xd6c9b9},
+	{  821,  536, 0xd6c9b9},
+	{  817,  546, 0xd6c9b9},
+
+
+ 	name = "颜色比较浅的突破界面"
+
+} 
+
+dm.homeBreakOutViewDarkenDm = {
+	
+	
+	{  814,  550, 0x58534c},
+	{  827,  532, 0x58534c},
+	{  825,  559, 0x58534c},
+	{  815,  553, 0x58534c},
+	{  870,  559, 0x58534c},
+	{  828,  557, 0x58534c},
+	{  819,  538, 0x58534c},
+	{  860,  550, 0x58534c},
+
+
+ 	name = "颜色比较深的突破界面"
+
+} 
+
+
+
+dm.homeBreakOutSuccessDm = {
+	
+	
+	{  482,  437, 0x4a96d0},
+	{  472,  444, 0x4585c8},
+	{  473,  459, 0x3b84ca},
+	{  483,  466, 0x3fbee8},
+	{  523,  457, 0x73bbe5},
+	{  532,  439, 0x79b5e1},
+	{  552,  464, 0x442213},
+	{  561,  464, 0x2e1a15},
+	{  586,  476, 0x2c1813},
+	{  602,  472, 0xb83822},
+
+
+ 	name = "战斗胜利"
+
+} 
+
+dm.baseChallengeButtonDm = {
+	
+	
+	{ 186 ,209 ,0xf3b25e },
+{ 219 ,198 ,0xf3b25e },
+{ 248 ,206 ,0xf3b25e },
+{ 234 ,215 ,0x614d32 },
+{ 222 ,217 ,0xf3b25e },
+{ 223 ,228 ,0xf3b25e },
+{ 249 ,224 ,0xf3b25e },
+{ 262 ,222 ,0xf3b25e },
+{ 193 ,229 ,0xf3b25e },
+
+
+ 	name = "进攻"
+
+} 
+
+dm.homeBreakOutFailDm = {
+	
+	
+	
+	{  344,  446, 0xbaaca0},
+	{  336,  451, 0x371f22},
+	{  354,  447, 0xfbfcf9},
+	{  389,  451, 0xd23b18},
+	{  584,  441, 0xb8302f},
+	{  556,  448, 0x271f22},
+	{  745,  472, 0x211c29},
+	{  785,  433, 0xe8e5e0},
+	{  738,  412, 0x69101f},
+	{  786,  466, 0xf68638},
+
+
+ 	name = "战斗失败"
+
+} 
+
+dm.refreshHomeBreakOutViewDlgDm = {
+	
+	
+	{  409,  390, 0xdf6851},
+	{  491,  326, 0xcbb59c},
+	{  612,  321, 0xcbb59c},
+	{  620,  376, 0xf3b25e},
+	{  713,  377, 0xf3b25e},
+	{  687,  320, 0xcbb59c},
+	{  493,  384, 0xdf6851},
+	{  403,  382, 0xdf6851},
+
+
+ 	name = "刷新后攻破记录进度将会重置"
+
+} 
+
+dm.homeBreakOutViewDm = {
+	
+	
+	{  341,  546, 0x1d4662},
+	{  339,  555, 0x1d415b},
+	{  339,  558, 0xeedbcd},
+	{  342,  545, 0x103f63},
+	{  745,  553, 0x330f1a},
+	{  736,  553, 0x8c6f56},
+	{  746,  550, 0xc08050},
+	{  748,  535, 0x77404f},
+	{  249,  561, 0xf3b25e},
+	{  240,  559, 0xf2b15e},
+
+ 	name = "结界突破视图"
+
+} 
+
+dm.homeBrekaOutViewStatusBrokenDm = {
+	
+	
+	{ 246 ,43 ,0x4e101a },
+{ 246 ,45 ,0x53131d },
+{ 246 ,47 ,0x58131f },
+{ 248 ,50 ,0x621a27 },
+{ 260 ,48 ,0x482325 },
+{ 263 ,50 ,0x491f23 },
+{ 267 ,53 ,0x651725 },
+{ 269 ,55 ,0x6b1929 },
+{ 271 ,56 ,0x6d1a2a },
+
+ 	name = "突破已经攻破基础急诊"
+
+} 
+
+
+
+
+--抽厕纸
+
+rect.brokenCardFiveRect = {} 
+
+rect.cancelDrawRect = {} 
+
+rect.continueDrawRect = {} 
+
+rect.goDrawnRect = {} 
+
+rect.brokenCardTwoRect = {} 
+
+rect.brokenCardFourRect = {} 
+
+rect.brokenCardThreeRect = {} 
+
+rect.brokenCardOneRect = {} 
+
+
+dm.cancelDrawDm = {
+
+ 	name = "确定"
+
+} 
+
+dm.brokenCardOneDm = {
+
+ 	name = "第一张厕纸"
+
+} 
+
+dm.brokenCardFiveDm = {
+
+ 	name = "第五张厕纸"
+
+} 
+
+dm.continueDrawDm = {
+
+ 	name = "再次召唤"
+
+} 
+
+dm.brokenCardFourDm = {
+
+ 	name = "第四张厕纸"
+
+} 
+
+dm.brokenCardThreeDm = {
+
+ 	name = "第三张厕纸"
+
+} 
+
+dm.brokenCardTwoDm = {
+
+ 	name = "第二张厕纸"
+
+} 
+
+dm.goDrawnDm = {
+
+ 	name = "普通召唤"
+
+} 
+
 return date

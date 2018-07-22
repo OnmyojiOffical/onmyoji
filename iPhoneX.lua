@@ -718,4 +718,222 @@ dm.confirmButtonDm = {
 
 } 
 
+
+--[[
+
+	结界突破！
+	
+	
+
+
+]]
+
+local const = {}
+
+date.const = const
+
+const.homeBreakOutCardOffsetX = 537
+
+const.homeBreakOutCardOffsetY = 211
+
+const.modelOffsetX = 62
+
+
+local point = {}
+
+date.point = point
+
+
+--local frame = {}
+
+
+--date.frame = frame
+
+
+--frame.homeBreakOutViewThumbnailFrame = {0, 0, 519, 201}
+
+point.homeBreakOutViewBasePoint = {x = 424,y = 145}
+
+point.modelBasePoint = {x=612-424,y=288-145,color = 0x817c75}
+
+rect.exitBattleButtonRect = {161, 32, 194, 69}
+
+rect.exitBattleConfirmRect = { 1312, 628, 1452, 688}
+
+rect.receiveHomeBreakOutNormalReward = {1631, 937, 1774, 994}
+
+
+rect.baseZoomRect = { 333, 43 ,463 ,85}
+
+rect.baseChallengeButtonRect = { 309, 354 ,457 ,409}
+
+
+rect.refreshHomeBreakOutViewButtonRect = { 1782, 822, 1947, 872}
+
+rect.refreshHomeBreakOutViewButtonConfirmButtonRect = { 1350, 654, 1483, 690}
+
+dm.refreshHomeBreakOutViewDlgDm = {
+	{  959,  676, 0xdf6851},
+	{ 1083,  675, 0xdf6851},
+	{ 1384,  677, 0xd39c54},
+	{ 1529,  666, 0xf4b25f},
+	{  889,  479, 0x695f52},
+	{ 1123,  505, 0x272420},
+	{ 1247,  524, 0xcbb59c},
+
+	name = "刷新后攻破记录进度将会重置"
+}
+
+
+dm.baseChallengeButtonDm = {
+	
+{ 308 ,365 ,0xf3b25e },
+{ 317 ,383 ,0xf3b25e },
+{ 341 ,355 ,0xf3b25e },
+{ 457 ,356 ,0xf3b25e },
+{ 416 ,406 ,0xf3b25e },
+{ 371 ,406 ,0xf3b25e },
+{ 314 ,402 ,0xf3b25e },
+{ 318 ,364 ,0xf3b25e },
+
+name = "进攻"
+	
+}
+
+dm.exitBattleDlgDm = {
+	{  990,  642, 0xdf6851},
+	{ 1054,  629, 0xdf6851},
+	{ 1127,  652, 0xdf6851},
+	{ 1112,  683, 0xdf6851},
+	{ 1326,  638, 0xf3b25e},
+	{ 1426,  643, 0xf3b25e},
+	{ 1386,  631, 0xf3b25e},
+	{ 1309,  682, 0xf3b25e},
+	
+	name = "退出战斗弹窗"
+
+}
+
+dm.homeBreakOutFailDm = {
+	{  796,  238, 0x92856c},
+	{  917,  257, 0xb19d86},
+	{ 1106,  288, 0x736853},
+	{ 1166,  208, 0x82674c},
+	{ 1206,  325, 0x46372a},
+	{ 1336,  267, 0xb7b0a1},
+	{ 1365,  255, 0xcdc7ba},
+	{ 1595,  229, 0xe4e0d4},
+	{ 1656,  271, 0xb5aea0},
+	{ 1666,  373, 0x6c6154},
+
+	name = "战斗失败"
+}
+
+dm.homeBreakOutSuccessDm = {
+	{ 1052,  774, 0x5d9bd1},
+	{ 1052,  813, 0x86addb},
+	{ 1084,  834, 0x4a8dcd},
+	{ 1134,  803, 0x49bee7},
+	{ 1169,  822, 0xb83822},
+	{ 1231,  824, 0x2c1813},
+	{ 1300,  827, 0xba2f1b},
+	{ 1242,  860, 0x463229},
+	{ 1318,  866, 0x7e0e0e},
+	{ 1733,  781, 0x200f11},
+
+	name = "战斗胜利"
+}
+
+dm.homeBreakOutViewDm = {
+	
+	{  818,  961, 0x78785a},
+	{  817,  948, 0xeeb247},
+	{  828,  946, 0x173d64},
+	{  828,  961, 0x254a64},
+	{  816,  961, 0xae9858},
+	{  813,  977, 0x0c3351},
+	{  813,  985, 0x3b5569},
+	{  806,  984, 0xab987f},
+	{  484,  841, 0xa5511d},
+	{  504,  844, 0x594a3f},
+
+	name = "结界突破视图"
+}
+
+
+dm.homeBrekaOutViewStatusBrokenDm = {
+
+	{ 435 ,60 ,0x390b0f },
+	{ 434 ,67 ,0x582a2c },
+	{ 429 ,81 ,0x58131f },
+	{ 435 ,85 ,0x6b2b33 },
+	{ 439 ,86 ,0x601623 },
+	{ 445 ,84 ,0x6d3338 },
+	{ 444 ,77 ,0x52121c },
+	{ 455 ,82 ,0x5a1420 },
+	{ 462 ,88 ,0x621624 },
+	{ 472 ,92 ,0x671826 },
+
+	name = "突破已经攻破基础急诊"
+}
+
+dm.homeBreakOutViewStatusFailedDm = {
+
+	{ 426 ,19 ,0xbd6b17 },
+	{ 487 ,7 ,0x210602 },
+	{ 505 ,8 ,0xaf3d3d },
+	{ 505 ,41 ,0x3e0c07 },
+	{ 505 ,45 ,0x3e0c07 },
+	{ 500 ,57 ,0xdbb258 },
+	{ 507 ,61 ,0xd2a149 },
+	{ 484 ,38 ,0xd6bb78 },
+	{ 466 ,29 ,0xbe9e52 },
+	{ 474 ,15 ,0x2c0a05 },
+
+	name = "突破挑战失败基础点阵"
+
+}
+
+dm.homeBreakOutViewStatusViewNormalDm = {
+	
+	{ 422 ,42 ,0xd3c5b3 },
+	{ 381 ,67 ,0xd5c8b8 },
+	{ 390 ,43 ,0xd3c5b4 },
+	{ 420 ,39 ,0xd2c4b2 },
+	{ 394 ,80 ,0xd5c8b8 },
+	{ 421 ,59 ,0xd5c8b8 },
+	{ 465 ,56 ,0xd4c6b6 },
+	
+	
+	name = "突破未挑战基础点阵"
+	
+}
+
+dm.homeBreakOutViewDarkenDm = {
+	{ 1667,  945, 0x6b645c},
+	{ 1657,  958, 0x6b645c},
+	{ 1696,  973, 0x6b645c},
+	{ 1711,  946, 0x6b645c},
+	{ 1685,  977, 0x6b645c},
+	{ 1644,  994, 0x6b645c},
+	{ 1727,  996, 0x6b645c},
+	{ 1741,  999, 0x6b645c},
+
+	name = "颜色比较深的突破界面"
+
+}
+dm.homeBreakOutViewLightDm = {
+	{ 1649,  950, 0xd6c9b9},
+	{ 1694,  974, 0xd6c9b9},
+	{ 1647,  968, 0xd6c9b9},
+	{ 1723,  982, 0xd6c9b9},
+	{ 1651,  993, 0xd6c9b9},
+	{ 1625,  986, 0xd6c9b9},
+	{ 1701,  978, 0xd6c9b9},
+	{ 1725,  973, 0xd6c9b9},
+	{ 1685,  991, 0xd6c9b9},
+	
+	
+	name = "颜色比较浅的突破界面"
+}
 return date

@@ -44,7 +44,7 @@ local ui_data = {
 			},
 			{
 				["type"] = "ComboBox",                                                                      
-				["list"] = "司机,乘客,单刷(非魂十),单刷魂十,小工具",
+				["list"] = "司机,乘客,单刷(非魂十),单刷魂十,结界突破,小工具",
 				["width"] = 300,
 				["select"] = "0",
 				["id"] = "model"
@@ -68,7 +68,7 @@ local ui_data = {
 				["kbtype"] = "number",
 				["id"] = "loop"
 			},
-						{
+			{
 				["type"] = "Label",
 				["text"] = "更多设置向右滑动-_-!",
 				["size"] = 20,
@@ -145,7 +145,41 @@ local ui_data = {
 				["width"] = h-100-300 - 200,
 				["id"] = "timer"
 			},
-		
+			{
+				["type"] = "Label",
+				["text"] = "突破尝试",
+				["size"] = 20,
+				["width"] = 250,
+				["nowrap"] = 1,
+				["align"] = "left",
+				["color"] = "0,0,0",
+			},
+			{
+				["type"] = "Edit",
+				["size"] = 20,
+				["text"] = "0",
+				["align"] = "left",
+				["width"] = 300,
+				["color"] = "0,0,0",
+				["kbtype"] = "number",
+				["id"] = "retryTime"
+			},
+			{
+				["type"] = "Label",
+				["text"] = "环境设置",
+				["size"] = 20,
+				["width"] = 200,
+				["align"] = "left",
+				["color"] = "0,0,0",
+				["nowrap"] = 1,
+			},
+			{
+				["type"] = "ComboBox",                                                                      
+				["list"] = "开启最优环境,不开启最优环境",
+				["width"] = 600,
+				["id"] = "bestModeSwitch",
+				["select"] = "1",                                    
+			},
 		}
 
 	},
@@ -159,20 +193,38 @@ ui.json = sz.json.encode(ui_data)
 ui.data = ui_data
 
 
+local function enumBuilder(base)
+
+	local baseEnum = base or 0
+	
+	return function ()
+		
+		baseEnum = baseEnum + 1
+		
+		return baseEnum
+		
+	end
+
+
+end
 
 UI_CANCEL = 0
 
 UI_OK = 1
 
-MODEL_DRIVER = 1
+local modelEnum = enumBuilder(0)
 
-MODEL_PASSAGER = 2
+MODEL_DRIVER = modelEnum()
 
-MODEL_NORMA_BATTLE = 3
+MODEL_PASSAGER = modelEnum()
 
-MODEL_SINGLE_YUHUN = 4
+MODEL_NORMA_BATTLE = modelEnum()
 
-MODEL_TOOLS = 5
+MODEL_SINGLE_YUHUN = modelEnum()
+
+MODEL_HOME_BREAK = modelEnum()
+
+MODEL_TOOLS = modelEnum()
 
 LOG_NEW = 1
 
@@ -202,7 +254,9 @@ local function parserTimer(timeStr)
 	
 end
 
-local function serialize(obj)
+
+
+function serialize(obj)
     local lua = ""
     local t = type(obj)
     if t == "number" then
@@ -252,9 +306,12 @@ function ui:showModel()
 		
 		globalConfig.timer = parserTimer(argv.timer)
 
+		globalConfig.retryTime = tonumber(argv.retryTime) or 0
 
 		nLog("globalConfig:" .. serialize(globalConfig))
-
+		
+		globalConfig.enableBestGodModel = (tonumber(argv.bestModeSwitch) == 0) and true or false
+ 
 	end
 	return ret
 end

@@ -71,26 +71,38 @@ local defaltConfig = {
 if w == 750 and h == 1334 then
 	
 	date = require("iPhone6")
+	
+	is6Screen = true
 
 elseif w == 640 and h == 1136 then
 	
 	date = require("iPhone5")
 	
+	is5Screen = true
+	
 elseif w == 1125 and h == 2436 then
 	
 	date = require("iPhoneX")
+	
+	isXScreen = true
 	
 elseif w == 1668 and h ==  2244 then
 	
 	date = require("iPdPro")
 	
+	isPadProScreen = true
+	
 elseif w == 1536 and h == 2048 then
 	
 	date = require("iPad2")
 	
+	isPadScreen = true
+	
 elseif  w == 1242 and h ==    2208	 then
 	
 	date = require("iPhone6P")
+	
+	is6PlusScreen = true
 
 else
 	dialog(string.format("尺寸为%d&%d的设备暂时不支持",w,h),0)
@@ -1537,6 +1549,431 @@ function upLevelCard(count)
 	
 	
 end
+	
+	
+	
+end
+
+
+--[[
+
+	结界突破功能
+	
+	@uiinterface 
+	
+		unsigned char   config.homeBreakOutFaileRetryTime  战斗失败后再尝试的次数
+		
+		enum  homeBreakOutMode  
+		
+		ThreeRefreshModel  打三个刷新等cd
+		
+		NextIfFailAutomatic    打不过刷新
+		
+		NextIfRetryOut    尝试很多遍都打不过的孤儿，记录一下孤儿阵容
+		
+		enum homeBreakOutTeam
+		
+		AlawayCurrentTeam 永远是当前的队伍
+		 
+		ChangeWithRetryTime  每次尝试从预设换人
+		
+		unsigned char  config.homeBreakOutTime  打多少张卷
+		
+		
+		
+
+
+]]
+
+--[[
+
+	1  2  3 
+	
+	4  5  6
+
+	7  8  9
+	
+	
+	识别方法
+	
+	先判定是不是被攻破了 如果是的话跳过这个 否则进入如下判断
+	
+	
+	反序读取勋章。直至有勋章为止，得知其勋章数量，进行决策
+	
+	每一个缩略图都是可以从顶点计算出来的
+	
+	定义数据  
+	
+	homeBreakOutViewBasePoint (int x, int y) 结界突破视图第一个格的左上角坐标
+	
+	homeBreakOutViewThumbnailFrame (int width,int heigh) 结界突破每个所旅途大小
+	
+	homeBreakOutViewModelFrame(int x,int y ,int width,int heigh) 勋章界面相对于父视图的框架大小
+	
+	homeBreakOutZoomViewBattleButtonFrame(int x,int,y,int width,int heigh) 放大视图中挑战按钮的位置
+	
+	homeBreakOutViewRreshButton 刷新按钮
+	
+	homeBrekaOutViewStatusBrokenDm 已经打通过的结界
+	
+	homeBreakOutViewStatusFailedDm  被弟弟锤了
+	
+	homeBreakOutViewStatusViewNormalDm  没挑战过
+	
+]]
+
+local breakOutViewData = {
+	
+	subviews = {},
+	
+	currentBattleIndex  = 1
+	
+	
+}
+
+local homeBreakOutStatusNormal = 1
+
+local homeBreakOutStatusFailed = 2
+
+local homeBreakOutStatusBroken = 3
+
+local homeBreakOutStatusUnknown = 4
+
+local statusHumanReadableStringMap = {
+	
+	"未挑战过",
+	
+	"挑战失败",
+	
+	"已经突破",
+	
+	"未知"
+	
+
+}
+
+local function realDmMaker(dm,point)
+	
+	local temp = {}
+	
+	for i,v in ipairs(dm) do
+		
+		temp[i] = {v[1] + point.x ,v[2]+ point.y,v[3]}
+		
+	end
+	
+	temp.name = dm.name
+	
+	return temp
+end
+
+
+local function realRectMaker(rect,point)
+
+	return  {rect[1] + point.x,rect[2]+point.y,rect[3]+point.x,rect[4]+point.y}
+
+end
+function refreshData()
+	
+	
+	
+	if dmMatch(date.dm.homeBreakOutViewDm) then
+		
+		
+		local basePoint = date.point.homeBreakOutViewBasePoint
+		
+		--local frame = date.frame.homeBreakOutViewThumbnailFrame
+		
+		--local modelFrame = date.frame.homeBreakOutViewModelFrame
+		
+		local offsetX = date.const.homeBreakOutCardOffsetX
+		
+		local offsetY = date.const.homeBreakOutCardOffsetY
+		
+		local modelBasePoint = date.point.modelBasePoint
+		
+		--build subviews
+		
+		local index = 1
+		
+		for row = 1,3 do
+			
+			for col = 1,3 do
+		
+				local viewBasePoint = {x = basePoint.x + (col -1 )* offsetX,y=basePoint.y + (row - 1)* offsetY}
+		
+				breakOutViewData.subviews[index] = {}
+				
+				local view = breakOutViewData.subviews[index]
+				
+				--从右往左扫描
+				
+				local currentModelNum = 0
+				
+				local status 
+				
+				for i = 5,1,-1 do
+					
+					local x = modelBasePoint.x + viewBasePoint.x + (i-1)* date.const.modelOffsetX
+					
+					local y = modelBasePoint.y + viewBasePoint.y 
+					
+					if  isColor(x,y,modelBasePoint.color,90) then
+						
+						--ideFormatLog("(%d,%d)个结界的第%d为勋章",row,col,i)
+						
+						currentModelNum = i
+						
+						break
+					else
+					
+						--ideFormatLog("%d,%d,%#x",x,y,getColor(x, y))
+					
+						--ideFormatLog("(%d,%d)个结界的第%d不为勋章",row,col,i)
+					end
+					
+				end
+				
+				if dmDynamicMatch(date.dm.homeBreakOutViewStatusViewNormalDm,viewBasePoint,70) then
+					
+					--ideFormatLog("(%d,%d)个结界未挑战过",row,col)
+					
+					status = homeBreakOutStatusNormal
+					
+				elseif dmDynamicMatch(date.dm.homeBreakOutViewStatusFailedDm,viewBasePoint,70) then
+				
+					--ideFormatLog("(%d,%d)个结界挑战失败状态",row,col)
+				
+					status = homeBreakOutStatusFailed
+				
+				elseif dmDynamicMatch(date.dm.homeBrekaOutViewStatusBrokenDm,viewBasePoint,70) then
+			
+					--ideFormatLog("(%d,%d)个结界已经突破",row,col)
+			
+					status = homeBreakOutStatusBroken
+			
+				else
+		
+					--ideFormatLog("(%d,%d)个结界状态未知",row,col)
+		
+					status = homeBreakOutStatusUnknown
+		
+				end
+		
+				view.status = status
+		
+				view.modelNum = currentModelNum
+				
+				view.zoomRect = realRectMaker(date.rect.baseZoomRect,viewBasePoint)
+				
+				view.challengeButtonRect = realRectMaker(date.rect.baseChallengeButtonRect,viewBasePoint)
+				
+				view.challengeButtonDm = realDmMaker(date.dm.baseChallengeButtonDm,viewBasePoint)
+				
+				formatLog("(%d,%d)个结界.勋章数:%d 当前状态:%s",row,col,currentModelNum,statusHumanReadableStringMap[status])
+		
+				--local challengeButtonRect = view.challengeButtonRect
+		
+				--formatLog("(%d,%d)个结界.挑战按钮:{%d,%d,%d,%d}",row,col,challengeButtonRect[1],challengeButtonRect[2],challengeButtonRect[3],challengeButtonRect[4])
+		
+				index = index + 1
+			end
+		
+		end
+	
+	else
+	
+	
+		toast("当前不是突破视图",3)
+	
+		formatLog("不是结界突破视图")
+		
+		
+	
+	end
+	
+	
+	
+end
+
+function exitBattle()
+	
+	rectClick(date.rect.exitBattleButtonRect)
+	
+	
+	waitDm(date.dm.exitBattleDlgDm,3)
+	
+	
+	rectClick(date.rect.exitBattleConfirmRect)
+	
+	
+end
+
+
+ function homeBreakOutWithTryAgain(count)
+
+	::newBreakPage::
+	
+	ideFormatLog("++++++++++")
+	
+	refreshData()
+	
+
+
+	for i = 1,9 do
+		
+		if count <=0 then break end
+
+		local currentCard = breakOutViewData.subviews[i]
+
+		--如果没挑战过
+		if (currentCard.status == homeBreakOutStatusNormal ) then
+			
+			local retryTime = globalConfig.homeBreakOutFaileRetryTime or 0
+			
+			::battleBegin::
+
+			rectClick(currentCard.zoomRect)
+
+			mSleep(1000)
+			
+			while not  dmMatch(currentCard.challengeButtonDm) do
+	
+				rectClick(currentCard.zoomRect)
+	
+				mSleep(500)
+	
+				commonCheck()
+	
+			end
+			
+			rectClick(currentCard.challengeButtonRect)
+			
+			local enterBattleTime = time()
+			
+			
+			
+			while 1 do
+			
+				if (time() - enterBattleTime > 60 * 3) then
+				 
+					exitBattle()
+				
+					formatLog("3分钟没打过，退出得了")
+				
+				end
+			
+				commonCheck()
+				
+				if dmMatch(date.dm.battleOKDm) or dmMatch(date.dm.battleOKExpDm) then
+					
+					
+					
+					if dmMatch(date.dm.homeBreakOutFailDm) then
+						
+						formatLog("突破失败")
+						
+						mSleep(1000)
+						
+						currentCard.status = homeBreakOutStatusFailed
+						
+						rectClick(date.rect.battleOKRect)
+						
+						waitDm(date.dm.homeBreakOutViewDm,5)
+						
+						if retryTime > 0 then
+						
+						
+							retryTime = retryTime -1  
+							
+							formatLog("还有尝试次数,继续挑战一次")
+							
+							goto battleBegin
+						else
+							
+							break
+						
+						end
+					elseif dmMatch(date.dm.homeBreakOutSuccessDm) then
+						
+						formatLog("突破成功")
+						
+						count = count - 1
+						
+						currentCard.status = homeBreakOutStatusBroken
+						
+						rectClick(date.rect.battleOKRect)
+						
+						mSleep(2000)
+						
+						break
+						
+					end
+					
+					
+					
+				end
+				
+			
+			end
+		else
+
+			formatLog("%s个突破不是未挑战过得状态,跳过",i)
+
+		end
+	
+		--mSleep(1000)
+		
+		local begin_time = time()
+		
+		while not dmMatch(date.dm.homeBreakOutViewLightDm) do
+	
+			rectClick(date.rect.receiveHomeBreakOutNormalReward)
+			
+			mSleep(200)
+			
+			commonCheck()
+	
+		end
+	
+	end
+	
+	local thisPageBrokenCount = 0
+	
+	for i,v in ipairs(breakOutViewData.subviews) do
+		
+		if v.stauts == homeBreakOutStatusBroken then
+			
+			thisPageBrokenCount = thisPageBrokenCount + 1
+		
+		end
+	end
+	
+	formatLog("本页面突破成功:%d次,需要刷新:%s,还剩余:%d次",thisPageBrokenCount,tostring(thisPageBrokenCount ~= 9), count)
+	
+	if thisPageBrokenCount ~= 9 then
+		
+		rectClick(date.rect.refreshHomeBreakOutViewButtonRect)
+		
+		waitDm(date.dm.refreshHomeBreakOutViewDlgDm)
+		
+		rectClick(date.rect.refreshHomeBreakOutViewButtonConfirmButtonRect)
+		
+		mSleep(2000)
+		
+	end
+	
+	if count > 0 then 
+		
+		formatLog("尝试跳跃至刷新")
+		
+		goto newBreakPage 
+		
+	end
+
+end
+local function homeBreakOut(count,model)
 	
 	
 	

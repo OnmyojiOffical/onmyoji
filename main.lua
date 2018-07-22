@@ -50,7 +50,50 @@ local function argDump()
 end
 
 
+
+function bestGodEnv()
+	
+	if setRotationLockEnable then
+	
+		setRotationLockEnable(true)
+	
+	end
+	
+	if setBacklightLevel then
+		
+		setBacklightLevel(0)
+		
+	end
+	
+end
+
+function beforeUserExit(...)
+	
+	nLog("call back for before user exit")
+	
+	if setRotationLockEnable then
+	
+		setRotationLockEnable(false)
+	
+	end
+	
+	if setBacklightLevel then
+		
+		setBacklightLevel(0.5)
+		
+	end
+	
+end
+
 local function main()
+	
+	
+	
+	if setDeviceOrient then
+		
+		setDeviceOrient(2)
+		
+	end
 	
 	local dlg =require("CheckDyld")
 	
@@ -61,6 +104,14 @@ local function main()
 	formatLog(argDump())
 	
 	local config  =  globalConfig 
+	
+	if config.enableBestGodModel then
+		
+		nLog("开启神仙幻境")
+		
+		bestGodEnv()
+		
+	end
 	
 	local model = config.model or 1
 	
@@ -80,6 +131,22 @@ local function main()
 	
 	
 		return singleYuhunBattle(config.loopTime)
+	
+	elseif model == MODEL_HOME_BREAK then
+	
+		--local device = require("TSDevice")
+		
+		if (isXScreen or is6Screen or is5Screen) then
+			
+			return homeBreakOutWithTryAgain(config.loopTime)
+	
+		else
+	
+			dialog("目前突破只支持X和6系列分辨率设备", time)
+	
+		end
+	
+	
 	
 	elseif model == MODEL_TOOLS then
 	

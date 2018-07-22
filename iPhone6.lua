@@ -95,7 +95,7 @@ dmCenter.inviteTeamDm = {
 	{  211,  282, 0xe9decd},
 	{  212,  296, 0xebe1d2},
 	{  215,  300, 0xe7dbca},
-	
+
 	{  215,  256, 0x614021},
 	{  215,  234, 0x5f3d1e},
 	{  304,  276, 0x9c382e},
@@ -175,7 +175,7 @@ dmCenter.over6000Dlg = {
 
 
 	name = "超过6000提示"
-	
+
 }
 dmCenter.realSnakeHUD = {
 	{   41,  256, 0xcf8b3e},
@@ -188,7 +188,7 @@ dmCenter.realSnakeHUD = {
 	{  427,  286, 0x111412},
 	{  411,  302, 0x1a682f},
 	{  432,  267, 0x1be0bc},
-	
+
 	name = "真蛇提示"
 }
 
@@ -203,7 +203,7 @@ dmCenter.beginGameNotifyDm = {
 	{ 1024,  142, 0xd3ccc4},
 	{  133,  403, 0xcec4bc},
 	{  126,  255, 0xcec3bb},
-	
+
 	name = "游戏公告"
 }
 
@@ -221,7 +221,7 @@ dmCenter.enterGameDm = {
 	{  962,  293, 0xb5feff},
 	{  970,  340, 0xbfe9ff},
 
-	
+
 
 
 	{  640,  164, 0x242219},
@@ -289,8 +289,8 @@ dmCenter.searchGhostInvite25Dm = {
 }
 --头像框应该有两个，并且是深色底
 dmCenter.searchGhostWaitBattleDm = {
-	
-	
+
+
 	{ 1004,  594, 0xf8f3e0},
 	{ 1012,  593, 0xf8f3df},
 	{ 1048,  593, 0xdfdac8},
@@ -313,7 +313,7 @@ dmCenter.searchGhostWaitBattleDm = {
 	{ 1168,  596, 0x655e53},
 	{ 1164,  603, 0xe05f2c},
 	{ 1155,  586, 0xe97830},
-	
+
 	name = "等待界面"
 
 }
@@ -329,7 +329,7 @@ dmCenter.searchGhostTeamLeaderDm = {
 	{   32,  235, 0x5d3d20},
 	{   32,  251, 0x5f3e20},
 	{   33,  253, 0x603f20},
-	
+
 	name = "队长还在,并且等待战斗"
 }
 
@@ -344,7 +344,7 @@ dmCenter.searchGhostRewardDm = {
 	{  416,  351, 0xb2441e},
 	{  417,  352, 0xb54720},
 	{  417,  360, 0xfff4d4},
-	
+
 	name = "小纸箱"
 }
 
@@ -428,7 +428,7 @@ dmCenter.changeHeroNCard = {
 	{  154,  374, 0x483422},
 	{  165,  362, 0x42311f},
 	{  145,  328, 0x44311f},
-	
+
 	name = "选择N"
 }
 
@@ -443,7 +443,7 @@ dmCenter.changeHeroHaveBeenN = {
 	{  100,  571, 0x42311e},
 	{   71,  551, 0x553f2b},
 	{   68,  551, 0x402f1d},
-	
+
 	name = "N"
 }
 dmCenter.yuhunBeginWithOutGuyDm = {
@@ -457,8 +457,8 @@ dmCenter.yuhunBeginWithOutGuyDm = {
 	{  913,  613, 0xd96a2f},
 	{  924,  609, 0x947467},
 	{  926,  626, 0xfe8433},
-	
-	
+
+
 	{ 1021,  615, 0xb0a9a1},
 	{ 1037,  605, 0xb0a9a1},
 	{ 1065,  605, 0xb0a9a1},
@@ -469,8 +469,8 @@ dmCenter.yuhunBeginWithOutGuyDm = {
 	{ 1087,  642, 0xb0a9a1},
 	{ 1050,  641, 0xb0a9a1},
 	{ 1010,  638, 0xb0a9a1},
-	
-	
+
+
 	{  166,  618, 0xdf6851},
 	{  173,  608, 0xdf6851},
 	{  205,  604, 0xdf6851},
@@ -483,7 +483,7 @@ dmCenter.yuhunBeginWithOutGuyDm = {
 	{ 1073,  121, 0xe1bf97},
 
 	name = "无队友御魂开始界面"
-	
+
 }
 
 dmCenter.searchEnterDm = {
@@ -497,7 +497,7 @@ dmCenter.searchEnterDm = {
 	{  700,  204, 0xd0a98f},
 	{  708,  217, 0x604027},
 	{  707,  222, 0x55402f},
-	
+
 	name = "探索"
 }
 
@@ -511,7 +511,7 @@ dmCenter.inviteGuyRefreshViewDm = {
 	{  690,  379, 0x51483e},
 	{  681,  363, 0x51483e},
 	{  648,  358, 0x554c40},
-	
+
 	name = "御魂转菊花"
 }
 
@@ -527,8 +527,8 @@ dmCenter.yuhunMainViewDm = {
 	{  384,  469, 0x4f4857},
 	{  582,  461, 0x625b4e},
 	{  585,  428, 0x615d50},
-	
-		name = "御魂界面"
+
+	name = "御魂界面"
 }
 
 
@@ -543,7 +543,7 @@ dmCenter.searchToolBarDm = {
 	{  350,  705, 0x6d1511},
 	{  349,  713, 0x937863},
 	{  348,  723, 0xe1dcca},
-	
+
 	{  217,  660, 0x90711b},
 	{  318,  668, 0xa05e17},
 	{  419,  704, 0xceb48d},
@@ -596,7 +596,7 @@ dmCenter.inviteTeamAutoDmNew = {
 	{  258,  393, 0x5cba68},
 	{  310, 395, 0xe6d9c6},
 	{  311,  405, 0xece2d4},
-	
+
 	name = "超鬼王时候组队界面"
 }
 rectCenter.inviteTeamAutoReciveRectNew = { 225, 248 + 118 , 272, 282 + 118}
@@ -770,6 +770,7 @@ rect.skillUpRect = {673, 645, 800, 706}
 
 rect.confirmButtonRect = { 990, 681, 1076, 714} 
 
+
 dm.continueButtonDm = {
 
 
@@ -784,7 +785,7 @@ dm.continueButtonDm = {
 	{  791,  636, 0xf3b25e},
 	{  785,  633, 0xaf8249},
 
- 	name = "继续升星"
+	name = "继续升星"
 
 } 
 
@@ -800,7 +801,7 @@ dm.skillUpDm = {
 	{  428,  374, 0x8d693f},
 
 
- 	name = "技能升级"
+	name = "技能升级"
 
 } 
 
@@ -819,9 +820,317 @@ dm.confirmButtonDm = {
 	{ 1060,  704, 0x9c7543},
 
 
- 	name = "确认按钮"
+	name = "确认按钮"
+
+} 
+
+dm.finishBattleWhenOutlineDm = {
+
+	name = "离线期间战斗已结束"
+
+} 
+
+date.point = {}
+
+date.const = {}
+
+local point = date.point
+
+local const = date.const
+
+
+--突破
+
+const.homeBreakOutCardOffsetX = 358
+
+const.homeBreakOutCardOffsetY = 141
+
+const.modelOffsetX = 41
+
+point.homeBreakOutViewBasePoint = { x = 137 ,y = 96,color =  0x0000000  }
+
+point.modelBasePoint = { x =  126 ,y = 96 ,color =  0x807b75  }
+
+rect.exitBattleButtonRect = { 28, 25, 49, 43} 
+
+rect.baseChallengeButtonRect = { 214, 238 ,301 ,274}
+
+rect.baseZoomRect = { 182, 27 ,305 ,55}
+
+rect.receiveHomeBreakOutNormalReward = {937, 624, 1036, 665} 
+
+rect.exitBattleConfirmRect = {733, 426, 816, 457} 
+
+rect.refreshHomeBreakOutViewButtonRect = { 1056, 542, 1136, 587}
+
+rect.refreshHomeBreakOutViewButtonConfirmButtonRect = {740, 434, 862, 466}
+
+
+dm.homeBreakOutSuccessDm = {
+
+
+
+	{  566,  512, 0x4392d0},
+	{  554,  526, 0x6d99cd},
+	{  598,  553, 0x70a4d8},
+	{  612,  530, 0x5790cb},
+	{  572,  464, 0xd47a15},
+	{  593,  479, 0xd88016},
+	{  670,  549, 0x2c1813},
+	{  649,  576, 0x080000},
+	{  697,  548, 0xb83822},
+	{  712,  571, 0x9b1111},
+
+
+	name = "战斗胜利"
 
 } 
 
 
+
+
+dm.homeBreakOutViewLightDm = {
+
+
+
+	{  931,  625, 0xd6c9b9},
+	{  964,  649, 0xd6c9b9},
+	{  938,  651, 0xd6c9b9},
+	{  996,  654, 0xd6c9b9},
+	{ 1009,  635, 0xd6c9b9},
+	{  997,  658, 0xd6c9b9},
+	{  968,  666, 0xd6c9b9},
+
+
+	name = "颜色比较浅的突破界面"
+
+} 
+
+dm.homeBrekaOutViewStatusBrokenDm = {
+
+{ 292 ,38 ,0x360a0d },
+{ 287 ,52 ,0x53121c },
+{ 297 ,52 ,0x53121c },
+{ 292 ,58 ,0x601523 },
+{ 311 ,62 ,0x681826 },
+{ 316 ,65 ,0x6c1929 },
+{ 323 ,69 ,0x762232 },
+{ 315 ,57 ,0x5d1522 },
+{ 321 ,38 ,0x350a0d },
+
+
+
+	name = "突破已经攻破基础矩阵"
+
+} 
+
+
+dm.exitBattleDlgDm = {
+
+
+	{  530,  371, 0xcbb59c},
+	{  527,  428, 0xdf6851},
+	{  590,  443, 0xdf6851},
+	{  604,  454, 0xdf6851},
+	{  737,  428, 0xf3b25e},
+	{  792,  425, 0xf3b25e},
+	{  816,  444, 0xf3b25e},
+	{  796,  456, 0xf3b25e},
+
+
+	name = "退出战斗弹窗"
+
+} 
+
+dm.baseChallengeButtonDm = {
+
+
+	{ 214 ,251 ,0xf3b25e },
+	{ 279 ,244 ,0xf3b25e },
+	{ 250 ,265 ,0xefb05d },
+	{ 211 ,265 ,0xf3b25e },
+	{ 239 ,251 ,0x372f25 },
+	{ 117 ,253 ,0x73664 },
+	{ 123 ,250 ,0x154263 },
+
+	name = "进攻"
+
+} 
+
+dm.homeBreakOutViewStatusViewNormalDm = {
+
+	{ 265 ,29 ,0xd3c5b4 },
+	{ 297 ,40 ,0xd5c8b8 },
+	{ 262 ,43 ,0xd5c8b8 },
+	{ 298 ,49 ,0xd5c8b8 },
+	{ 322 ,17 ,0xccbba6 },
+	{ 330 ,18 ,0xcab8a2 },
+	{ 327 ,36 ,0xcfbfac },
+
+	name = "突破未挑战基础点阵"
+
+} 
+
+dm.homeBreakOutFailDm = {
+
+
+	{  392,  515, 0xf7f7f4},
+	{  457,  552, 0xb12d15},
+	{  448,  558, 0x992210},
+	{  631,  520, 0x342c29},
+	{  678,  512, 0xc24847},
+	{  696,  497, 0xc83332},
+	{  699,  526, 0x902626},
+	{  667,  552, 0x3b2e28},
+	{  862,  493, 0xba1d38},
+	{  926,  543, 0xc93b1a},
+
+	name = "战斗失败"
+
+} 
+
+dm.homeBreakOutViewStatusFailedDm = {
+
+	{ 291 ,10 ,0xc58314 },
+	{ 305 ,7 ,0xc68d3a },
+	{ 319 ,7 ,0x280904 },
+	{ 336 ,8 ,0xa73131 },
+	{ 339 ,12 ,0x583e31 },
+	{ 341 ,24 ,0x2b0905 },
+	{ 337 ,35 ,0x6e3718 },
+
+
+
+	name = "突破挑战失败基础点阵"
+
+} 
+
+dm.homeBreakOutViewDm = {
+
+
+	{  401,  634, 0x64665f},
+	{  403,  643, 0xf2c961},
+	{  396,  647, 0x1f415d},
+	{  401,  638, 0x123a5d},
+	{  400,  653, 0xdedfef},
+	{  388,  661, 0x2b5585},
+	{  405,  641, 0x787f5f},
+	{  408,  639, 0x2d4d63},
+	{  876,  651, 0x781925},
+	{  884,  644, 0xdb2f3c},
+
+
+	name = "结界突破视图"
+
+} 
+
+dm.homeBreakOutViewDarkenDm = {
+
+	{  949,  635, 0x58534c},
+	{  965,  641, 0x58534c},
+	{  985,  645, 0x58534c},
+	{  971,  649, 0x58534c},
+	{  959,  648, 0x58534c},
+	{ 1003,  637, 0x58534c},
+	{ 1029,  622, 0x58534c},
+	{  959,  647, 0x58534c},
+	{ 1004,  661, 0x58534c},
+
+	name = "颜色比较深的突破界面"
+
+} 
+
+--add
+dm.refreshHomeBreakOutViewDlgDm = {
+	{  494,  436, 0xdf6851},
+	{  582,  451, 0xdf6851},
+	{  603,  434, 0xdf6851},
+	{  755,  440, 0xf3b25e},
+	{  793,  457, 0xca9551},
+	{  835,  432, 0xf3b25e},
+	{  804,  431, 0xf3b25e},
+	{  787,  441, 0xf3b25e},
+	{  834,  458, 0xf3b25e},
+
+	name = "刷新后攻破记录进度将重置，确定吗"
+
+}
+
+dm.exitBattleDlgDm = {
+	{  530,  371, 0xcbb59c},
+	{  527,  428, 0xdf6851},
+	{  590,  443, 0xdf6851},
+	{  604,  454, 0xdf6851},
+	{  737,  428, 0xf3b25e},
+	{  792,  425, 0xf3b25e},
+	{  816,  444, 0xf3b25e},
+	{  796,  456, 0xf3b25e},
+
+	name = "退出战斗弹窗"
+}
+
+
+dm.brokenCardOneDm = {
+
+	name = "第一张厕纸"
+
+} 
+
+
+dm.brokenCardTwoDm = {
+
+	name = "第二张厕纸"
+
+} 
+
+dm.brokenCardThreeDm = {
+
+	name = "第三张厕纸"
+
+} 
+
+dm.brokenCardFourDm = {
+
+	name = "第四张厕纸"
+
+} 
+
+dm.brokenCardFiveDm = {
+
+	name = "第五张厕纸"
+
+} 
+
+dm.goDrawnDm = {
+
+	name = "普通召唤"
+
+} 
+
+dm.continueDrawDm = {
+
+	name = "再次召唤"
+
+} 
+dm.cancelDrawDm = {
+
+	name = "确定"
+
+} 
+
+rect.brokenCardFiveRect = {} 
+
+rect.cancelDrawRect = {} 
+
+rect.continueDrawRect = {} 
+
+rect.brokenCardOneRect = {} 
+
+rect.goDrawnRect = {} 
+
+rect.brokenCardTwoRect = {} 
+
+rect.brokenCardThreeRect = {} 
+
+rect.brokenCardFourRect = {} 
 return date

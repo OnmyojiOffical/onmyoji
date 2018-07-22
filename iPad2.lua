@@ -819,4 +819,92 @@ rect.confirmButtonRect = { 1513, 1241, 1662, 1287}
 rect.skillUpRect = {  1001, 551, 1123, 778}
 
 
+--结界突破
+
+const.homeBreakOutCardOffsetY = 
+
+const.modelOffsetX = 
+
+const.homeBreakOutCardOffsetX = 
+
+point.modelBasePoint = { x = ,y = ,color =    }
+
+point.homeBreakOutViewBasePoint = { x = ,y = ,color =    }
+
+rect.refreshHomeBreakOutViewButtonConfirmButtonRect = {} 
+
+rect.refreshHomeBreakOutViewButtonRect = {} 
+
+rect.baseChallengeButtonRect = {} 
+
+rect.receiveHomeBreakOutNormalReward = {} 
+
+rect.exitBattleButtonRect = {} 
+
+rect.baseZoomRect = {} 
+
+rect.exitBattleConfirmRect = {} 
+
+dm.homeBreakOutViewStatusFailedDm = {
+
+ 	name = "突破挑战失败基础点阵"
+
+} 
+
+dm.homeBreakOutSuccessDm = {
+
+ 	name = "战斗胜利"
+
+} 
+
+dm.exitBattleDlgDm = {
+
+ 	name = "退出战斗弹窗"
+
+} 
+
+dm.homeBreakOutViewLightDm = {
+
+ 	name = "颜色比较浅的突破界面"
+
+} 
+
+dm.homeBreakOutViewDarkenDm = {
+
+ 	name = "颜色比较深的突破界面"
+
+} 
+
+dm.homeBreakOutViewStatusViewNormalDm = {
+
+ 	name = "突破未挑战基础点阵"
+
+} 
+
+dm.homeBrekaOutViewStatusBrokenDm = {
+
+ 	name = "突破已经攻破基础急诊"
+
+} 
+
+dm.homeBreakOutViewDm = {
+
+ 	name = "结界突破视图"
+
+} 
+
+dm.homeBreakOutFailDm = {
+
+ 	name = "战斗失败"
+
+} 
+
+dm.baseChallengeButtonDm = {
+
+ 	name = "进攻"
+
+} 
+
+
+
 return data
