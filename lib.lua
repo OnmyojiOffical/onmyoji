@@ -249,6 +249,9 @@ function  randomClick(x,y,t,offset)
 	
 	
 end
+
+
+
 --[[
 
 	区域点击
@@ -281,6 +284,15 @@ function rectClick(rect,t)
 	
 	return click(x,y,t)
 	
+end
+
+function rectClickEx(rectSet,t)
+	
+	randomseed(newSeed())
+	
+	local index =  random(1,#rectSet)
+	
+	return rectClick(rectSet[index],t)
 end
 
 function rectDoubleClick(rect,t,delay)

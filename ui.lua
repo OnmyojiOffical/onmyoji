@@ -45,7 +45,7 @@ local ui_data = {
 			{
 				["type"] = "ComboBox",                                                                      
 				["list"] = "司机,乘客,单刷(非魂十),单刷魂十,结界突破,小工具",
-				["width"] = 300,
+				["width"] = 500,
 				["select"] = "0",
 				["id"] = "model"
 			},

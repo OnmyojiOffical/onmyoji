@@ -1,5 +1,7 @@
 local data = {}
 
+local date = data
+
 data.rect = {}
 
 data.dm = {}
@@ -812,24 +814,32 @@ dm.skillUpDm = {
 }
 
 
+
 rect.continueButtonRect = {1132, 1158, 1316, 1201}
 
 rect.confirmButtonRect = { 1513, 1241, 1662, 1287}
 
 rect.skillUpRect = {  1001, 551, 1123, 778}
 
+date.const ={}
+
+local const = date.const
+
+date.point = {}
+
+local point = date.point
 
 --结界突破
 
-const.homeBreakOutCardOffsetY = 
+const.homeBreakOutCardOffsetY = 1
 
-const.modelOffsetX = 
+const.modelOffsetX = 1
 
-const.homeBreakOutCardOffsetX = 
+const.homeBreakOutCardOffsetX = 1
 
-point.modelBasePoint = { x = ,y = ,color =    }
+point.modelBasePoint = { x =1 ,y =1 ,color =1    }
 
-point.homeBreakOutViewBasePoint = { x = ,y = ,color =    }
+point.homeBreakOutViewBasePoint = { x = 1,y =1 ,color = 1   }
 
 rect.refreshHomeBreakOutViewButtonConfirmButtonRect = {} 
 
@@ -905,6 +915,16 @@ dm.baseChallengeButtonDm = {
 
 } 
 
-
+rect.battleOKRectSet = {
+	
+	{94, 222, 296, 1356},
+	
+	{464, 148, 1792, 354},
+	
+	{ 1746, 462, 1972, 1272},
+	
+	{ 1348, 1034, 1986, 1242},
+	
+}
 
 return data

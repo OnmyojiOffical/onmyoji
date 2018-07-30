@@ -1133,4 +1133,19 @@ rect.brokenCardTwoRect = {}
 rect.brokenCardThreeRect = {} 
 
 rect.brokenCardFourRect = {} 
+
+
+rect.battleOKRectSet = {
+	
+	{ 59, 58, 194, 585},
+	
+	
+	{314, 40, 854, 121},
+	
+	
+	{ 1073, 154, 1279, 542},
+	
+	{ 855, 560, 1327, 622},
+}
+
 return date

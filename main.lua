@@ -69,6 +69,9 @@ end
 
 function beforeUserExit(...)
 	
+	if not config.enableBestGodModel  then return end
+	
+	
 	nLog("call back for before user exit")
 	
 	if setRotationLockEnable then

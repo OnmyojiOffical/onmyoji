@@ -936,4 +936,18 @@ dm.homeBreakOutViewLightDm = {
 	
 	name = "颜色比较浅的突破界面"
 }
+
+
+rect.battleOKRectSet = {
+	
+	{ 76, 108, 466, 922},
+	
+	{664, 48, 1669, 216},
+	
+	{ 2050, 162, 2354, 888},
+	
+	{1757, 766, 2321, 965},
+	
+}
+
 return date

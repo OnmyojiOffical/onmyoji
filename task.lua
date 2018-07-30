@@ -768,7 +768,9 @@ function yuhunDriver()
 				--for some special view
 				if time() - begin_time > 5 then break end
 
-				rectClick(date.rect.battleOKRect,30)
+				rectClickEx(date.rect.battleOKRectSet,30)
+
+				mSleep(500)
 
 				lastClickTime = time()
 
@@ -952,7 +954,9 @@ function yuhunPassager()
 				--for some special view
 				if time() - begin_time > 5 then break end
 			
-				rectClick(date.rect.battleOKRect,30)
+				rectClickEx(date.rect.battleOKRectSet,30)
+				
+				mSleep(500)
 				
 				lastClickTime = time()
  
