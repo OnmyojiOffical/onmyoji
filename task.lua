@@ -313,10 +313,17 @@ function  runOnmyoji(afterRun)
 			break
 		else
 		
+			
+		
 			rectClick(date.rect.enterGameRect)
 		
 		end
-	
+		
+		if time() - begin_time > 30 then
+			
+			setDeviceOrient(2)
+			
+		end
 	
 		mSleep(300)
 		
@@ -382,11 +389,12 @@ function makeTeam(teamType)
 	
 	
 --	if x ~= -1 then
+		if not dmMatch(date.dm.searchToolBarDm) then
+			
+			rectClick(date.rect.searchEnterRect)
 		
-		rectClick(date.rect.searchEnterRect)
-		
-		mSleep(2000)
-		
+			mSleep(2000)
+		end
 		waitDmWithCallBack(date.dm.searchToolBarDm,30,90,function()  
 				
 			formatLog("探索工具栏出现")	
@@ -519,6 +527,16 @@ function goYuhunView()
 end
 
 
+--[[
+
+	private model super ghost 
+	
+	
+
+
+]]
+
+
 function singleYuhunBattle(loopMax)
 
 	local battleRecord = 0
@@ -567,7 +585,7 @@ function singleYuhunBattle(loopMax)
 
 				if time() - begin_time > 5 then break end
 
-				rectClick(date.rect.battleOKRect,30)
+				rectClickEx(date.rect.battleOKRectSet,30)
 
 				lastClickTime = time()
 
@@ -584,7 +602,7 @@ function singleYuhunBattle(loopMax)
 
 					formatLog("10分钟没有任何行为,结束脚本")
 
-					snapshot("error_unknow_view_" .. tostring(os.time()) .. ".png" )
+					snapshot("error_unknow_view_" .. tostring(os.date()) .. ".png" )
 
 
 					lockDevice()
@@ -617,6 +635,65 @@ function singleYuhunBattle(loopMax)
 end
 
 
+local function normalBattleHookForSuperGhost()
+	
+	
+	if dmMatch(date.dm.superGhostFound) then
+		
+		
+		ideFormatLog("出现了超鬼王")
+		
+		--发现超鬼王
+		
+		vibrator()
+		
+		mSleep(3000)
+		
+		fwShowWnd("wid",0,0,200,100,1)
+		
+		fwShowButton("wid","vid","点击继续","FFFFFF","F4A460","",15,0,0,200,100)
+
+		while (true) do
+		
+			local vid = fwGetPressedButton();
+		
+			if vid == "vid" then
+				
+				fwCloseWnd("wid");
+				
+				break
+					
+			end
+		
+			mSleep(300)
+		
+		end
+	else
+		
+		ideFormatLog("没发现超鬼王")
+	
+	end
+
+		
+		
+	
+	
+end
+
+
+--[[
+	
+	override hook for normalbattle
+
+
+]]
+
+local function normalBattleHook()
+	
+	return normalBattleHookForSuperGhost()
+	
+end
+
 function normalBattle(loopMax)
 
 	local battleRecord = 0
@@ -639,16 +716,20 @@ function normalBattle(loopMax)
 		randomseed(time())
 
 		commonCheck()
+		
+		normalBattleHook()
 
 		if dmMatch(date.dm.normalBegin,70) then
 
 			mSleep(500)
+			
+			normalBattleHook()
+
+			formatLog("即将开始战斗")
 
 			rectClick(date.rect.normalBeginRect,30)
 
 			mSleep(500)
-
-			formatLog("即将开始战斗")
 
 			lastClickTime = time()
 
@@ -663,9 +744,9 @@ function normalBattle(loopMax)
 				
 				formatLog("战斗结束")
 				
-				if time() - begin_time > 5 then break end
+				if time() - begin_time > 3 then break end
 			
-				rectClick(date.rect.battleOKRect,30)
+				rectClickEx(date.rect.battleOKRectSet,30)
 				
 				lastClickTime = time()
  
@@ -673,12 +754,12 @@ function normalBattle(loopMax)
 
 
 		else
-			if math.abs(lastClickTime - time()) > 60 * 5 then
+			if math.abs(lastClickTime - time()) > 60 * 10 then
 
 
-				formatLog("5分钟未能结束战斗")
+				formatLog("10分钟未能结束战斗")
 
-				snapshot("error_unknown_view:" .. tostring(time()) .. ".png")
+				snapshot("error_unknown_view:" .. tostring(os.date()) .. ".png")
 
 				lockDevice()
 
@@ -712,20 +793,7 @@ function yuhunDriver()
 	local noGuyTime = time()
 
 
-	while 1 do 
-		
-		
-
-		
-
---		local t = os.date("*t",time())
-
---		if t.hour > 6 then
-
---			lockDevice()
-
---			lua_exit()
---		end
+	while true do 
 
 		randomseed(time())
 
@@ -820,7 +888,7 @@ function yuhunDriver()
 
 					formatLog("10分钟没有任何行为,结束脚本")
 
-					snapshot("error_unknow_view_" .. tostring(os.time()) .. ".png" )
+					snapshot("error_unknow_view_" .. tostring(os.date()) .. ".png" )
 
 
 					lockDevice()
@@ -834,7 +902,7 @@ function yuhunDriver()
 					end
 
 				end
-			else
+		
 				local offsetTime = time() - lastClickTime
 
 				if   (isFrontApp(onmyojiBid) ~= runingStatus) then
@@ -844,6 +912,35 @@ function yuhunDriver()
 					runOnmyoji(makeTeam)
 
 				end
+
+				if (dmMatch(date.dm.searchToolBarDm)) then
+					
+					mSleep(1000)
+					
+					formatLog("队长看到了工具栏")
+					
+					makeTeam(TEAM_TYPE_YUHUN)
+					
+					mSleep(2000)
+					
+					lastClickTime = time()
+					
+					if dmMatch(date.dm.yuhunBeginWithOutGuyDm) then
+						
+						inviteRecentGuy()
+					
+					else
+					
+						formatLog("队伍未能创建成功,推测为网络异常")
+					
+						closeApp(onmyojiBid)
+					
+					end
+					
+				end
+				
+				
+				local offsetTime = time() - lastClickTime
 
 			end
 		end
@@ -906,7 +1003,7 @@ function yuhunPassager()
 					--for some special view
 					if time() - begin_time > 5 then break end
 
-					rectClick(date.rect.battleOKRect,30)
+					rectClickEx(date.rect.battleOKRectSet,30)
 
 					lastClickTime = time()
 
@@ -1022,7 +1119,7 @@ function yuhunPassager()
 				
 				if time() - lastClickTime > 60 * 10 then
 					
-					snapshot("error_unknow_view_" .. tostring(os.time()) .. ".png" )
+					snapshot("error_unknow_view_" .. tostring(os.date()) .. ".png" )
 					
 					lockDevice()
 					
@@ -1048,7 +1145,7 @@ function yuhunPassager()
 							
 				end
 				
-				local offsetTime = time() - lastClickTime
+
 
 			end
 		end
@@ -1228,7 +1325,7 @@ function searchGhostPassager()
 				--for some special view
 				if time() - begin_time > 5 then break end
 			
-				rectClick(date.rect.battleOKRect,30)
+				rectClickEx(date.rect.battleOKRectSet,30)
 				
 				lastClickTime = time()
  
@@ -1267,7 +1364,7 @@ local locations = {
 	
 	{ name = "北京" ,39.26,115.25,41.03,117.30 },
 	
-	{ name = "上海" ,30.40,120,51,31.53,122.12},
+	{ name = "上海" ,30.40,120.51,31.53,122.12},
 	
 	{ name = "深圳" ,22.32,113.46,22.52,114.37}
 	
@@ -1275,15 +1372,15 @@ local locations = {
 
 local currentLBSGhost = {
 	
-	name = "BML&BW",
+	name = "长沙广汽",
 	
-	dateBegin = {month = 7,day = 20},
+	dateBegin = {month = 8,day = 29},
 	
-	dateEnd = {month = 7,day = 22}, 
+	dateEnd = {month = 9,day = 11}, 
 	
-	perDayTime = {9,23},
+	perDayTime = {9,20},
 	
-	location = {121.496502,31.188396}
+	location = {113.015346,28.237611}
 	
 }
 
@@ -1882,7 +1979,7 @@ end
 						
 						currentCard.status = homeBreakOutStatusFailed
 						
-						rectClick(date.rect.battleOKRect)
+						rectClickEx(date.rect.battleOKRectSet,30)
 						
 						waitDm(date.dm.homeBreakOutViewDm,5)
 						
@@ -1907,7 +2004,7 @@ end
 						
 						currentCard.status = homeBreakOutStatusBroken
 						
-						rectClick(date.rect.battleOKRect)
+						rectClickEx(date.rect.battleOKRectSet,30)
 						
 						mSleep(2000)
 						
@@ -1977,6 +2074,70 @@ end
 	end
 
 end
+
+function borrowHeroByYeYuanHuo(loop)
+	
+	loop  = loop or 15
+	
+	battleRecord = 0
+	
+	commonCheck()
+	
+	while 1 do 
+
+		if battleRecord > loop then 
+			
+			
+			formatLog("已经完成了:%s场，任务结束")
+			
+			
+			lua_exit()
+			
+		end
+
+		randomseed(time())
+
+		commonCheck()
+		
+		normalBattleHook()
+
+		if dmMatch(date.dm.normalBegin,70) then
+
+			mSleep(500)
+			
+			normalBattleHook()
+
+			formatLog("即将开始战斗")
+
+			rectClick(date.rect.normalBeginRect,30)
+
+			mSleep(500)
+
+			lastClickTime = time()
+
+			battleRecord = battleRecord + 1
+
+		elseif dmMatch(date.dm.homeBreakOutFailDm)  then
+		
+
+			local begin_time = time()
+			
+			rectClickEx(date.dm.battleOKRectSet)
+
+
+		elseif dmMatch(date.dm.exitButtonDm) then
+		
+			mSleep(2000)
+			
+			exitBattle()
+	
+		end
+	
+	end
+	
+	
+end
+
 local function homeBreakOut(count,model)
 	
 	

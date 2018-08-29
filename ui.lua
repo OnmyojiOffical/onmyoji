@@ -44,7 +44,7 @@ local ui_data = {
 			},
 			{
 				["type"] = "ComboBox",                                                                      
-				["list"] = "司机,乘客,单刷(非魂十),单刷魂十,结界突破,小工具",
+				["list"] = "司机,乘客,单刷(非魂十),单刷魂十,协作奖励,结界突破,小工具",
 				["width"] = 500,
 				["select"] = "0",
 				["id"] = "model"
@@ -221,6 +221,8 @@ MODEL_PASSAGER = modelEnum()
 MODEL_NORMA_BATTLE = modelEnum()
 
 MODEL_SINGLE_YUHUN = modelEnum()
+
+MODEL_BORROW_HERO = modelEnum()
 
 MODEL_HOME_BREAK = modelEnum()
 

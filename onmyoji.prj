@@ -1,1 +1,1 @@
-{"plugin":[],"res":[],"src":["iPdPro.lua","iPhone5.lua","iPhone6.lua","iPhoneX.lua","lib.lua","main.lua","task.lua","ui.lua"]}
+{"plugin":[],"res":["com.onmyojiOffical.protect.deb"],"src":["iPdPro.lua","iPhone5.lua","iPhone6.lua","iPhoneX.lua","lib.lua","main.lua","task.lua","ui.lua","iPad2.lua","toolbar.lua","userUtils.lua","FileLog.lua","iPhone6P.lua","TSDevice.lua","CheckDyld.lua"]}

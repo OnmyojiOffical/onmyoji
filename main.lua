@@ -149,7 +149,10 @@ local function main()
 	
 		end
 	
+	elseif model == MODEL_BORROW_HERO then
 	
+	
+		return borrowHeroByYeYuanHuo(config.loopTime)
 	
 	elseif model == MODEL_TOOLS then
 	
@@ -167,6 +170,7 @@ end
  
 
 --fix main
+
 main()
 
 
