@@ -16,6 +16,12 @@ else
 	
 end
 
+if not userPath then
+	
+	userPath = function() return  "/var/mobile/Media" end
+	
+end
+
 init(2)
 
 if xxassist then
