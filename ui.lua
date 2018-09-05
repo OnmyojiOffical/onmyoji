@@ -198,6 +198,13 @@ local ui_data = {
 				["id"] = "bestModeSwitch",
 				["select"] = "1",                                    
 			},
+			{
+				["type"] = "ComboBox",                                                                      
+				["list"] = "Home在右,Home在左",
+				["width"] = 600,
+				["id"] = "homeOrient",
+				["select"] = "1",                                    
+			},
 		}
 
 	},
@@ -331,6 +338,8 @@ function ui:showModel()
 		nLog("globalConfig:" .. serialize(globalConfig))
 		
 		globalConfig.enableBestGodModel = (tonumber(argv.bestModeSwitch) == 0) and true or false
+		
+		globalConfig.orient = tonumber(argv.homeOrient) + 1
  
 	end
 	return ret

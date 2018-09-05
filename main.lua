@@ -50,6 +50,25 @@ end
 
 require("task")
 
+
+
+--[[
+MODEL_DRIVER = modelEnum()
+
+MODEL_PASSAGER = modelEnum()
+
+MODEL_NORMA_BATTLE = modelEnum()
+
+MODEL_SINGLE_YUHUN = modelEnum()
+
+MODEL_BORROW_HERO = modelEnum()
+
+MODEL_HOME_BREAK = modelEnum()
+
+MODEL_TOOLS = modelEnum()
+
+
+]]
 local modelDescription = {
 	
 	"司机",
@@ -58,7 +77,13 @@ local modelDescription = {
 	
 	"单刷",
 	
-	"小工具"
+	"单刷魂十",
+	
+	"刷协作",
+	
+	"突破",
+	
+	"小工具",
 	
 }
 
@@ -116,7 +141,7 @@ local function main()
 	
 	if setDeviceOrient then
 		
-		setDeviceOrient(2)
+		setDeviceOrient(globalConfig.orient)
 		
 	end
 	

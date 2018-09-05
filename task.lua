@@ -111,6 +111,82 @@ else
 
 end
 
+local function translateHomeLeft2HomeRight(x,y)
+	
+	if not (x and y) then
+		
+		error("translateHomeLeft2HomeRight need x and y",2)
+		
+	end
+	
+	if type(x) == "table" then
+		
+		error("translateHomeLeft2HomeRight need math",2)
+		
+	end
+	
+	return h - x -1 , w - y -1 
+	
+	
+end
+
+if globalConfig.orient == 1 then
+	
+	--转换数据方向
+	
+	local dm = date.dm
+	
+	for vname,view in pairs(dm) do
+		
+		for i = 1,#view  do
+			
+			local this = view[i]
+			
+			this[1],this[2] = translateHomeLeft2HomeRight(this[1],this[2])
+			
+		end
+		
+		
+	end
+	
+
+	for rname,rect in pairs(date.rect) do
+	
+		if rect[1] and rect[2] and rect[3] and rect[4] then
+	
+			if type(rect[1]) == "table" then
+		
+				for i = 1,#rect do
+		
+					local this = rect[i]
+					
+					this[1],this[2] = translateHomeLeft2HomeRight(this[1],this[2])
+					
+					this[3],this[4] = translateHomeLeft2HomeRight(this[3],this[4])
+				end
+			else
+				rect[1],rect[2]  = translateHomeLeft2HomeRight(rect[1],rect[2])
+	
+				rect[3],rect[4] = translateHomeLeft2HomeRight(rect[3],rect[4])
+			end
+	
+		end
+	end
+	
+	local point = date.point 
+	
+	for pname,p in pairs(point) do
+		
+		if p.x and p.y then
+		
+			p.x,p.y = translateHomeLeft2HomeRight(p.x,p.y)
+		
+		end
+	end
+
+end
+
+
 local dm = date.dm
 
 local rect = date.rect
@@ -292,7 +368,7 @@ function  runOnmyoji(afterRun)
 
 	mSleep(3000)
 
-	setDeviceOrient(2)
+	setDeviceOrient(globalConfig.orient)
 
 
 	local begin_time = time()
@@ -321,7 +397,7 @@ function  runOnmyoji(afterRun)
 		
 		if time() - begin_time > 30 then
 			
-			setDeviceOrient(2)
+			setDeviceOrient(globalConfig.orient)
 			
 		end
 	
@@ -690,7 +766,7 @@ end
 
 local function normalBattleHook()
 	
-	return normalBattleHookForSuperGhost()
+	--return normalBattleHookForSuperGhost()
 	
 end
 

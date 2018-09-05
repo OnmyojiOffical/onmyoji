@@ -282,9 +282,17 @@ function rectClick(rect,t)
 	
 	randomseed(newSeed())
 	
-	local x = random(rect[1],rect[3])
+	local minx = (rect[1] > rect[3]) and rect[3] or rect[1]
 	
-	local y = random(rect[2],rect[4])
+	local maxx = (rect[1] > rect[3]) and rect[1] or rect[3]
+	
+	local miny = (rect[2] > rect[4]) and rect[4] or rect[2]
+	
+	local maxy = (rect[2] > rect[4]) and rect[2] or rect[4]
+	
+	local x = random(minx,maxx)
+	
+	local y = random(miny,maxy)
 	
 	local t = t or 30
 	
