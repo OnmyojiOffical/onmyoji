@@ -16,7 +16,13 @@ local getColorRGB = getColorRGB
 local date = os.date
 local nLog = nLog
 local onmojiBid =  "com.netease.onmyoji"
-local logFilePath = userPath() .. "/log/onmyoji.log"
+local logFilePath 
+
+if xxassist then
+	logFilePath = "/var/mobile/Media/onmyoji.log"
+else
+	logFilePath =  userPath() .. "/log/onmyoji.log"
+end
 local logServer 
 
 --[[

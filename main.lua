@@ -6,7 +6,23 @@
 
 debug = true
 
+if  getUserID then
+	
+	xxassist = true
+	
+else
+	
+	xxassist = false
+	
+end
+
 init(2)
+
+if xxassist then
+	
+	setUIOrientation(2)
+	
+end
 
 local ui = require("ui")
 

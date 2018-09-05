@@ -5,9 +5,27 @@
 -- Copyright © TouchSpriteStudio . All rights reserved.
 local  ui = {}
 
-local sz = require("sz")
+local json
+
+--global flag xxassist 
+
+if not xxassist then
+
+	local sz = require("sz")
+
+	json = sz.json
+
+else
+
+	local bb = require("badboy")
+	
+	 json = bb.getJSON()
+
+end
 
 local w,h = getScreenSize();
+
+
 
 local ui_data = {
 	["style"]  = "default",             
@@ -187,7 +205,7 @@ local ui_data = {
 }
 
 	
-ui.json = sz.json.encode(ui_data)
+ui.json = json.encode(ui_data)
 
 
 ui.data = ui_data

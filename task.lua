@@ -878,6 +878,20 @@ function yuhunDriver()
 
 			mSleep(500)
 		else
+	
+				if   (isFrontApp(onmyojiBid) ~= runingStatus) then
+					
+					closeApp(onmyojiBid)
+					
+					mSleep(3000)
+
+					formatLog("阴阳师不在前台运行了")
+
+					runOnmyoji(makeTeam)
+
+				end
+
+
 
 			if  time() - lastClickTime > 120 then
 
@@ -905,13 +919,7 @@ function yuhunDriver()
 		
 				local offsetTime = time() - lastClickTime
 
-				if   (isFrontApp(onmyojiBid) ~= runingStatus) then
 
-					formatLog("阴阳师不在前台运行了")
-
-					runOnmyoji(makeTeam)
-
-				end
 
 				if (dmMatch(date.dm.searchToolBarDm)) then
 					
@@ -2122,7 +2130,7 @@ function borrowHeroByYeYuanHuo(loop)
 
 			local begin_time = time()
 			
-			rectClickEx(date.dm.battleOKRectSet)
+			rectClickEx(date.rect.battleOKRectSet)
 
 
 		elseif dmMatch(date.dm.exitButtonDm) then
