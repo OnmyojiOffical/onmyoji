@@ -2021,7 +2021,7 @@ end
 
 			rectClick(currentCard.zoomRect)
 
-			mSleep(1000)
+			mSleep(2000)
 			
 			while not  dmMatch(currentCard.challengeButtonDm) do
 	
@@ -2053,13 +2053,14 @@ end
 				
 				if dmMatch(date.dm.battleOKDm) or dmMatch(date.dm.battleOKExpDm) then
 					
+					formatLog("突破战斗结束！！")
 					
 					
-					if dmMatch(date.dm.homeBreakOutFailDm) then
+					if dmMatch(date.dm.homeBreakOutFailDm,75) then
 						
 						formatLog("突破失败")
 						
-						mSleep(1000)
+						mSleep(3000)
 						
 						currentCard.status = homeBreakOutStatusFailed
 						
@@ -2080,7 +2081,7 @@ end
 							break
 						
 						end
-					elseif dmMatch(date.dm.homeBreakOutSuccessDm) then
+					elseif dmMatch(date.dm.homeBreakOutSuccessDm,70) then
 						
 						formatLog("突破成功")
 						
